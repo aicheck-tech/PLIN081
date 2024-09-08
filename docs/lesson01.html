@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
     <meta charset="utf-8">
     <title>PLIN081: 01</title>
@@ -9,34 +9,59 @@
         .reveal section {
             font-size: 24px; /* Adjust this value as needed */
         }
+        .tag {
+            display: inline-block;
+            padding: 8px 16px 8px 12px;
+            border-radius: 6px;
+        }
+        .activity {background-color: #ffcc00;}
+        .discussion {background-color: dodgerblue; color: white;}
     </style>
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
             <section data-markdown>
-                <textarea data-template>
+                <textarea data-template aria-label="slides">
                     ## O předmětu PLIN081
 
                     - Jan Rygl (https://www.linkedin.com/in/janrygl/)
                     - Absolvent FI, Python ML programmer & researcher
 
-                    Výuka bude vedena z pohledu malého, specializovaného AI týmu, který řeší
-                    řešící konkrétní problémy zákazníků.
+                    Výuka bude vedena z pohledu malého, specializovaného AI týmu, který pracuje
+                    na konkrétní problémy zákazníků.
 
                     Naopak se nebudeme věnovat vývoji dlouhodobému produktu nebo práci v&nbsp;korporátním prostředí.
 
                     ---
 
-                    ## Uplatnění malých týmů
+                    ## <span class="tag discussion">Diskuze</span> Módy činnosti v rámci předmětu
 
-                    1. Zakázkový vývoj
-                    2. Počátek většiny technických start-upů
-                    3. Interní týmy korporátů řešící digitalizaci/zavádění AI pro různá oddělení
+                    - <b>A)</b> Aktivity v rámci týmu
+                      - Komunikujete v rámci svého týmu
+                      - Můžete poslouchat ostatní týmy, ale neměly byste s nimi interagovat
+                      - Se mnou můžete komunikovat kdykoliv
+
+                    - <b>B)</b> Práce na projektu
+                      - Spolupráce jen v rámci týmu a za pomoci vyučujících a AI
+                      - Probíhá ve výuce i v čase mimo ni
+                      - Více při zadání projektů
+
+                    - <b>C)</b> Diskuze (defaultní mód)
+                      - Něco vám nedává smysl, máte nápad, postřeh, vlastní zkušenost, ozvěte se
+                      - Např. nyní je diskuze
 
                     ---
 
-                    ## `Brainstorming`: Jaké základní role v týmu máme?
+                    ## <span class="tag discussion">Diskuze</span> Uplatnění malých týmů
+
+                    1. Zakázkový vývoj
+                    2. Počátek většiny technologických start-upů
+                    3. Interní týmy v korporátech řeší digitalizaci/zavádění AI pro různá oddělení
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Jaké základní role v týmu máme?
 
                     Co za dovednosti/specializace je potřeba, abyste dokázali s klientem udělat projekt od začátku
                     až do konce?
@@ -50,10 +75,10 @@
 
                     ---
 
-                    ## Role v malých týmech
+                    ## <span class="tag discussion">Diskuze</span> Role v malých týmech
 
-                    Přestože by ideálně bylo třeba mnohem více specialistů, klíčové jsou následující tři role, které
-                    může zastávat 1 nebo více lidí:
+                    Na AI projektech běžně pracuje deset a více lidí,<br />
+                    klíčové jsou však následující tři role, které může zastávat 1 nebo více lidí:
 
                     - Tvář projektu 🎩:
                         - odpovídá za komunikaci s klientem
@@ -62,22 +87,22 @@
                         - může pomoci s anotacemi
                         - sbírá zpětnou vazbu a předává týmu
                     - Programátor/ka 💻:
-                        - píše kód dělá automatické testy
-                        - integratuje s klientovým prostředím a navrhuje API
+                        - píše kód, dělá automatické testy
+                        - integruje s klientovým prostředím a navrhuje API
                         - řeší bugy
-                        - a nasazuje finální aplikaci
-                    - ML expert 📊:
+                        - nasazuje finální aplikaci
+                    - ML expert/ka 🧪:
                         - stará se o sběr a kvalitu dat
                         - analyzuje data a čistí je
-                        - volí a implementuje metriky měřící kvalitu
+                        - vybírá a implementuje metriky měřící kvalitu
                         - tvoří a vyhodnocuje ML modely
 
                     ---
 
-                    ## `Aktivita`: Vaše týmová role
+                    ## <span class="tag activity">Aktivita</span> Vaše týmová role
 
                     Nyní se zkuste rozdělit do skupin, kde byste se cítili nejvíce komfortně.
-                    Každá skupina má kapacitu třetinu lidí, takže platí, kdo první přijde, první bere.
+                    Každá skupina má omezenou poptávku na trhu, takže platí, kdo první přijde, první bere.
 
                     1. Tvář projektu 🎩: obrázek klobouku
 
@@ -87,33 +112,42 @@
 
                     ---
 
-                    ## `Aktivita`: Tvoření týmu
+                    ## <span class="tag activity">Aktivita</span> Tvoření týmu
 
-                    V rámci týmu se seznamte a zkuste vymyslet název své společnosti. Máte na to 5 minut.
+                    Tváře projektu mají za úkol sehnat si další dva členy týmu.<br />
+                    Poslední sestavený tým má nárok na 4. člena.
 
                     ---
 
-                    ## `Aktivita`: Zadávání AI projektů
+                    ## <span class="tag activity">Aktivita</span> Počátek týmu
+
+                    V rámci týmu se seznamte a zkuste vymyslet název své společnosti. Máte na to 5 minut.
+                    <br /><button class="tag" onclick="startCountdown(300);">Start</button>
+                    <p class="countdown" id="countdown">05:00</p>
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Zadávání AI projektů
 
                     - Čeká nás simulace setkání AI týmů s klientem. Váš obchodník ve firmě za vámi přišel, že se
                     mu podařila dojednat skvělá zakázka s VIP klientem.
 
-                    - Od vás jen potřebuje, abyste po konzultaci s klientem odhadli náročnost projektu (na počet mandays),
-                    klientovi řekli trojnásobné číslo a zbytek pak nechali na jednání s obchodníkem.
+                    - Od vás jen potřebuje, abyste po konzultaci s klientem odhadli náročnost projektu (na počet MD),
+                    klientovi řekli trojnásobné číslo a zbytek pak nechali na jednání s&nbsp;obchodníkem.
 
                     - Cílem je, aby byl klient spokojený a firma byla v zisku. Pokud je potřeba projekt mírně upravit,
-                    aby se snížily mandaye/zvýšila se spokojenost klienta, udělejte to.
+                    aby se snížil počet MD/zvýšila se spokojenost klienta, udělejte to.
 
                     - Nezapomeňte, jednáte s klientem!
 
                     ---
 
-                    ## `Aktivita`: Zadávání AI projektů: seznam klientů a poznámky obchodníka
+                    ## <span class="tag activity">Aktivita</span> Zadávání AI projektů: seznam klientů a poznámky obchodníka
 
-                    1. Pan Snider z Kalné štoly Ostrava, a.s.
+                    1. Pan Snider z Redrock mines Ostrava, a.s.
                         - super velká zakázka aspoň za 10 milionů
                         - otevře nám dveře do velké korporace
-                    2. Roman ze Sluneční neziskovky
+                    2. Roman z neziskovky Pomocné srdce
                         - dá se na všem domluvit
                         - menší projekt, ale poslouží nám jako reference
                         - stejně nemáte co dělat, ne?
@@ -131,7 +165,25 @@
 
                     ---
 
-                    ## Očekávání na příští setkání
+                    ## <span class="tag discussion">Diskuze</span> Code review
+                    - Proč je potřebujeme?
+                    - Kdo je může psát?
+                        - Junior
+                        - Senior
+                        - AI
+                    - Co dělá code review dobrým code review?
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Udělejme společně code review
+
+                    - Krok za krokem
+                    - Začněme od nejdůležitějších
+                    - <a href="https://github.com/aicheck-tech/PLIN081/blob/main/examples/example01.py">Příklad v Githubu</a>
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Očekávání na příští setkání
 
                     1. Pojmenujete si svůj tým (business friendly)
                     2. Založíte si github repozitář pro svůj tým
@@ -185,6 +237,28 @@
     <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
     <script>
         Reveal.initialize({hash: true, plugins: [ RevealMarkdown ], markdown: {smartypants: true}});
+
+        function formatTime(seconds) {
+            var minutes = Math.floor(seconds / 60);
+            var remainingSeconds = seconds % 60;
+            return (minutes < 10 ? '0' : '') + minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+        }
+
+        // Function to handle the countdown
+        function startCountdown(duration) {
+            var timer = duration, minutes, seconds
+            var display = document.getElementById('countdown');
+            var countdownInterval = setInterval(function () {
+                display.textContent = formatTime(timer);
+
+                // If the timer reaches zero, stop the countdown
+                if (--timer < 0) {
+                    clearInterval(countdownInterval);
+                    display.textContent = "Time's up!";
+                }
+            }, 1000);
+        }
+
     </script>
 </body>
 </html>
