@@ -1,4 +1,6 @@
 """Constants usable in this project."""
-NUMBER_PI = 3.14159265359
-EULER_NUMBER = 2.71828182846
-GOLDEN_RATIO = 1.61803398875
+import math
+
+NUMBER_PI = math.pi
+EULER_NUMBER = math.e
+GOLDEN_RATIO = (1 + 5 ** 0.5) / 2

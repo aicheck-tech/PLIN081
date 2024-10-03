@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>PLIN081: 02</title>
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+    <style>
+        .reveal section {
+            font-size: 24px; /* Adjust this value as needed */
+        }
+        .tag {
+            display: inline-block;
+            padding: 8px 16px 8px 12px;
+            border-radius: 6px;
+        }
+        .activity {background-color: #ffcc00;}
+        .discussion {background-color: dodgerblue; color: white;}
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown>
+                <textarea data-template aria-label="slides">
+                    ## <span class="tag discussion">Diskuze</span> Plán hodiny
+
+                    - Git
+                    - Code reviews
+                    - Diskuze o projektech
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Git
+
+                    - Základní dovednost pro všechny členy IT týmů<br />
+                      (data analysts, data scientists, testers, AI specialists)
+                    - Pro běžného uživatele stačí minimální znalosti
+                    - I běžní uživatelé si Googlují/ptají se AI, jak se zachovat v komplikovaných situacích
+
+                    ---
+                    ## <span class="tag discussion">Diskuze</span> Terminologie
+                    - Základní operace pomocí Gitu (jdou dělat i z prostředí PyCharmu):
+                        - `git clone <url>`: vytvoří složku u vás s celým repozitářem
+                        - `git pull`: stáhne změny z repozitáře
+                        - `git checkout -b <branch>`: vytvoří novou větev, do které se píší změny
+                        - `git add <file>`: označí, které soubory chcete sdílet s ostatními
+                        - `git commit -m "message"`: uloží změny
+                        - `git push`: nahraje změny na server
+                    - Základní operace v prostředí GitHubu:
+                        - Vytvoření pull requestu
+                        - Code review
+                        - Merge pull requestu
+
+                    ---
+                    ## <span class="tag discussion">Diskuze</span> Etiketa práce s Gitem
+
+                    - Děláme srozumitelné názvy větví, které popisují, co větev má dělat
+                    - To samé pro commity, navíc by nemělo být moc souborů v commitech
+                    - Neděláme commity do hlavní větve (master/main), ale do své větve
+                    - Nikdy nedáváme hesla, klíče a jiné věci do Gitu
+                    - Pokud to není nutné, nedáváme ani velké soubory do Gitu (Git LFS, vaše úložiště)
+                    - Nedáváme commity do cizí větve bez vědomí autora
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Git a kariéra
+
+                    - Mít Git repozitáře v CV je plus
+                    - Můžete mít vlastní repozitář, nebo se podílet na open-source projektech jako kontributor
+                    - Jaké projekty si na to vybrat?
+                        - Aspoň trochu známé
+                        - Aby vás bavili
+                        - Aby správce projektu souhlasil s vaším přispíváním (issue, pull requesty)
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Ukázka v Pycharmu a v konzoli
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Výběr školního projektu
+
+                    <table border="1">
+                      <tr>
+                        <td>Zajímavá data</td>
+                        <td>Užitečná data</td>
+                        <td>Dostupná data</td>
+                      </tr>
+                      <tr>
+                        <td>Lehký problém</td>
+                        <td>Těžký, ale již vyřešený problém</td>
+                        <td>Těžký problém</td>
+                      </tr>
+                      <tr>
+                        <td>Problematika zajímá nás</td>
+                        <td>Nikoho to nezajímá</td>
+                        <td>Problematika zajímá uživatele</td>
+                      </tr>
+                    </table>
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Brainstorming datasetů
+
+                    | Data set                                  | Dostupnost? | Zajímá nás? | Najdeme na něm zajímavý problém? | Je to v našich silách? |
+                    |-------------------------------------------|-------------|-------------|----------------------------------|------------------------|
+                    | [Evropské patenty](https://data.gov.cz/datov%C3%A9-sady?poskytovatel=https%3A%2F%2Frpp-opendata.egon.gov.cz%2Fodrpp%2Fzdroj%2Forg%C3%A1n-ve%C5%99ejn%C3%A9-moci%2F48135097&str%C3%A1nka=5) |             |             |                                  |                        |
+                    | [Něco z Kaggle.com](https://www.kaggle.com/) |             |             |                                  |                        |
+                    | [Lokální open data](https://data.brno.cz/)                         |             |             |                                  |                        |
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Úkol
+
+                    Do čtvrtka 8:00 každý tým zašle návrh 2-3 datasetů, které by mohl použít pro svůj projekt.
+                    - Název datasetu + link
+                    - Nápad, co s tím
+                    - Studie, kdo by projekt mohl využít
+
+                    ---
+
+
+
+                </textarea>
+            </section>
+        </div>
+    </div>
+    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({hash: true, plugins: [ RevealMarkdown ], markdown: {smartypants: true}});
+
+        function formatTime(seconds) {
+            var minutes = Math.floor(seconds / 60);
+            var remainingSeconds = seconds % 60;
+            return (minutes < 10 ? '0' : '') + minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+        }
+
+        // Function to handle the countdown
+        function startCountdown(duration) {
+            var timer = duration, minutes, seconds
+            var display = document.getElementById('countdown');
+            var countdownInterval = setInterval(function () {
+                display.textContent = formatTime(timer);
+
+                // If the timer reaches zero, stop the countdown
+                if (--timer < 0) {
+                    clearInterval(countdownInterval);
+                    display.textContent = "Time's up!";
+                }
+            }, 1000);
+        }
+
+    </script>
+</body>
+</html>
+
