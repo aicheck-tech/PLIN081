@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>PLIN081: 03</title>
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+    <style>
+        .reveal section {
+            font-size: 24px; /* Adjust this value as needed */
+        }
+        .tag {
+            display: inline-block;
+            padding: 8px 16px 8px 12px;
+            border-radius: 6px;
+        }
+        .activity {background-color: #ffcc00;}
+        .discussion {background-color: dodgerblue; color: white;}
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown>
+                <textarea data-template aria-label="slides">
+                    ## <span class="tag discussion">Diskuze</span> Plán hodiny
+
+                    - Výkazy práce
+                    - Projektový plán
+                    - Domluva zakázky
+                    - Struktura projektu
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Výkazy práce: Kdo a proč je potřebuje?
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Výkazy práce: Proč je potřebujeme?
+
+                    Tým:
+                    - Výpočet nákladů/výnosnosti projektu
+                    - Průběžné zlepšování odhadu náročnosti práce z minulých dat
+                    - Pří režimu práce <b>time & material</b> podklad pro fakturaci
+                    - Plánování vytíženosti týmu
+
+                    Management:
+                    - Ocenění týmu
+                    - Rozpoznání úzkých hrdel v procesu<br /> (např. vývoj API jde pomalu a nemáme na něj dost lidí)
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Potřebujeme je už ve škole? Ano/ne?
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Potřebujeme je už ve škole?
+
+                    - Transparentnost práce v týmu
+                    - Možnost pro lepší retrospektivu (toto nám trvalo tak dlouho, podcenili jsme to)
+                    - Příprava na práci v reálném týmu
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Výkazy práce v PLIN081
+
+                    - Všechnu práci, kterou děláte na projektu, zaznamenávejte
+                    - V rámci týmu si zvolte manažera
+                    - Manažer bude výkazy práce shromažďovat, kontrolovat a nastavovat hodinové sazby pro jednotlivé členy týmu na základě vyjednávání s nimi
+                    - Hodinovou sazbu nelze měnit zpětně, je možno ji změnit jednou za 3 týdny
+                    - Očekávaný minimální počet hodin práce na projektu: 20 hodin za semestr
+                    - <a href="https://docs.google.com/spreadsheets/d/1lY_yUYwgPxQboGrql1HANyIRmyuyiQ37R3pwTKUASg4/edit?gid=0#gid=0">Šablona</a>
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Management týmu
+
+                     - Zvolte si manažera týmu: potřeba 3 hlasů
+                     - Každý člen týmu odprezentuje, co umí, co bude dělat a jakou hodinovou sazbu si přeje (včetně manažera)
+                        - 1 minuta na prezentaci
+                     - Manažer na základě jednání s členy týmu nastaví hodinové sazby
+                        - 1 minuta na finální rozhodnutí
+                     - Manažer zapíše údaje do Excelu
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Projektový plán
+                     - Rozdělení projektu na etapy
+                     - Uvědomnění si, co je potřeba udělat, jaké mají kroky prerekvizity, co jde paralelizovat
+                     - Jaké jsou rizika projektu a nastavení dostatečných časových polštářů
+                     - S klientem se na časovém plánu musíte dohodnout
+                     - Změny v plánu musí být komunikovány s klientem a schváleny
+                     - <a href="https://docs.google.com/spreadsheets/d/1pb_oinLz0o-0Li_vYYE8lXbYWNLor_tH65rebKfzvN4/edit?gid=0#gid=0">Šablona</a>
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Domluva zakázky
+
+                    - 2 výběrová řízení:
+                        - Americké noviny:
+                            - Aplikace na detekci extremistických čtenářských příspěvků
+                            - Monitorování médií a hodnocení jejich novinářských praktik
+                    - 2 poptávky
+                        - Město Brno:
+                            - Analytika nad projekty z participativního rozpočtu
+                        - Kontentový startup:
+                            - Aplikace na generování sloganů podle zadaného tématu/slavné osobnosti
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Struktura projektu
+
+                    - [Git examples/project_structure](https://github.com/aicheck-tech/PLIN081/tree/main/examples/project_structure)
+                    - Rozhraní:
+                      - REST API pro prototypy
+                      - Standard fastapi (nástupce flask)
+                      - [python3 main.py](http://0.0.0.0:8080/)
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Plánování práce
+
+                    - Navazuje na projektový plán
+                    - Issues v GitHubu/Projekt v GitHubu/Trello/Excel
+                    - Každý úkol by měl mít napsáno, ke kterému milníku v projektovém plánu se vztahuje
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Úkol
+
+                     - Práce na projektu podle projektového plánu
+                     - Příprava reportu pro klienta do čt 8:00
+                     - Můžete průběžně konzultovat po emailu (jan.rygl@aicheck.tech),<br />
+                       v rámci konzultace vždy uveďte, zda se ptáte:
+                        - Klienta (ohledně plánované feature XYZ, můžete uvést prosím příklady?)
+                        - Zkušenějšího kolegy v práci (nevíš, jak řešit problém s API?)
+                        - Učitele (co máme dělat?)
+                     - Narozdíl od reality má klient, kolega i učitel neomezenou trpělivost,<br />
+                       tedy dokud se neřekne jinak, nejsou penalizace za žádné otázky
+
+                </textarea>
+            </section>
+        </div>
+    </div>
+    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({hash: true, plugins: [ RevealMarkdown ], markdown: {smartypants: true}});
+
+        function formatTime(seconds) {
+            var minutes = Math.floor(seconds / 60);
+            var remainingSeconds = seconds % 60;
+            return (minutes < 10 ? '0' : '') + minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+        }
+
+        // Function to handle the countdown
+        function startCountdown(duration) {
+            var timer = duration, minutes, seconds
+            var display = document.getElementById('countdown');
+            var countdownInterval = setInterval(function () {
+                display.textContent = formatTime(timer);
+
+                // If the timer reaches zero, stop the countdown
+                if (--timer < 0) {
+                    clearInterval(countdownInterval);
+                    display.textContent = "Time's up!";
+                }
+            }, 1000);
+        }
+
+    </script>
+</body>
+</html>
+

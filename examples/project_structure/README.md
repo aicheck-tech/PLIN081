@@ -1,0 +1,2 @@
+ - Docker doc: https://docs.docker.com/engine/install/
+ - Run docker on Linux: `docker build -t project .; docker run  -p 8080:8080 project`
