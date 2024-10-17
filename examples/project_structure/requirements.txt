@@ -1,3 +1,7 @@
 fastapi
 gunicorn
 uvicorn
+numpy
+scikit-learn
+spacy
+sentence_transformers

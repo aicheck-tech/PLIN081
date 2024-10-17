@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>PLIN081: 03</title>
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+    <style>
+        .reveal section {
+            font-size: 24px; /* Adjust this value as needed */
+        }
+        .tag {
+            display: inline-block;
+            padding: 8px 16px 8px 12px;
+            border-radius: 6px;
+        }
+        .activity {background-color: #ffcc00;}
+        .discussion {background-color: dodgerblue; color: white;}
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown>
+                <textarea data-template aria-label="slides">
+                    ## <span class="tag discussion">Diskuze</span> Plán hodiny
+
+                    - Prototypování
+                    - Bag-of-words klasifikátor
+                    - Projektový plán 1
+                    - Vector search
+                    - Projektový plán 2
+                    - Konzultace
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span>  Development vs Research
+
+                    Development:
+
+                     - vize – zadání – kód – testy – dokumentace – předání
+
+                    Research:
+
+                     - ?
+
+                    <br><br><br>
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span>  Development vs Research
+
+                    Development:
+
+                     - vize – zadání – kód – testy – dokumentace – předání
+
+                    Research:
+
+                     - vize – proof of concept – evaluace – prototyp – evaluace – ladění – evaluace – kód – proces na aktualizaci modelů – testy – dokumentace – předání
+
+                    ---
+                    ## <span class="tag discussion">Diskuze</span> Baseline
+
+                    Baseline je naivní algoritmus:
+                    - Házení kostkou
+                    - Stejná odpověď
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Jaké mají následující problémy baselines?
+
+                    - Binární klasifikace: je autor/není autor
+                    - Přiřazování štítku: podpořený/úspěšný nepodpořený/neúspěšný
+                    - Binární klasifikace spamu v emailu (25 % pošty je spam)
+                    - Predikce známky z předmětu s kvadratickou chybou, průměr je 2.7
+
+                    ---
+                    
+                    ## <span class="tag discussion">Diskuze</span> Proof of concept
+
+                    Nástřel jednoduchého algoritmu, který řeší aspoň část problému:
+                    - Překoná baseline?
+                    - Je na cestě k naší cílové přesnosti?
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Bag-of-words klasifikátor
+
+                    - Rychlá cesta pro otestování řešitelnosti problému
+                    - Tokenizujeme text a každý token je 1 feature: one-hot-encoding
+                    - Pokud snadno můžeme, lemmatizujeme
+                    - Při větších datech vezmeme pouze nejčastější slova z učících dat
+                    - Naučíme klasifikátor na těchto datech a vyhodnotíme
+                    - [classifier.py](https://github.com/aicheck-tech/PLIN081/tree/main/examples/project_structure/our_app/services/classifier.py)
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span>  Projektový plán
+
+                    - Cílem je, aby ho dnes klient schválil
+                    - V prvním kole získáte zpětnou vazbu od kolegy
+                    - Na konci hodiny dojde ke schvalování
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Vector search
+
+                    - Převedeme texty na vektory (semantic embeddings)
+                    - Pro vstupní text najdeme nejbližší texty v trénovacích datech
+                    - Štítek přiřadíme podle nejbližších textů
+                    - [search.py](https://github.com/aicheck-tech/PLIN081/tree/main/examples/project_structure/our_app/services/search.py)
+
+                    ---
+
+
+                    ## <span class="tag activity">Aktivita</span>  Projektový plán
+
+                    - Schvalování
+                    - Konzultace
+                    - 1 na 1 konzultace
+
+                    ---
+
+                </textarea>
+            </section>
+        </div>
+    </div>
+    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({hash: true, plugins: [ RevealMarkdown ], markdown: {smartypants: true}});
+
+        function formatTime(seconds) {
+            var minutes = Math.floor(seconds / 60);
+            var remainingSeconds = seconds % 60;
+            return (minutes < 10 ? '0' : '') + minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+        }
+
+        // Function to handle the countdown
+        function startCountdown(duration) {
+            var timer = duration, minutes, seconds
+            var display = document.getElementById('countdown');
+            var countdownInterval = setInterval(function () {
+                display.textContent = formatTime(timer);
+
+                // If the timer reaches zero, stop the countdown
+                if (--timer < 0) {
+                    clearInterval(countdownInterval);
+                    display.textContent = "Time's up!";
+                }
+            }, 1000);
+        }
+
+    </script>
+</body>
+</html>
+
