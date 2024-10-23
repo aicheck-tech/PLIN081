@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>PLIN081: 05</title>
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+    <style>
+        .reveal section {
+            font-size: 24px; /* Adjust this value as needed */
+        }
+        .tag {
+            display: inline-block;
+            padding: 8px 16px 8px 12px;
+            border-radius: 6px;
+        }
+        .activity {background-color: #ffcc00;}
+        .discussion {background-color: dodgerblue; color: white;}
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown>
+                <textarea data-template aria-label="slides">
+                    ## <span class="tag discussion">Diskuze</span> Plán hodiny
+
+                    - Hosté
+                    - Pracovní workflow
+                    - Zpětná vazba
+                    - Vector search
+                    - Projektový plán 2
+                    - Konzultace
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Plánovaní hosté
+
+                    - ML-ops a trackování experimentů
+                    - Expertem na chatboty s humanitním backgroundem
+                    - (Práce v ČR vs práce v zahraničí)
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Workflow
+
+                    - Co děláme na začátku dne?
+                    - Co děláme během dne?
+                    - Co děláme na konci dne?
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> na začátku/během dne/na konci
+
+                    - [ ] Vyplním si výkazy práce
+                    - [ ] Dám si panáka
+                    - [ ] Napíšu si se všemi, na čem ten den budou dělat
+                    - [ ] Jdeme společně do hospody
+                    - [ ] Napíšu všem, co jsem dnes udělal
+                    - [ ] Commitnu změny a pushnu do gitu, pokud není práce hotová, tak s popiskem WIP
+                    - [ ] Pošlu obrázky koťátek do společného chatu
+                    - [ ] Vyplním si výkazy práce
+                    - [ ] Budu sledovat práci ostatních a ptát se jich, jestli potřebují pomoc
+                    - [ ] V případě potřeby si řeknu o pomoc
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Co se stane, když nebudu commitovat do gitu ani vyplňovat výkazy?
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Co se stane, když nebudu commitovat do gitu ani vyplňovat výkazy
+
+                    - [ ] Ostatní si budou myslet, že nepracuji
+                    - [ ] Nedostanu zpětnou vazbu včas
+                    - [ ] Pokud skončím v nemocnici, bez git commitu se má práce ztratí a budou ji muset udělat znovu
+                    - [ ] Zavolá si mě šéf, proč nepracuji
+                    - [ ] Klient se bude divit, že jsou průběžné výkazy prázdné
+                    - [ ] Budu mít špatný vliv na kolegy
+
+                    Co s tím?
+                    - Na konci dne vše pushněte do Gitu
+                    - Pište výkazy práce, dokud si pamatujete, co a jak dlouho jste dělali
+
+                    ---
+                    ## <span class="tag activity">Aktivita</span> Pohovor s manažerem, 1 na 1
+
+                    Každý manažer týmu nyní si udělá 2minutové 1na1 s každým členem týmu.
+                    - Zjistí, zda nejsou nějaké překážky při práci (zdraví, rodina)
+                    - Zeptá se, jak práce šla
+                    - Zeptá se na důvody, proč práce nešla podle plánu/odpracoval méně než 2h/chybí nějaký log aktivity v gitu
+
+                    ---
+                    ## <span class="tag activity">Aktivita</span> Call klienta s manažerem, 1 na 1
+
+                    Budu se vás ptát na:
+                    - Proč vykazujete méně hodin než plánovaných 8 týdně?
+                    - Proč je git repozitář v takovém stavu?
+                    - Na čem teď pracujete?
+                    - Jde vše podle plánu?
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Klient potřebuje konzultace s jiným projektem
+                    
+                    ---
+
+
+                    ## <span class="tag activity">Aktivita</span>  Projektový plán
+
+                    - Schvalování
+                    - Konzultace
+                    - 1 na 1 konzultace
+
+                    ---
+
+                </textarea>
+            </section>
+        </div>
+    </div>
+    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({hash: true, plugins: [ RevealMarkdown ], markdown: {smartypants: true}});
+
+        function formatTime(seconds) {
+            var minutes = Math.floor(seconds / 60);
+            var remainingSeconds = seconds % 60;
+            return (minutes < 10 ? '0' : '') + minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+        }
+
+        // Function to handle the countdown
+        function startCountdown(duration) {
+            var timer = duration, minutes, seconds
+            var display = document.getElementById('countdown');
+            var countdownInterval = setInterval(function () {
+                display.textContent = formatTime(timer);
+
+                // If the timer reaches zero, stop the countdown
+                if (--timer < 0) {
+                    clearInterval(countdownInterval);
+                    display.textContent = "Time's up!";
+                }
+            }, 1000);
+        }
+
+    </script>
+</body>
+</html>
+
