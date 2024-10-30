@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>PLIN081: 06</title>
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+    <style>
+        .reveal section {
+            font-size: 24px; /* Adjust this value as needed */
+        }
+        .tag {
+            display: inline-block;
+            padding: 8px 16px 8px 12px;
+            border-radius: 6px;
+        }
+        .activity {background-color: #ffcc00;}
+        .discussion {background-color: dodgerblue; color: white;}
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown>
+                <textarea data-template aria-label="slides">
+                    ## <span class="tag discussion">Diskuze</span> Plán hodiny
+
+                    - Architektura
+                    - API-first approach
+                    - REST API
+                    - Osobní rozvojový plán
+                    - Konzultace
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Architektura
+
+                    Plán, který definuje komponenty, jejich vztahy a chování.
+
+
+                    - V které fázi projektu architekturu potřebujeme?
+                    - Proč potřebujeme architekturu?
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Proč architektura
+
+                    - Nutí nás dělat rozhodnutí včas a dělat kompromisy mezi technickou kvalitou a obchodními cíly
+                    - Rozhraní pro koncové uživatele
+                    - Rozhraní pro vývojáře paralelně pracující na systému
+                    - Lepší modularita kódu a tedy znovupoužitelnost a čitelnost
+                    - Možnost nahradit/přidat komponenty → umožnit rozvoj a škálovatelnost
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Jaké druhy architektury máme?
+
+                    - ...
+                    - ...
+                    - ...
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Jaké druhy architektury máme?
+
+                    - Softwarová architektura: programování, data, rozhraní, virtualizace
+                        - Programovací jazyky, frameworky a knihovny, co tým umí používat
+                        - Vhodná datová úložiště
+                        - Dobře definované API a logování
+                        - Důraz na realizovatelnost a splnění zadání
+                        - Kompromis mezi cenou a rozšiřitelností/univerzálností
+                    - ML architektura
+                        - Odkud brát data a jak je zpracovat
+                        - Kde provádět dlouhé výpočty
+                        - Aktualizace dat a modelů
+                        - Evaluace a metriky
+                    - Cloudová architektura: cloudové služby a nástroje
+                        - Minimalizace ceny
+                        - Maximalizace výkonu
+                        - Maximalizace škálovatelnosti
+                        - Nalezení existujícího cloudového řešení
+                        - Bezpečnost a monitoring
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Architektonické vzory
+
+                    - Monolith: Jeden celek, kde jsou všechny části systému pevně propojeny.
+                       - Většina sólo projektů
+                       - Nejvyšší možný výkon a optimalizace za cenu těžce udržitelného kódu
+                       - Vhodné pro menší projekty nebo pro low-level kód (ovladače a věci, které musí běžet rychle)
+                    - Microservices: Malé služby definované jen svým API, které spolu komunikují.
+                       - Každá služba je nahraditelná a škálovatelná
+                       - Část výkonu padne na rozhraní a komunikaci
+                       - Nutnost zpětné kompatibility zpomaluje vývoj, každou komponentu může spravovat jiný tým
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Kompromisy architekta
+
+                    - Škálovatelnost:
+                       - Přidává komplexitu (paralelní kód, částečné výstupy)
+                    - Výkon:
+                       - Rychlost získání výsledku (vhodný hardware/software, cache)
+                    - Udržitelnost:
+                       - Jasné rozdělení kompetencí mezi komponenty
+                       - Dostatečně modulární architektura
+                       - Moderní technologie, které do pár let nezmizí z trhu (budou služby i programátoři)
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Kompromisy ML architekta
+
+                    - Trénování modelů:
+                        - Online training
+                        - Pravidelný retraining
+                        - On demand training
+                    - Zpracování dat - chybná data:
+                        - Zahodit
+                        - Ponechat
+                        - Ručně zpracovat
+                    - Výpočty:
+                       - Jeden silný stroj
+                       - Paralelní výpočty
+                       - Jednodušší algoritmus
+                    - Experimenty:
+                       - Notebooky
+                       - ML ops systém
+                       - Chaos
+                    - Modely:
+                       - On premise vs cloud
+                       - Open-source vs free tier vs paid
+
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Plánování projektu, priority
+
+                    **Klasifikace CV**: Pro daný životopis a pozici (popis a seniorita) urči procentuální *match*
+
+                    | **Task**                      | **Priority**       |
+                    |-------------------------------|--------------------|
+                    | Občerstvování dat             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Retraining modelů             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvality dat         | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvantity dat        | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | A/B testování modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zrychlování modelů            | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Analytika nad modely          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Vývoj lepších modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Škálování (více souběžných běhů) | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zlevňování provozu modelů     | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Plánování projektu, priority
+
+                    **Detekce podvodných zpráv**: Pro daný email urči kategorii: *bezpečný*, *podezřelý*, *podvodný*.
+
+                    | **Task**                      | **Priority**       |
+                    |-------------------------------|--------------------|
+                    | Občerstvování dat             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Retraining modelů             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvality dat         | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvantity dat        | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | A/B testování modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zrychlování modelů            | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Analytika nad modely          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Vývoj lepších modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Škálování (více souběžných běhů) | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zlevňování provozu modelů     | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Plánování projektu, priority
+
+                    **Korektor češtiny**: Pro daný text nalezni možné chyby a navrhni opravy.
+
+                    | **Task**                      | **Priority**       |
+                    |-------------------------------|--------------------|
+                    | Občerstvování dat             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Retraining modelů             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvality dat         | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvantity dat        | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | A/B testování modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zrychlování modelů            | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Analytika nad modely          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Vývoj lepších modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Škálování (více souběžných běhů) | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zlevňování provozu modelů     | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Plánování projektu, priority
+
+                    **Predikce vývoje trhu**: Predikuj cenu kryptoměn pro následující den
+
+                    | **Task**                      | **Priority**       |
+                    |-------------------------------|--------------------|
+                    | Občerstvování dat             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Retraining modelů             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvality dat         | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvantity dat        | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | A/B testování modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zrychlování modelů            | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Analytika nad modely          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Vývoj lepších modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Škálování (více souběžných běhů) | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zlevňování provozu modelů     | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Plánování projektu, priority
+
+                    **Proveditelnost Dáme na vás**
+
+                    | **Task**                      | **Priority**       |
+                    |-------------------------------|--------------------|
+                    | Občerstvování dat             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Retraining modelů             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvality dat         | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvantity dat        | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | A/B testování modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zrychlování modelů            | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Analytika nad modely          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Vývoj lepších modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Škálování (více souběžných běhů) | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zlevňování provozu modelů     | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Plánování projektu, priority
+
+                    **Napsal by text Shakespeare?**
+
+                    | **Task**                      | **Priority**       |
+                    |-------------------------------|--------------------|
+                    | Občerstvování dat             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Retraining modelů             | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvality dat         | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zvyšování kvantity dat        | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | A/B testování modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zrychlování modelů            | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Analytika nad modely          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Vývoj lepších modelů          | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Škálování (více souběžných běhů) | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+                    | Zlevňování provozu modelů     | <select><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select> |
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Kdy se stát architektem/architektkou
+
+                    - Máte dost zkušeností
+                        - Vaše rozhodnutí zásadně ovlivní úspěch celého projektu
+                    - Nevadí vám změny
+                        - S měnícími požadavky na projekt je nutné přepisovat architekturu
+                    - Nevadí vám rozhodovat o něčem, o čem nemáte dost informací
+                        - Často je 1 architekt pro všechny týmy, nemá čas znát projekty do detailu
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Kdy se architektem/architektkou stanete?
+
+                    - V sólo projektech/v malých týmech a firmách
+                    - Když budete nejzkušenější z kolegů v oblasti, na kterou je zaměřený projekt
+                    - U pilotů (kde se v lepších případech úvodní architektura zahodí po konci pilotu)
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> V čem se architektura dělá?
+
+                    - Textové poznámky
+                    - <a href="https://app.diagrams.net/">app.diagrams.net</a> (dříve Draw.io)
+                    - PDF s copy/paste ikonami služeb
+
+                    Je to jedno.
+
+                    ---
+                    ## <span class="tag discussion">Diskuze</span> API-first přístup
+
+                    <table style="width: 100%;">
+                          <tr>
+                            <td style="width: 50%; vertical-align: top;">
+                              <img style="max-height: 400px; height: 100%;" src="https://www.openapis.org/wp-content/uploads/sites/3/2023/05/What-is-OpenAPI-Simple-API-Lifecycle-Vertical.png" alt="Schema from https://www.openapis.org" />
+                            </td>
+                            <td style="width: 50%; vertical-align: top; padding-left: 20px;">
+                              <ol>
+                                <li>Specifikace zadání, zdrojů a výstupů</li>
+                                <li>Rozdělení na komponenty</li>
+                                <li>Definice API jednotlivých komponent</li>
+                                <li>Review a úpravy API</li>
+                                <li>Zveřejnění API týmům, které:
+                                  <ul>
+                                    <li>Mockují komponenty pro ostatní týmy</li>
+                                    <li>Vyvýjí je (včetně testování)</li>
+                                  </ul>
+                                </li>
+                                <li>Deployment aplikace</li>
+                                <li>Zveřejnění API koncovým uživatelům (včetně dokumentace)</li>
+                              </ol>
+                            </td>
+                          </tr>
+                        </table>
+                    ---
+                    ## <span class="tag discussion">Diskuze</span> OpenAPI
+
+                    - <a href="https://www.openapis.org/">https://www.openapis.org/</a>
+                    - <a href="https://swagger.io/specification/">https://swagger.io</a>
+                    - Jak psát specifikaci:
+                        - YAML
+                        - JSON
+                        - Pomocí frameworku
+                        - Generovat z kódu (FastAPI)
+
+                    ---
+                    ## <span class="tag discussion">Diskuze</span> OpenAPI výhody
+
+                    - Abstrakce nad kódem, lze definovat pro projekt s moduly v různých jazycích
+                    - Diskuze a připomínkování mezi týmy bez jediného kódu projektu
+                    - Ze specifikace lze generovat kód v mnoha jazycích
+                    - Z mnoha knihoven lze i generovat specifikaci
+                    - Provázání se swaggerem vám urychlí vývoj a testování, než se vytvoří GUI nebo si nastavíte postmana (a podobné nástroje)
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> OpenAPI nevýhody
+
+                    - OpenAPI nepokrývá všechny případy, např.
+                        - Pokud má proměnná *X* hodnotu *value*, pak proměnná *Y* musí mít hodnotu *y*
+
+
+                    ---
+                    ## <span class="tag discussion">Diskuze</span> OpenAPI nevýhody
+
+                    - Syntax je někdy nesrozumitelná, např. pokud zakazujeme současný výskyt dvou proměnných
+
+                    ```
+                    components:
+                      schemas:
+                        Attachment:
+                          type: object
+                          description: "An attachment can either be a file's bytes or a link, but not both."
+                          oneOf:
+                            - properties:
+                                bytes:
+                                  type: string
+                                  format: binary
+                                  description: "Binary data of the attachment."
+                              required:
+                                - bytes
+                            - properties:
+                                link:
+                                  type: string
+                                  format: uri
+                                  description: "URL link to the attachment."
+                              required:
+                                - link
+                          example:
+                            bytes: null
+                            link: "https://example.com/my-attachment.pdf"
+                    ```
+
+                    ---
+                    ## <span class="tag discussion">Diskuze</span> REST API
+
+                    - Průmyslový standard
+                    - Každý ví, jak používat, při psaní je dobré dodržovat standardy
+                    - Vhodné pro krátké operace
+
+                    ---
+                    ## <span class="tag discussion">Diskuze</span> REST API a spuštění trénování modelu
+
+                    - Kdy mám poslat odpověď?
+                    - Jak poznám, že trénování skončilo?
+                    - Jak poznám stav projektu?
+                    - Existují alternativní protokoly pro komunikaci?
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> REST API a spuštění trénování modelu
+
+                    - Znám vůbec stav trénování?
+                        - Ano: udržuji v dočasné rychlé databázi, např. Redis
+                        - Ne: odhaduji ho ze zkušeností
+                    - API pro start, stop a stav projektu
+                    - Separátní komponenta pro běh trénování: background procesy (servery mohou po čase vlákno jinak zabít)
+                    - Alternativou jsou:
+                        - Server-Sent Events (SSE), používá např. openAI pro streamování konverzace
+                        - Websockets: obousměrná komunikace, typicky chatboti
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Osobní rozvojový plán
+
+                    1. Zhodnocení současné situace
+                    2. Rozvojové cíle: v čem se chceš zlepšit?
+                    3. Identifikace klíčových dovedností a znalostí
+                    4. Nastavení plánu a kontrolních milníků (časový plán, metriky)
+                    5. Pravidelné sebehodnocení a zpětná vazba u kontrolních milníků
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Váš osobní rozvojový plán
+
+                    Rozhodněte se, zda stojíte o:
+
+                    1. (současnost) Zhodnocení současné situace: sebehodnocení a zpětná vazba
+                    2. (vize) Rozvojové cíle: vaše cíle (krátkodobé vs dlouhodobé), softskills vs hardskills
+                    3. (prostředky) Analýza klíčových dovedností (úsilí vs zisk)
+                    4. <strike>Nastavení plánu pro tento semestr</strike> (toto je čistě na vás)
+                    5. (pokrok) Sebehodnocení a zpětná vazba na konci semestru
+
+                    ve formátu:
+
+                    | volba                  | zápis  | poznámka                                  |
+                    |------------------------|--------|-------------------------------------------|
+                    | ne                     | `—`    |                                           |
+                    | přátelsky              | `:-)`  | potřebuji povzbudit                       |
+                    | neutrálně              | `:-\|` | mám nervy z oceli a chci na sobě pracovat |
+                    | chci otevřenou kritiku | `:-(`  | simulace velmi náročného šéfa             |
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Dobrovolný domácí úkol
+
+                    Pošlete mi soubor, který mi pomůže vás lépe poznat
+                     - Plán, vize, schéma
+                     - Prezentace
+                     - Akce, co pořádáte
+                     - Zdrojový kód
+                     - Nápad na projekt (se zachováním vašeho autorského práva)
+                     - Zpětná vazba na předmět (lze i anonymně)
+
+
+                </textarea>
+            </section>
+        </div>
+    </div>
+    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({hash: true, plugins: [ RevealMarkdown ], markdown: {smartypants: true}});
+
+        function formatTime(seconds) {
+            var minutes = Math.floor(seconds / 60);
+            var remainingSeconds = seconds % 60;
+            return (minutes < 10 ? '0' : '') + minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+        }
+
+        // Function to handle the countdown
+        function startCountdown(duration) {
+            var timer = duration, minutes, seconds
+            var display = document.getElementById('countdown');
+            var countdownInterval = setInterval(function () {
+                display.textContent = formatTime(timer);
+
+                // If the timer reaches zero, stop the countdown
+                if (--timer < 0) {
+                    clearInterval(countdownInterval);
+                    display.textContent = "Time's up!";
+                }
+            }, 1000);
+        }
+
+    </script>
+</body>
+</html>
+
