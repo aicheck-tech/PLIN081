@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <title>PLIN081: 10</title>
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+    <style>
+        .reveal section {
+            font-size: 24px; /* Adjust this value as needed */
+        }
+        .tag {
+            display: inline-block;
+            padding: 8px 16px 8px 12px;
+            border-radius: 6px;
+        }
+        .activity {background-color: #ffcc00;}
+        .discussion {background-color: dodgerblue; color: white;}
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section data-markdown>
+                <textarea data-template aria-label="slides">
+                    ## <span class="tag discussion">Diskuze</span> Plán hodiny
+
+                    - Škálování experimentů
+                    - Testovací prezentace
+                    - Konzultace
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Ladění modelů
+
+                    Prerekvizity:
+                     - Máme data
+                     - Máme implementaci algoritmu (model)
+                     - Aktuální výsledky nedosahují očekávání
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Ladění modelů
+
+                    Nástroje:
+                     - Rozšířit data
+                     - Zvýšit kvalitu dat
+                     - Zlepšit <strong>feature engineering</strong>
+                     - Změnit model
+                     - <strong>Hyperparameter tuning</strong>
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Původní kód
+
+                    - [Git examples/pipelines/baseline.py](https://github.com/aicheck-tech/PLIN081/tree/main/examples/pipelines/baseline.py)
+                    - Špatně rozšiřitelný, pevné kroky
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Pipeline verze
+
+                    - [Git examples/pipelines/pipelines_basic.py](https://github.com/aicheck-tech/PLIN081/tree/main/examples/pipelines/pipelines_basic.py)
+                    - Logika je v jednom souboru
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Kombinování features
+
+                    - [Git examples/pipelines/pipelines_complex.py](https://github.com/aicheck-tech/PLIN081/tree/main/examples/pipelines/pipelines_complex.py)
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Hyperparameter tuning
+
+                    - [Git examples/pipelines/pipelines_gridsearch.py](https://github.com/aicheck-tech/PLIN081/tree/main/examples/pipelines/pipelines_gridsearch.py)
+
+                    ---
+
+                    ## <span class="tag discussion">Diskuze</span> Tipy
+
+                    - Pokud se data vejdou do RAM, dělejte je na jednom počítači
+                    - Pokud by práce na jednom počítači trvala moc dlouho, distribujte jednoduše (různé kombinace parametrů na různých strojích)
+                    - Většinou je levnější hardware než programátorský čas strávený paralelizací experimentů (pokud se nejedná o long-term projekt)
+
+                    ---
+
+                    ## <span class="tag activity">Aktivita</span> Prezentace
+
+                    ---
+                    ## <span class="tag discussion">Diskuze</span> Vývoj projektu
+
+                    - Mít vždy něco hotové, ukázatelné:
+                        - Git větev main vs develop, do main jdou stabilní věci schválené klientem
+                        - Pokud se blíží deadline a develop je fungující, branchneme demo větev
+                        - Pokud se blíží deadline a develop je nefungující, soustředíme se na fixy a ne na nové features
+                    - UX > GUI (špatné GUI se dá zdůvodnit, ale pokud je zkoušení systému peklo, znepřátelí to klienta)
+                    - Jedna funkční novinka > 10 rozpracovaných novinek
+                    - Vždy mít plán, když demo nepůjde
+
+
+                </textarea>
+            </section>
+        </div>
+    </div>
+    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({hash: true, plugins: [ RevealMarkdown ], markdown: {smartypants: true}});
+
+        function formatTime(seconds) {
+            var minutes = Math.floor(seconds / 60);
+            var remainingSeconds = seconds % 60;
+            return (minutes < 10 ? '0' : '') + minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+        }
+
+        // Function to handle the countdown
+        function startCountdown(duration) {
+            var timer = duration, minutes, seconds
+            var display = document.getElementById('countdown');
+            var countdownInterval = setInterval(function () {
+                display.textContent = formatTime(timer);
+
+                // If the timer reaches zero, stop the countdown
+                if (--timer < 0) {
+                    clearInterval(countdownInterval);
+                    display.textContent = "Time's up!";
+                }
+            }, 1000);
+        }
+
+    </script>
+</body>
+</html>
+
