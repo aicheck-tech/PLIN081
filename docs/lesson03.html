@@ -22,7 +22,7 @@
     <div class="reveal">
         <div class="slides">
             <section data-markdown>
-                <textarea data-template aria-label="slides">
+                <textarea data-template aria-label="slides" data-lang="cs" data-title="PLIN081: 03">
                     ## <span class="tag discussion">Diskuze</span> Plán hodiny
 
                     - Výkazy práce
@@ -139,6 +139,124 @@
                        tedy dokud se neřekne jinak, nejsou penalizace za žádné otázky
 
                 </textarea>
+                
+                <textarea data-template aria-label="slides" data-lang="en" data-title="PLIN081: 03" style="display: none;">
+                    ## <span class="tag discussion">Discussion</span> Lesson Plan
+
+                    - Work reports
+                    - Project plan
+                    - Contract negotiation
+                    - Project structure
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Work Reports: Who and Why Needs Them?
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Work Reports: Why Do We Need Them?
+
+                    Team:
+                    - Calculating project costs/profitability
+                    - Continuous improvement of work complexity estimation from past data
+                    - For <b>time & material</b> work mode, basis for invoicing
+                    - Team workload planning
+
+                    Management:
+                    - Team appreciation
+                    - Identifying process bottlenecks<br /> (e.g., API development is slow and we don't have enough people for it)
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Do We Need Them in School? Yes/No?
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Do We Need Them in School?
+
+                    - Transparency of team work
+                    - Opportunity for better retrospectives (this took us so long, we underestimated it)
+                    - Preparation for working in a real team
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Work Reports in PLIN081
+
+                    - Record all work you do on the project
+                    - Choose a manager within your team
+                    - The manager will collect, check work reports and set hourly rates for individual team members based on negotiations with them
+                    - Hourly rate cannot be changed retroactively, can be changed once every 3 weeks
+                    - Expected minimum project work hours: 20 hours per semester
+                    - <a href="https://docs.google.com/spreadsheets/d/1lY_yUYwgPxQboGrql1HANyIRmyuyiQ37R3pwTKUASg4/edit?gid=0#gid=0">Template</a>
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> Team Management
+
+                     - Choose a team manager: needs 3 votes
+                     - Each team member presents what they can do, what they will do, and what hourly rate they want (including manager)
+                        - 1 minute for presentation
+                     - Manager sets hourly rates based on negotiations with team members
+                        - 1 minute for final decision
+                     - Manager enters data into Excel
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Project Plan
+                     - Dividing the project into phases
+                     - Understanding what needs to be done, what prerequisites steps have, what can be parallelized
+                     - What are the project risks and setting sufficient time buffers
+                     - You must agree on the time plan with the client
+                     - Changes to the plan must be communicated with the client and approved
+                     - <a href="https://docs.google.com/spreadsheets/d/1pb_oinLz0o-0Li_vYYE8lXbYWNLor_tH65rebKfzvN4/edit?gid=0#gid=0">Template</a>
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> Contract Negotiation
+
+                    - 2 tenders:
+                        - American newspapers:
+                            - Application for detecting extremist reader comments
+                            - Media monitoring and evaluation of their journalistic practices
+                    - 2 requests
+                        - City of Brno:
+                            - Analytics on participatory budget projects
+                        - Content startup:
+                            - Application for generating slogans based on given theme/famous personality
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Project Structure
+
+                    - [Git examples/project_structure](https://github.com/aicheck-tech/PLIN081/tree/main/examples/project_structure)
+                    - Interface:
+                      - REST API for prototypes
+                      - FastAPI standard (successor to flask)
+                      - [python3 main.py](http://0.0.0.0:8080/)
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Work Planning
+
+                    - Follows from the project plan
+                    - Issues in GitHub/GitHub Projects/Trello/Excel
+                    - Each task should specify which milestone in the project plan it relates to
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Assignment
+
+                     - Work on the project according to the project plan
+                     - Prepare a client report by Thursday 8:00 AM
+                     - You can consult continuously by email (jan.rygl@aicheck.tech),<br />
+                       in consultations always specify whether you're asking as:
+                        - Client (regarding planned feature XYZ, could you please provide examples?)
+                        - More experienced colleague at work (don't you know how to solve the API problem?)
+                        - Teacher (what should we do?)
+                     - Unlike reality, the client, colleague, and teacher have unlimited patience,<br />
+                       so until stated otherwise, there are no penalties for any questions
+
+                </textarea>
             </section>
         </div>
     </div>
@@ -169,6 +287,7 @@
         }
 
     </script>
+    <script src="./localization.js"></script>
 </body>
 </html>
 

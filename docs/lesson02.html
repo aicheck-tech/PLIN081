@@ -22,7 +22,7 @@
     <div class="reveal">
         <div class="slides">
             <section data-markdown>
-                <textarea data-template aria-label="slides">
+                <textarea data-template aria-label="slides" data-lang="cs" data-title="PLIN081: 02">
                     ## <span class="tag discussion">Diskuze</span> Plán hodiny
 
                     - Git
@@ -122,6 +122,105 @@
 
 
                 </textarea>
+                
+                <textarea data-template aria-label="slides" data-lang="en" data-title="PLIN081: 02" style="display: none;">
+                    ## <span class="tag discussion">Discussion</span> Lesson Plan
+
+                    - Git
+                    - Code reviews
+                    - Project discussion
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Git
+
+                    - Essential skill for all IT team members<br />
+                      (data analysts, data scientists, testers, AI specialists)
+                    - For regular users, minimal knowledge is sufficient
+                    - Even regular users Google/ask AI how to handle complicated situations
+
+                    ---
+                    ## <span class="tag discussion">Discussion</span> Terminology
+                    - Basic Git operations (can also be done from PyCharm environment):
+                        - `git clone <url>`: creates a folder with the entire repository
+                        - `git pull`: downloads changes from the repository
+                        - `git checkout -b <branch>`: creates a new branch where changes are written
+                        - `git add <file>`: marks which files you want to share with others
+                        - `git commit -m "message"`: saves changes
+                        - `git push`: uploads changes to the server
+                    - Basic operations in GitHub environment:
+                        - Creating a pull request
+                        - Code review
+                        - Merging a pull request
+
+                    ---
+                    ## <span class="tag discussion">Discussion</span> Git Work Etiquette
+
+                    - Create understandable branch names that describe what the branch should do
+                    - Same for commits, plus there shouldn't be too many files in commits
+                    - Don't commit to the main branch (master/main), but to your own branch
+                    - Never put passwords, keys, and other sensitive things in Git
+                    - Unless necessary, don't put large files in Git (Git LFS, your storage)
+                    - Don't commit to someone else's branch without the author's knowledge
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Git and Career
+
+                    - Having Git repositories in your CV is a plus
+                    - You can have your own repository, or contribute to open-source projects as a contributor
+                    - Which projects to choose?
+                        - At least somewhat well-known
+                        - That interest you
+                        - Where the project maintainer agrees with your contributions (issues, pull requests)
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Demo in PyCharm and Console
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> School Project Selection
+
+                    <table border="1">
+                      <tr>
+                        <td>Interesting data</td>
+                        <td>Useful data</td>
+                        <td>Available data</td>
+                      </tr>
+                      <tr>
+                        <td>Easy problem</td>
+                        <td>Hard but already solved problem</td>
+                        <td>Hard problem</td>
+                      </tr>
+                      <tr>
+                        <td>Topic interests us</td>
+                        <td>Nobody's interested</td>
+                        <td>Topic interests users</td>
+                      </tr>
+                    </table>
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> Dataset Brainstorming
+
+                    | Data set                                  | Available? | Interests us? | Can we find an interesting problem? | Is it within our capabilities? |
+                    |-------------------------------------------|------------|---------------|------------------------------------|---------------------------------|
+                    | [European patents](https://data.gov.cz/datov%C3%A9-sady?poskytovatel=https%3A%2F%2Frpp-opendata.egon.gov.cz%2Fodrpp%2Fzdroj%2Forg%C3%A1n-ve%C5%99ejn%C3%A9-moci%2F48135097&str%C3%A1nka=5) |            |               |                                    |                                 |
+                    | [Something from Kaggle.com](https://www.kaggle.com/) |            |               |                                    |                                 |
+                    | [Local open data](https://data.brno.cz/)                         |            |               |                                    |                                 |
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Assignment
+
+                    By Thursday 8:00 AM, each team will send a proposal of 2-3 datasets they could use for their project.
+                    - Dataset name + link
+                    - Idea of what to do with it
+                    - Study of who could use the project
+
+                    ---
+
+                </textarea>
             </section>
         </div>
     </div>
@@ -152,6 +251,7 @@
         }
 
     </script>
+    <script src="./localization.js"></script>
 </body>
 </html>
 

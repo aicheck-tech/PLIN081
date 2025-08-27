@@ -22,7 +22,7 @@
     <div class="reveal">
         <div class="slides">
             <section data-markdown>
-                <textarea data-template aria-label="slides">
+                <textarea data-template aria-label="slides" data-lang="cs" data-title="PLIN081: 09">
                     ## <span class="tag discussion">Diskuze</span> Plán hodiny
 
                     - Testování
@@ -96,6 +96,63 @@
 
 
                 </textarea>
+                
+                <textarea data-template aria-label="slides" data-lang="en" data-title="PLIN081: 09" style="display: none;">
+                    ## <span class="tag discussion">Discussion</span> Lesson Plan
+
+                    - Testing
+                    - Presentation of ongoing project work
+                    - Joint codebase review
+                    - Consultations
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Testing
+
+                    A) Automated tests
+                     - Can be run automatically.<br />E.g., GitHub integration, with every push to pull request
+                     - Example:
+                        - Unit tests (testing functions, code sections, input and output)
+                        - Regression tests (consistency test – output change, even correct, is considered requiring intervention)
+                     - Advantages:
+                        - Speed and repeatability
+                        - Easy error detection when changing code
+                     - Tools: pytest, unittest
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Testing
+
+                    B) Manual tests
+                     - Conducted by humans
+                     - Example:
+                          - GUI testing
+                          - Simulating extreme situations (rapid clicking, bad input)
+                          - Input tests where output correctness cannot be verified automatically
+                     - Advantages:
+                          - Flexibility, ability to detect unexpected errors
+                          - Ideal for non-automatable cases (often in machine learning)
+                          - Can start immediately without any preparation
+                     - Disadvantages:
+                          - Time consuming
+                          - Subjective results depending on tester attention and quality
+
+                    ---
+                    ## <span class="tag activity">Activity</span> Presentations
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> Homework Assignment
+
+                    Presentation of your product:
+                     - What it brings to the customer
+                     - What the application can do and will be able to do in the future
+                     - What technologies you use
+                     - How the customer can start using the app
+
+                    Format: A4 (PDF) or 1 static HTML page
+
+                </textarea>
             </section>
         </div>
     </div>
@@ -126,6 +183,7 @@
         }
 
     </script>
+    <script src="./localization.js"></script>
 </body>
 </html>
 

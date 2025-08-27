@@ -22,7 +22,7 @@
     <div class="reveal">
         <div class="slides">
             <section data-markdown>
-                <textarea data-template aria-label="slides">
+                <textarea data-template aria-label="slides" data-lang="cs" data-title="PLIN081: 05">
                     ## <span class="tag discussion">Diskuze</span> Plán hodiny
 
                     - Hosté
@@ -277,6 +277,71 @@
 
 
                 </textarea>
+                
+                <textarea data-template aria-label="slides" data-lang="en" data-title="PLIN081: 05" style="display: none;">
+                    ## <span class="tag discussion">Discussion</span> Lesson Plan
+
+                    - Guests
+                    - Workflow
+                    - Feedback
+                    - Docker
+                    - Consultations
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Planned Guests (WIP)
+
+                    - ML-ops and experiment tracking
+                    - Chatbot expert with humanities background
+                    - Work in Czech Republic vs work abroad
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Workflow
+
+                    - What do we do at the beginning of the day?
+                    - What do we do during the day?
+                    - What do we do at the end of the day?
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> At Beginning/During Day/At End
+
+                    - [ ] Fill out work reports
+                    - [ ] Have a shot
+                    - [ ] Write to everyone about what they'll work on that day
+                    - [ ] Check what I worked on yesterday and continue
+                    - [ ] Go through emails and respond
+                    - [ ] Check if builds/tests are passing
+                    - [ ] Commit and push what I worked on
+                    - [ ] Write summary of what I accomplished and what problems I encountered
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Consultation Ethics
+
+                    When we're contacted by another client for consultation during a project:
+                    - Qualification: Do I have enough experience?
+                    - Time: Will this threaten my work?
+                    - Transparency: Does our point of contact know about the communication?
+                    - We try to build good relationships with firm boundaries.
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> Client Needs Consultation on Another Project
+
+                    Goal: classify messages from Teams
+
+                    Labels: alert, presentation, update, feedback, support, request, planning, delivery
+
+                    Training set:
+                    ```csv
+                    sender,recipient,text,attachment_names,labels
+                    aej.born@ibm.tech,lucia.kard@ibm.tech,Can you review the latest sales figures?,sales_report.xlsx,review
+                    tech.sup@ibm.tech,all.staff@ibm.tech,System maintenance scheduled for this weekend.,maintenance_schedule.pdf,alert
+                    ```
+
+                </textarea>
             </section>
         </div>
     </div>
@@ -307,6 +372,7 @@
         }
 
     </script>
+    <script src="./localization.js"></script>
 </body>
 </html>
 

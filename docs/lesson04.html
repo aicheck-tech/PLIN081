@@ -22,7 +22,7 @@
     <div class="reveal">
         <div class="slides">
             <section data-markdown>
-                <textarea data-template aria-label="slides">
+                <textarea data-template aria-label="slides" data-lang="cs" data-title="PLIN081: 04">
                     ## <span class="tag discussion">Diskuze</span> Plán hodiny
 
                     - Prototypování
@@ -121,6 +121,84 @@
                     ---
 
                 </textarea>
+                
+                <textarea data-template aria-label="slides" data-lang="en" data-title="PLIN081: 04" style="display: none;">
+                    ## <span class="tag discussion">Discussion</span> Lesson Plan
+
+                    - Prototyping
+                    - Bag-of-words classifier
+                    - Project plan 1
+                    - Vector search
+                    - Project plan 2
+                    - Consultations
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Development vs Research
+
+                    Development:
+
+                     - vision – specification – code – tests – documentation – handover
+
+                    Research:
+
+                     - ?
+
+                    <br><br><br>
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Development vs Research
+
+                    Development:
+
+                     - vision – specification – code – tests – documentation – handover
+
+                    Research:
+
+                     - vision – proof of concept – evaluation – prototype – evaluation – tuning – evaluation – code – model update process – tests – documentation – handover
+
+                    ---
+                    ## <span class="tag discussion">Discussion</span> Baseline
+
+                    Baseline is a naive algorithm:
+                    - Dice rolling
+                    - Same answer
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> What Baselines Do the Following Problems Have?
+
+                    - Binary classification: is author/is not author
+                    - Label assignment: supported/successful unsupported/unsuccessful
+                    - Binary email spam classification (25% of mail is spam)
+                    - Course grade prediction with quadratic error, average is 2.7
+
+                    ---
+                    
+                    ## <span class="tag discussion">Discussion</span> Proof of Concept
+
+                    Outline of a simple algorithm that solves at least part of the problem:
+                    - Does it beat the baseline?
+                    - Is it on the path to our target accuracy?
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Bag-of-words Classifier
+
+                    - Quick way to test problem solvability
+                    - Tokenize text and each token is 1 feature: one-hot-encoding
+                    - If we can easily, we lemmatize
+                    - For larger data, take only the most frequent words from training data
+                    - Train classifier on this data and evaluate
+                    - [classifier.py](https://github.com/aicheck-tech/PLIN081/tree/main/examples/project_structure/our_app/services/classifier.py)
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> Project Plan
+
+                    - The goal is for the client to approve it today
+
+                </textarea>
             </section>
         </div>
     </div>
@@ -151,6 +229,7 @@
         }
 
     </script>
+    <script src="./localization.js"></script>
 </body>
 </html>
 
