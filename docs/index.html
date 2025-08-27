@@ -5,51 +5,50 @@
     <title>PLIN081: rozcestník</title>
     <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
     <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
-    <style>
-        .reveal section {
-            font-size: 24px; /* Adjust this value as needed */
-        }
-    </style>
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
             <section data-markdown>
-                <textarea data-template>
-                    # PLIN081
-                    ## Pokročilé metody strojového učení
+                <textarea data-template id="main-md"></textarea>
 
-                    #### Rozcestník
+                <textarea data-lang="cs" style="display: none;">
+# PLIN081
+## Pokročilé metody strojového učení
 
-                    - [Pravidla](./rules.html)
-                    - [Lekce 1](./lesson01.html)
-                    - [Lekce 2](./lesson02.html)
-                    - [Lekce 3](./lesson03.html)
-                    - [Lekce 4](./lesson04.html)
-                    - [Lekce 5](./lesson05.html)
-                    - [Lekce 6](./lesson06.html)
-                    - Lekce 7: Host
-                    - Lekce 8: Prompt engineering
-                    - [Lekce 9](./lesson09.html)
-                    - [Lekce 10](./lesson10.html)
-                    - Lekce 11: Host?
-                    - Lekce 12: Host?
-                    - Lekce 13: Obhajoba projektů
-                    ---
+#### Rozcestník
 
-                    ## Kontakty
+- [Pravidla](./rules.html)
+- [Lekce 1](./lesson01.html)
 
-                    - Administrativa, stížnosti: hlavacko@phil.muni.cz 😀
-                    - Technické a odborné dotazy, konzultace, projekty: jan.rygl@aicheck.tech (předmět emailu PLIN081)
+---
+
+## Kontakty
+
+- Administrativa, stížnosti: hlavacko@phil.muni.cz 😀
+- Technické a odborné dotazy, konzultace, projekty: jan.rygl@aicheck.tech (předmět emailu PLIN081)
+                </textarea>
+                <textarea data-lang="en" style="display: none;">
+# PLIN081
+## Advanced machine learning methods
+
+- [Rules](./rules.html)
+- [Lekce 1](./lesson01.html)
+
+---
+
+## Contacts
+
+- Administration, complaints: hlavacko@phil.muni.cz 😀
+- Technical and professional questions, consultations, projects: jan.rygl@aicheck.tech (email subject: PLIN081)
                 </textarea>
             </section>
         </div>
     </div>
-    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
-    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
-    <script>
-        Reveal.initialize({hash: true, plugins: [ RevealMarkdown ], markdown: {smartypants: true}});
-    </script>
+    <script src="https://unpkg.com/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js@4.5.0/dist/reveal.js"></script>
+    <script src="static/lang.js"></script>
 </body>
 </html>
 
