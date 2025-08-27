@@ -22,7 +22,7 @@
     <div class="reveal">
         <div class="slides">
             <section data-markdown>
-                <textarea data-template aria-label="slides">
+                <textarea data-template aria-label="slides" data-lang="cs" data-title="PLIN081: 01">
                     ## O předmětu PLIN081
 
                     - Jan Rygl (https://www.linkedin.com/in/janrygl/)
@@ -230,6 +230,214 @@
 
 
                 </textarea>
+                
+                <textarea data-template aria-label="slides" data-lang="en" data-title="PLIN081: 01" style="display: none;">
+                    ## About PLIN081 Course
+
+                    - Jan Rygl (https://www.linkedin.com/in/janrygl/)
+                    - FI graduate, Python ML programmer & researcher
+
+                    The course will be taught from the perspective of a small, specialized AI team working
+                    on specific customer problems.
+
+                    We will not focus on long-term product development or work in a corporate environment.
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Operating Modes in the Course
+
+                    - <b>A)</b> Team Activities
+                      - Communicate within your team
+                      - You can listen to other teams, but should not interact with them
+                      - You can communicate with me anytime
+
+                    - <b>B)</b> Project Work
+                      - Collaboration only within the team with help from instructors and AI
+                      - Takes place during classes and outside of them
+                      - More details when projects are assigned
+
+                    - <b>C)</b> Discussion (default mode)
+                      - If something doesn't make sense, you have an idea, insight, or experience, speak up
+                      - For example, this is currently a discussion
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Applications of Small Teams
+
+                    1. Custom development
+                    2. Beginning of most technology startups
+                    3. Internal corporate teams solving digitalization/AI implementation for various departments
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> What Basic Team Roles Do We Have?
+
+                    What skills/specializations are needed to complete a project with a client from start
+                    to finish?
+
+                    - ...
+                    - ...
+                    - ...
+                    - ...
+                    - ...
+                    - ...
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Roles in Small Teams
+
+                    AI projects typically involve ten or more people,<br />
+                    but the following three key roles can be filled by one or more people:
+
+                    - Project Face 🎩:
+                        - responsible for client communication
+                        - manages project management
+                        - helps with manual testing
+                        - can help with annotations
+                        - collects feedback and communicates it to the team
+                    - Programmer 💻:
+                        - writes code, creates automated tests
+                        - integrates with client environment and designs APIs
+                        - fixes bugs
+                        - deploys final application
+                    - ML Expert 🧪:
+                        - handles data collection and quality
+                        - analyzes and cleans data
+                        - selects and implements quality metrics
+                        - creates and evaluates ML models
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> Your Team Role
+
+                    Try to organize into groups where you would feel most comfortable.
+                    Each group has limited market demand, so first come, first served.
+
+                    1. Project Face 🎩: hat image
+
+                    2. Programmer 💻: computer image
+
+                    3. ML Expert 🧪: test tube image
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> Team Formation
+
+                    Project faces are tasked with recruiting two other team members.<br />
+                    The last formed team is entitled to a 4th member.
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> Team Beginning
+
+                    Get to know each other within your team and try to come up with a name for your company. You have 5 minutes.
+                    <br /><button class="tag" onclick="startCountdown(300);">Start</button>
+                    <p class="countdown" id="countdown">05:00</p>
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> AI Project Assignment
+
+                    - We're about to simulate a meeting between AI teams and a client. Your company's salesperson came to you saying
+                    they managed to negotiate a great deal with a VIP client.
+
+                    - They just need you to estimate the project complexity (in person-days) after consulting with the client,
+                    tell the client triple that number, and leave the rest to negotiations with the salesperson.
+
+                    - The goal is for the client to be satisfied and the company to be profitable. If you need to slightly modify the project
+                    to reduce person-days/increase client satisfaction, do it.
+
+                    - Remember, you're dealing with a client!
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> AI Project Assignment: Client List and Salesperson Notes
+
+                    1. Mr. Snider from Redrock mines Ostrava, a.s.
+                        - super big contract worth at least 10 million
+                        - will open doors to a big corporation
+                    2. Roman from nonprofit Helpful Heart
+                        - can be negotiated on everything
+                        - smaller project, but will serve as a reference
+                        - you don't have anything else to do anyway, right?
+                    3. Engineer Martin from Best garden tech, s.r.o.
+                        - he's my college buddy, great guy
+                    4. Mgr. Lukáš Novotný, Director for Eastern Markets from New Bank
+                        - I've already arranged everything, just need to figure out how much data we need
+                        - no problem paying 150 person-days
+                    5. Petr, Assistant at Legal Family Pro
+                        - contacted me at a conference, knows nothing about technology just like me
+                    6. Novik Bigaj, Start-up Iron
+                        - has 5 startups behind him
+                        - needs it fast
+                        - we'll work for a third of the salary, but we get a share of the profit!
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Code Review
+                    - Why do we need them?
+                    - Who can write them?
+                        - Junior
+                        - Senior
+                        - AI
+                    - What makes a code review a good code review?
+
+                    ---
+
+                    ## <span class="tag activity">Activity</span> Let's Do a Code Review Together
+
+                    - Step by step
+                    - Start with the most important
+                    - <a href="https://github.com/aicheck-tech/PLIN081/blob/main/examples/example01.py">Example on GitHub</a>
+
+                    ---
+
+                    ## <span class="tag discussion">Discussion</span> Expectations for Next Meeting
+
+                    1. Name your team (business friendly)
+                    2. Create a GitHub repository for your team
+                    3. Create a README.md file in the repository with information:
+                        - repository serves for PLIN081 course
+                        - information about your fictional company
+                        - list of all team members in format `First Name, Last Name, UČO, link to github profile`
+                    4. Send me an invitation (https://github.com/janrygl) to your repository
+                    5. Each of you create your own git branch with file `team/<uco>/lesson01.py`
+                        - file must contain exactly 20 lines of Python code that takes text from console and returns text output
+                        - program can only use native Python packages
+                    6. Each of you do a code review for another team member to improve code quality.
+
+                    ---
+
+                    ## Example Program
+
+                    ```
+                    import sys
+
+                    def analyze_text(text):
+                        # Count the number of 's' characters in the text
+                        s_count = text.lower().count('s')
+                        # Determine the threshold for "too many" 's' characters
+                        threshold = len(text) / 10  # For example, 10% of the text length
+
+                        if s_count > threshold:
+                            return "You speak Python!"
+                        else:
+                            return "Try again."
+
+                    if __name__ == "__main__":
+                        if len(sys.argv) > 1:
+                            input_text = " ".join(sys.argv[1:])
+                            result = analyze_text(input_text)
+                            print(result)
+                        else:
+                            print("Please provide some text to analyze.")
+                    ```
+
+                    Tips:
+                     - argparse package
+                     - PEP8 (write code e.g. in PyCharm, community edition free)
+
+                </textarea>
             </section>
         </div>
     </div>
@@ -260,6 +468,7 @@
         }
 
     </script>
+    <script src="./localization.js"></script>
 </body>
 </html>
 
