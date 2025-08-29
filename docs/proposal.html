@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Markdown Preview (Marked)</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.min.js"></script>
+    <style>
+body {
+  background: #f0f6fb;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #232c3d;
+  margin: 0;
+  padding: 0;
+}
+#html {
+  max-width: 820px;
+  background: #fff;
+  margin: 40px auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px 0 rgba(30, 92, 180, 0.10);
+  padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+}
+h1, h2, h3 {
+  color: #2176ff;
+  margin-top: 2.2em;
+  margin-bottom: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+h1 { font-size: 2.3rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.15rem; }
+ul, ol {
+  margin-left: 2em;
+  margin-bottom: 1.5em;
+}
+li {
+  margin-bottom: 0.6em;
+  line-height: 1.7;
+}
+pre, code {
+  background: #e5f0fb;
+  color: #163a5f;
+  border-radius: 0.6em;
+  padding: 0.18em 0.6em;
+  font-family: 'Fira Mono', 'Menlo', monospace;
+  font-size: 1em;
+}
+pre {
+  padding: 1.1em;
+  font-size: 0.96em;
+  margin-bottom: 1.2em;
+  white-space: pre-wrap;
+}
+blockquote {
+  border-left: 5px solid #67b7f7;
+  background: #f3fafd;
+  color: #2d496d;
+  padding: 1em 1.4em;
+  margin: 1.5em 0;
+  border-radius: 0.8em;
+  font-style: italic;
+}
+a {
+  color: #2176ff;
+  text-decoration: none;
+  border-bottom: 1px dotted #b3d6fa;
+  transition: border-bottom 0.2s;
+}
+a:hover {
+  border-bottom: 1px solid #2176ff;
+}
+hr {
+  border: 0;
+  border-top: 2px dashed #b6daff;
+  margin: 2.4em 0;
+}
+strong {
+  color: #135ab6;
+  font-weight: 600;
+}
+em {
+  color: #3784c7;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  background: #e3f0fa;
+}
+::-webkit-scrollbar-thumb {
+  background: #b9e0ff;
+  border-radius: 8px;
+}
+.label, .tag {
+  display: inline-block;
+  background: #e5f0fb;
+  color: #2176ff;
+  border-radius: 0.6em;
+  padding: 0.18em 0.8em;
+  margin-right: 0.4em;
+  font-size: 0.93em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+</style>
+
+</head>
+<body>
+  <textarea id="md" rows="1" cols="1" style="display: none;">
+# AI-Powered Educational Storytelling Project
+
+## Introduction
+
+You will use **state-of-the-art AI chatbots** to generate, evaluate, and enhance creative stories for children. You’ll practice:
+- Crafting precise prompts,
+- Comparing single vs multi-turn strategies,
+- Rewriting for custom contexts,
+- Adding curriculum-aligned educational elements,
+- Creating comprehension quizzes, and
+- Evaluating all outputs critically.
+
+You’ll learn both **AI prompting skills** and how to assess outputs for quality, engagement, and educational value.
+
+---
+
+## Recommended Free AI Tools
+
+- [ChatGPT (OpenAI)](https://chat.openai.com/) — Free with account, high prompt limit (GPT-4.1 or GPT-5).
+- [Google Gemini (Bard)](https://gemini.google.com/) — Free with Google account, unlimited prompts.
+- [Microsoft Copilot](https://copilot.microsoft.com/) — Free on Edge browser, GPT-4 powered.
+
+*Don’t use tools with severe daily prompt restrictions (e.g., xAI Grok).*
+
+*Feel free to use your paid account or local models if you have access to them. But it is not required.*
+
+---
+
+## 1. Generate an Original Children’s Story
+
+### a. Define Your Story Parameters
+
+- **Child Age:** `<AGE>`
+- **Child Gender/Identity:** `<GENDER/IDENTITY>`
+- **Theme (Optional):** `<THEME>`
+- **Moral/Lesson (Optional):** `<MORAL>`
+
+### b. Single-Prompt Strategy
+
+Use a prompt like:
+
+> Write an original story for a <AGE>-year-old <GENDER/IDENTITY>. The story should be imaginative, age-appropriate, and teach a gentle lesson about <MORAL/LESSON>. Keep it engaging and suitable for reading aloud.
+
+*Example:*
+
+Write an original story for a 7-year-old boy. The story should be adventurous and teach a lesson about teamwork.
+
+
+### c. Multi-Turn (Iterative) Strategy
+
+Break the story generation into steps:
+
+1. **Outline:**
+    ```
+    Outline a story for a <AGE>-year-old <GENDER/IDENTITY> about <THEME>. Suggest a creative plot and main characters.
+    ```
+    *Example:*
+    ```
+    Outline a story for a 6-year-old girl about a magical garden and a talking rabbit.
+    ```
+
+2. **Draft:**
+    ```
+    Write the story from the outline, using simple language for a <AGE>-year-old. Make it fun and easy to follow.
+    ```
+
+3. **Refine (optional):**
+    ```
+    Revise the story to include a clear lesson about <MORAL/LESSON>. Add more dialogue between the characters.
+    ```
+
+**Tip:** If the AI output isn’t perfect, adjust your prompt wording and iterate.
+
+---
+
+## 2. Evaluate the Generated Story
+
+After each story, use these criteria to assess quality:
+
+- **Age Appropriateness:** Is language and content suitable for `<AGE>`?
+- **Clarity & Coherence:** Is the story logical, with a clear beginning, middle, and end?
+- **Creativity & Engagement:** Are characters, setting, and plot fresh and interesting?
+- **Language & Style:** Is it natural and pleasant to read aloud? Any awkwardness or repetitive phrasing?
+- **Message/Moral:** If specified, is the lesson clear and gentle?
+- **Literature quality:** Is it comparable with original children’s books?
+
+**Example Evaluation Note:**
+> The vocabulary fits a 5-year-old. The plot is coherent and the adventure is fun. The lesson about sharing is present but could be more explicit.
+
+*Score each point 1–6*
+
+---
+
+## 3. Rewriting with Custom Characters or Setting
+
+### a. Decide on the Context Change
+
+- **New Setting:** `<NEW_SETTING>` (e.g., Minecraft, fairy tale kingdom)
+- **New Characters:** `<CHARACTERS>` (e.g., Paw Patrol, prince/princess)
+- **Other Changes:** `<GENRE/STYLE>`
+
+### b. Rewrite Prompt Template
+> Rewrite the above story for a <AGE>-year-old <GENDER/IDENTITY>. Set it in <NEW_SETTING> and include <CHARACTERS>. Keep the main plot and lesson about <MORAL/LESSON>, but adapt the details and style for this new context.
+
+*Example:*
+> Rewrite the above story for a 6-year-old girl. Set it in the world of Minecraft and make the main character a princess who teams up with Steve to explore a cave.
+
+
+
+### c. Evaluate the Rewrite
+
+- Are the new elements integrated naturally?
+- Does the story remain clear and enjoyable?
+- Is the original message preserved?
+
+---
+
+## 4. Add an Educational Layer
+
+### a. Pick a Curriculum-Aligned Subject
+
+- **Geography:** Characters visit real places, mention simple facts.
+- **Science:** Simple explanations (volcanoes, rainbows, magnets).
+- **History:** Introduce a figure/event, keep it fun and light.
+- **Math:** Counting, shapes, puzzles, or logic for older kids.
+
+### b. Education Enhancement Prompt
+> Revise the story to include an educational element about <SUBJECT>. Insert a simple, accurate explanation or fact that fits naturally, appropriate for a <AGE>-year-old.
+
+*Example:*
+> Revise the story to include a simple explanation about how volcanoes erupt. Make sure it fits the adventure and is easy for a 7-year-old to understand.
+
+
+### c. Evaluate
+
+- Is the fact accurate and at the right level?
+- Does it blend smoothly into the narrative?
+
+---
+
+## 5. Create a Comprehension Quiz
+
+### a. Quiz Prompt
+> Create <NUMBER> questions to test a <AGE>-year-old’s understanding of the story. Include at least one question about the educational content.
+
+*Example:*
+
+> Create 5 questions to test a 7-year-old’s understanding of the story, including one about volcanoes.
+
+### b. Types of Questions
+
+- Why did the character use iron sword and not a gold one?
+- Which river they crossed was the biggest?
+- Who was the king of the France in the story?
+- How does a compass work?
+- Why did Jake’s boat float, but his toy car did not?
+- What plant did the group discover in the forest, and what color were its flowers?
+
+### c. Review
+
+- Are all questions answerable from the story?
+- Are they clear and suitable for `<AGE>`?
+
+---
+
+## 6. Final Evaluation and Reflection
+
+- Did the educational content enhance or disrupt the story?
+- Were all facts accurate and explanations clear?
+- Did you find single or multi-prompt strategies better?
+- What worked, what didn’t, and what would you do differently?
+
+---
+
+## Deliverables
+
+- All prompts (with parameters) and generated results (with parameters filled in)
+- Evaluations for teammates’ stories
+- Reflection comparing strategies, and your findings
+
+---
+
+*Experiment, iterate, and have fun creating stories and learning how to guide AI!*
+
+
+
+
+  </textarea>
+  <div id="html"></div>
+
+  <script>
+    const textarea = document.getElementById('md');
+    const htmlDiv = document.getElementById('html');
+
+    function renderMarkdown() {
+      htmlDiv.innerHTML = marked.parse(textarea.value);
+    }
+
+    textarea.addEventListener('input', renderMarkdown);
+    renderMarkdown();
+  </script>
+</body>
+</html>
