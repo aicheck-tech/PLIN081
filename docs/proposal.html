@@ -106,6 +106,7 @@ em {
 </head>
 <body>
   <textarea id="md" rows="1" cols="1" style="display: none;">
+
 # AI-Powered Educational Storytelling Project
 
 ## Introduction
@@ -115,8 +116,9 @@ You will use **state-of-the-art AI chatbots** to generate, evaluate, and enhance
 - Comparing single vs multi-turn strategies,
 - Rewriting for custom contexts,
 - Adding curriculum-aligned educational elements,
-- Creating comprehension quizzes, and
-- Evaluating all outputs critically.
+- Creating comprehension quizzes,
+- Evaluating all outputs critically, and
+- Annotating work of others for quality and feedback.
 
 You’ll learn both **AI prompting skills** and how to assess outputs for quality, engagement, and educational value.
 
@@ -130,7 +132,7 @@ You’ll learn both **AI prompting skills** and how to assess outputs for qualit
 
 *Don’t use tools with severe daily prompt restrictions (e.g., xAI Grok).*
 
-*Feel free to use your paid account or local models if you have access to them. But it is not required.*
+*You may use paid APIs or local LLMs if you prefer — but it's not required.*
 
 ---
 
@@ -138,158 +140,186 @@ You’ll learn both **AI prompting skills** and how to assess outputs for qualit
 
 ### a. Define Your Story Parameters
 
-- **Child Age:** `<AGE>`
-- **Child Gender/Identity:** `<GENDER/IDENTITY>`
-- **Theme (Optional):** `<THEME>`
-- **Moral/Lesson (Optional):** `<MORAL>`
+- **Age category:** `{age_category}` (e.g. 3–5, 6–8, 9–12)
+- **Optional Theme:** `{theme}` (e.g. pirates, space adventure, magical creatures, lost in a forest, time travel)
+- **Optional Moral:** `{Moral}` (e.g. power of friendship, honesty, courage, nobody is perfect)
 
 ### b. Single-Prompt Strategy
-
 Use a prompt like:
-
-> Write an original story for a <AGE>-year-old <GENDER/IDENTITY>. The story should be imaginative, age-appropriate, and teach a gentle lesson about <MORAL/LESSON>. Keep it engaging and suitable for reading aloud.
+> Write an original story for a {age_category}-year-old children. The story should be imaginative about {theme}, age-appropriate, and teach a gentle lesson about {moral}. The story should be engaging and easy to understand, with a clear beginning, middle, and end. Use simple language and vivid descriptions to capture the child's imagination.
 
 *Example:*
-
-Write an original story for a 7-year-old boy. The story should be adventurous and teach a lesson about teamwork.
-
+Write an original story for a 4–5-year-old children. The story should be imaginative about pirates, age-appropriate, and teach a gentle lesson about courage. The story should be engaging and easy to understand, with a clear beginning, middle, and end. Use simple language and vivid descriptions to capture the child's imagination.
 
 ### c. Multi-Turn (Iterative) Strategy
-
 Break the story generation into steps:
 
-1. **Outline:**
+1. **Outline**
     ```
-    Outline a story for a <AGE>-year-old <GENDER/IDENTITY> about <THEME>. Suggest a creative plot and main characters.
+    Outline an original story for a {age_category}-year-old children. The story should be imaginative about {theme}.
     ```
     *Example:*
     ```
-    Outline a story for a 6-year-old girl about a magical garden and a talking rabbit.
+    Outline an original story for a 10–13-year-old children. The story should be imaginative about talking animals.
     ```
-
-2. **Draft:**
+2. **Draft**
     ```
-    Write the story from the outline, using simple language for a <AGE>-year-old. Make it fun and easy to follow.
+    Write the story from the outline, using simple language for a {age_category}-year-old. Make it fun and easy to follow.
     ```
-
-3. **Refine (optional):**
+    *Example:*
     ```
-    Revise the story to include a clear lesson about <MORAL/LESSON>. Add more dialogue between the characters.
+    Write the story from the outline, using simple language for a 10-13-year-old. Make it fun and easy to follow.
     ```
-
-**Tip:** If the AI output isn’t perfect, adjust your prompt wording and iterate.
+3. **Refinement with moral or character style**
+    ```
+    Revise the story to include a gentle lesson about {moral}.
+    ```
+    *Example:*
+    ```
+    Revise the story to include a gentle lesson about courage.
+    ```
 
 ---
 
 ## 2. Evaluate the Generated Story
 
-After each story, use these criteria to assess quality:
+Use these criteria (also used in annotation):
 
-- **Age Appropriateness:** Is language and content suitable for `<AGE>`?
-- **Clarity & Coherence:** Is the story logical, with a clear beginning, middle, and end?
-- **Creativity & Engagement:** Are characters, setting, and plot fresh and interesting?
-- **Language & Style:** Is it natural and pleasant to read aloud? Any awkwardness or repetitive phrasing?
-- **Message/Moral:** If specified, is the lesson clear and gentle?
-- **Literature quality:** Is it comparable with original children’s books?
+ - **Age Appropriateness:** Is language and content suitable for `<AGE>`?
+ - **Clarity & Coherence:** Is the story logical, with a clear beginning, middle, and end?
+ - **Creativity & Engagement:** Are characters, setting, and plot fresh and interesting?
+ - **Language & Style:** Is it natural and pleasant to read aloud? Any awkwardness or repetitive phrasing?
+ - **Message/Moral:** If specified, is the lesson clear and gentle?
+ - **Literature quality:** Is it comparable with original children’s books?
 
-**Example Evaluation Note:**
-> The vocabulary fits a 5-year-old. The plot is coherent and the adventure is fun. The lesson about sharing is present but could be more explicit.
+Score each 0 or 1. See "Annotation" below for details.
 
-*Score each point 1–6*
+Create at least 10 stories with 6 points, 10 stories with at least 4 points and 10 stories with at least 2 points.
+---
+
+## 3. Rewrite with a New Theme and custom characters
+
+Use placeholders like `{age}`, `{gender}`, `{main_character}`, `{side_character}`.
+
+**Prompt Example:**
+> Reimagine the previous story from the viewpoint of a wise old {side_character} guiding a {main_character}.
+
+## 4. Evaluate rewritten story
+
+Use these criteria (also used in annotation):
+
+ - **Story Quality**: Is a story quality kept after change? Does the story remain clear and enjoyable?
+ - **Theme**: Was theme change successful? Are the new elements integrated naturally?
+ - **Roleplaying**: Does a story fit a character/theme?
+
+Create at least 10 rewrites with 3 points, 10 rewrites with at least 2 points and 10 rewrutes with at least 1 point.
 
 ---
 
-## 3. Rewriting with Custom Characters or Setting
+## 5. Add an Educational Layer
 
-### a. Decide on the Context Change
+Revise the story to include simple explanations about:
+ - **Geography:** Characters visit real places, mention simple facts.
+ - **Science:** Simple explanations (volcanoes, rainbows, magnets).
+ - **History:** Introduce a figure/event, keep it fun and light.
+ - **Math:** Counting, shapes, puzzles, or logic for older kids.
+ - Or others curriculum-aligned  opics.
 
-- **New Setting:** `<NEW_SETTING>` (e.g., Minecraft, fairy tale kingdom)
-- **New Characters:** `<CHARACTERS>` (e.g., Paw Patrol, prince/princess)
-- **Other Changes:** `<GENRE/STYLE>`
+Prompts:
+> Add information about material properties (e.g., wood, metal) to the story and use these properties in story events and the character's decisions.
 
-### b. Rewrite Prompt Template
-> Rewrite the above story for a <AGE>-year-old <GENDER/IDENTITY>. Set it in <NEW_SETTING> and include <CHARACTERS>. Keep the main plot and lesson about <MORAL/LESSON>, but adapt the details and style for this new context.
+> Revise the story to include a simple explanation about how volcanoes erupt. Make sure it fits the adventure and is easy for a {age}-year-old to understand.
 
-*Example:*
-> Rewrite the above story for a 6-year-old girl. Set it in the world of Minecraft and make the main character a princess who teams up with Steve to explore a cave.
+## 6. Evaluation
 
-
-
-### c. Evaluate the Rewrite
-
-- Are the new elements integrated naturally?
-- Does the story remain clear and enjoyable?
-- Is the original message preserved?
+ - **Story Quality**: Is a story quality kept after change? Does the story remain clear and enjoyable?
+ - **Naturalness**: Is the fact blended into the story seamlessly?
+ - **Correctness**: Are ALL facts accurate?
 
 ---
 
-## 4. Add an Educational Layer
+## 7. Generate Questions and Responses (JSON)
 
-### a. Pick a Curriculum-Aligned Subject
+Prompt:
+> Generate three questions and responses as a JSON dictionary that check the listener's knowledge about the material properties mentioned in the story.
 
-- **Geography:** Characters visit real places, mention simple facts.
-- **Science:** Simple explanations (volcanoes, rainbows, magnets).
-- **History:** Introduce a figure/event, keep it fun and light.
-- **Math:** Counting, shapes, puzzles, or logic for older kids.
+**Example JSON Output:**
 
-### b. Education Enhancement Prompt
-> Revise the story to include an educational element about <SUBJECT>. Insert a simple, accurate explanation or fact that fits naturally, appropriate for a <AGE>-year-old.
+```json
+{
+  "Why did he select an iron sword instead a gold one?": "Iron is harder than gold, golden one would break",
+  "What did the compass help them do?": "It helped them find north through the fog",
+  "Which object floated: the wooden raft or the rock?": "The raft floated because wood is less dense than water"
+}
+```
 
-*Example:*
-> Revise the story to include a simple explanation about how volcanoes erupt. Make sure it fits the adventure and is easy for a 7-year-old to understand.
+Use [JSON Formatter](https://jsonformatter.org/) to validate your structure.
 
+## 8. Evaluation
 
-### c. Evaluate
-
-- Is the fact accurate and at the right level?
-- Does it blend smoothly into the narrative?
-
----
-
-## 5. Create a Comprehension Quiz
-
-### a. Quiz Prompt
-> Create <NUMBER> questions to test a <AGE>-year-old’s understanding of the story. Include at least one question about the educational content.
-
-*Example:*
-
-> Create 5 questions to test a 7-year-old’s understanding of the story, including one about volcanoes.
-
-### b. Types of Questions
-
-- Why did the character use iron sword and not a gold one?
-- Which river they crossed was the biggest?
-- Who was the king of the France in the story?
-- How does a compass work?
-- Why did Jake’s boat float, but his toy car did not?
-- What plant did the group discover in the forest, and what color were its flowers?
-
-### c. Review
-
-- Are all questions answerable from the story?
-- Are they clear and suitable for `<AGE>`?
+ - **Difficulty:** Are questions adequate for a given child’s age?
+ - **Completeness:** Are questions testing knowledge from story?
+ - **Correctness:** Are responses correct?
 
 ---
 
-## 6. Final Evaluation and Reflection
+## 9. Annotation Instructions
 
-- Did the educational content enhance or disrupt the story?
-- Were all facts accurate and explanations clear?
-- Did you find single or multi-prompt strategies better?
-- What worked, what didn’t, and what would you do differently?
+You will review stories written by others and annotate them using yes/no checkboxes.
+You are requested to annotate at least 60 items per category (240 total).
+
+Annotations should be honest and constructive. Nobody won't be penalized for receiving low scores.
+
+Each section has its own criteria, always marked 0 or 1:
+
+### Category 1: LLM Story
+
+- Age Appropriateness
+- Clarity & Coherence
+- Creativity & Engagement
+- Language & Style
+- Message/Moral
+- Literature Quality
+
+### Category 2: Theme Transformation
+
+- Story Quality
+- Theme
+- Roleplaying
+
+### Category 3: Education
+
+- Story Quality
+- Naturalness
+- Correctness
+
+### Category 4: Questions
+
+- Difficulty
+- Completeness
+- Correctness
 
 ---
 
 ## Deliverables
 
-- All prompts (with parameters) and generated results (with parameters filled in)
-- Evaluations for teammates’ stories
-- Reflection comparing strategies, and your findings
+- All prompts (with placeholders), placeholder values (as JSON), and LLM responses (with placeholders filled), 30 per section (120 total) inserted into a annotation interface.
+- Peer annotations (60 per section, 240 total) done in the annotation interface.
+- Final reflection comparing strategies (200+ words):
+    - Did the educational content enhance or disrupt the story?
+    - Were all facts accurate and explanations clear?
+    - Did you find single or multi-prompt strategies better?
+    - What worked, what didn’t, and what would you do differently?
+
 
 ---
 
-*Experiment, iterate, and have fun creating stories and learning how to guide AI!*
+*Experiment, iterate, and enjoy guiding AI to create meaningful content for children.*
 
+*All content generated by you and your colleagues will be licensed as Creative Commons Attribution 4.0 International:*
+<a href="https://creativecommons.org/licenses/by/4.0/">
+  CC BY 4.0 <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by.png" alt="CC BY 4.0" width="60">
+</a>
 
 
 
