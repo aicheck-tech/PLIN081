@@ -1,0 +1,30 @@
+[project]
+name = "student-tasks"
+version = "1.0"
+description = "A repository for students to upload their tasks."
+authors = [
+    { name = "Jan Rygl", email = "jan.rygl@aicheck.tech" }
+]
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "jinja2",
+    "python-multipart",
+    "pandas",
+    "gitpython",
+    "itsdangerous",
+    "bcrypt"
+]
+
+[tool.setuptools]
+packages = ["tasks"]
+
+[tool.setuptools.package-data]
+tasks = ["static/**/*", "templates/**/*"]
+
+[tool.black]
+line-length = 120
+
+[build-system]
+requires = ["uv", "setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

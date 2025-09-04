@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard - Task Submissions</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <div class="top-banner">
+        <span>Welcome, {{ username }}!</span>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="container">
+        <h1>Your Task Submissions</h1>
+
+        <div class="card" style="max-width:350px;margin:20px 0;">
+          <h3>Your Submission Stats</h3>
+          <ul>
+            <li>
+              <b>Total submissions:</b>
+              <span class="notdone {% if stats.total >= 120 %}done{% endif %}">{{ stats.total }}</span> / 120
+            </li>
+            <li>
+              LLM Story:
+              <span class="notdone {% if stats.story >= 30 %}done{% endif %}">{{ stats.story }}</span> / 30
+            </li>
+            <li>
+              Theme Transformation:
+              <span class="notdone {% if stats.theme >= 30 %}done{% endif %}">{{ stats.theme }}</span> / 30
+            </li>
+            <li>
+              Educational Content:
+              <span class="notdone {% if stats.education >= 30 %}done{% endif %}">{{ stats.education }}</span> / 30
+            </li>
+            <li>
+              Questions:
+              <span class="notdone {% if stats.questions >= 30 %}done{% endif %}">{{ stats.questions }}</span> / 30
+            </li>
+          </ul>
+        </div>
+
+        <div class="call-to-action" style="margin-bottom:24px;">
+            <a href="/submit" class="button">Submit New Task</a>
+        </div>
+
+        {% set empty = True %}
+
+        <!-- LLM Story Submissions -->
+        <h2>LLM Stories</h2>
+        {% if story_submissions %}
+        <div class="card">
+            <table style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Prompt</th>
+                        <th>Story</th>
+                        <th>Technology</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sub in story_submissions %}
+                    {% set empty = False %}
+                    <tr>
+                        <td>{{ sub.prompt }}</td>
+                        <td class="result-text">{{ sub.story }}</td>
+                        <td>{{ sub.technology }}</td>
+                        <td><a class="button" href="/submit?category=story&id={{ sub.id }}">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-submissions">No LLM stories submitted.</div>
+        {% endif %}
+
+        <!-- Theme Transformation Submissions -->
+        <h2>Theme Transformations</h2>
+        {% if theme_submissions %}
+        <div class="card">
+            <table style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Prompt</th>
+                        <th>Placeholders</th>
+                        <th>Original Story</th>
+                        <th>Result</th>
+                        <th>Technology</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sub in theme_submissions %}
+                    {% set empty = False %}
+                    <tr>
+                        <td>{{ sub.theme_prompt }}</td>
+                        <td>{{ sub.theme_placeholders }}</td>
+                        <td>{{ sub.theme_original_story }}</td>
+                        <td class="result-text">{{ sub.theme_story }}</td>
+                        <td>{{ sub.technology }}</td>
+                        <td><a class="button" href="/submit?category=theme&id={{ sub.id }}">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-submissions">No theme transformations submitted.</div>
+        {% endif %}
+
+        <!-- Educational Enhancement Submissions -->
+        <h2>Educational Enhancements</h2>
+        {% if education_submissions %}
+        <div class="card">
+            <table style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Prompt</th>
+                        <th>Placeholders</th>
+                        <th>Original Story</th>
+                        <th>Modified Story</th>
+                        <th>Technology</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sub in education_submissions %}
+                    {% set empty = False %}
+                    <tr>
+                        <td>{{ sub.education_prompt }}</td>
+                        <td>{{ sub.education_placeholders }}</td>
+                        <td>{{ sub.education_original_story }}</td>
+                        <td class="result-text">{{ sub.education_story }}</td>
+                        <td>{{ sub.technology }}</td>
+                        <td><a class="button" href="/submit?category=education&id={{ sub.id }}">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-submissions">No educational enhancements submitted.</div>
+        {% endif %}
+
+        <!-- Question Generation Submissions -->
+        <h2>Question Generations</h2>
+        {% if questions_submissions %}
+        <div class="card">
+            <table style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Prompt</th>
+                        <th>Original Story</th>
+                        <th>Questions</th>
+                        <th>Technology</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sub in questions_submissions %}
+                    {% set empty = False %}
+                    <tr>
+                        <td>{{ sub.questions_prompt }}</td>
+                        <td>{{ sub.questions_original_story }}</td>
+                        <td class="result-text">{{ sub.questions }}</td>
+                        <td>{{ sub.technology }}</td>
+                        <td><a class="button" href="/submit?category=questions&id={{ sub.id }}">Edit</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="no-submissions">No question generations submitted.</div>
+        {% endif %}
+
+        {% if empty %}
+        <div class="no-submissions">
+            <p>You haven't submitted any tasks yet.</p>
+        </div>
+        {% endif %}
+
+        <div class="call-to-action" style="margin-top:32px;">
+            <a href="/submit" class="button">Submit New Task</a>
+        </div>
+
+    </div>
+    <script src="{{ url_for('static', path='script.js') }}"></script>
+</body>
+</html>
