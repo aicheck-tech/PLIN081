@@ -7,6 +7,8 @@
 <body>
     <div class="top-banner">
         <span>Welcome, {{ username }}!</span>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/annotate">Annotate</a>
         <a href="/logout">Logout</a>
     </div>
 
@@ -23,18 +25,42 @@
             <li>
               LLM Story:
               <span class="notdone {% if stats.story >= 30 %}done{% endif %}">{{ stats.story }}</span> / 30
+              {% if annotation_scores %}
+                <span style="margin-left:14px;font-size:0.96em;color:#555;">
+                  Score: <b>{{ annotation_scores.story.score }}%</b>
+                  ({{ annotation_scores.story.count }} ratings)
+                </span>
+              {% endif %}
             </li>
             <li>
               Theme Transformation:
               <span class="notdone {% if stats.theme >= 30 %}done{% endif %}">{{ stats.theme }}</span> / 30
+              {% if annotation_scores %}
+                <span style="margin-left:14px;font-size:0.96em;color:#555;">
+                  Score: <b>{{ annotation_scores.theme.score }}%</b>
+                  ({{ annotation_scores.theme.count }} ratings)
+                </span>
+              {% endif %}
             </li>
             <li>
               Educational Content:
               <span class="notdone {% if stats.education >= 30 %}done{% endif %}">{{ stats.education }}</span> / 30
+              {% if annotation_scores %}
+                <span style="margin-left:14px;font-size:0.96em;color:#555;">
+                  Score: <b>{{ annotation_scores.education.score }}%</b>
+                  ({{ annotation_scores.education.count }} ratings)
+                </span>
+              {% endif %}
             </li>
             <li>
               Questions:
               <span class="notdone {% if stats.questions >= 30 %}done{% endif %}">{{ stats.questions }}</span> / 30
+              {% if annotation_scores %}
+                <span style="margin-left:14px;font-size:0.96em;color:#555;">
+                  Score: <b>{{ annotation_scores.questions.score }}%</b>
+                  ({{ annotation_scores.questions.count }} ratings)
+                </span>
+              {% endif %}
             </li>
           </ul>
         </div>

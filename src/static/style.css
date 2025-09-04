@@ -76,6 +76,7 @@ h1, h2, h3 {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 20px 0;
+    max-width: 1024px !important;
 }
 
 .submission-summary h3 {
@@ -226,4 +227,47 @@ textarea[name$="prompt"] {
 
 .notdone {
     color: #d51747;
+}
+
+.login-form {
+    max-width: 350px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(50,60,70,0.12);
+    padding: 30px 25px 20px 25px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #444;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 9px 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.login-form .button {
+    width: 100%;
+    margin: 10px 0 0 0;
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+.login-form .error-message {
+    margin-bottom: 15px;
+    color: #c00;
+    background: #ffeaea;
+    border-radius: 3px;
+    padding: 7px 12px;
+    text-align: center;
 }

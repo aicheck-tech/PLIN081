@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Annotate</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='annotate.css') }}">
+</head>
+<body>
+    <div class="top-banner">
+        <span>Welcome, {{ username }}!</span>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+    <div class="container">
+        <h1>Annotation</h1>
+
+        <!-- Category selector -->
+        <form method="get" action="/annotate" class="annotation-category-form" style="margin-bottom: 24px;">
+            <label for="category">Choose section to annotate:</label>
+            <select name="category" id="category" required>
+                <option value="">-- Select Section --</option>
+                <option value="story" {% if category == "story" %}selected{% endif %}>LLM Story</option>
+                <option value="theme" {% if category == "theme" %}selected{% endif %}>Theme Transformation</option>
+                <option value="education" {% if category == "education" %}selected{% endif %}>Educational Content</option>
+                <option value="questions" {% if category == "questions" %}selected{% endif %}>Questions</option>
+            </select>
+            <button type="submit" class="button">Get Task</button>
+        </form>
+
+        {% if category and not item %}
+            <div class="error-message">No eligible items available to annotate in this category.</div>
+        {% endif %}
+
+        {% if item %}
+        <div class="card" style="margin-bottom:22px;">
+            <h2>Submission to Annotate</h2>
+            <p><b>Author:</b> {{ item.user }}</p>
+            <p><b>Technology:</b> {{ item.technology }}</p>
+            {% if category == "story" %}
+                <h3>Prompt:</h3>
+                <pre class="result-text">{{ item.prompt }}</pre>
+                <h3>LLM Story:</h3>
+                <pre class="result-text">{{ item.story }}</pre>
+            {% elif category == "theme" %}
+                <h3>Prompt:</h3>
+                <pre class="result-text">{{ item.theme_prompt }}</pre>
+                <h3>Placeholders:</h3>
+                <pre class="result-text">{{ item.theme_placeholders }}</pre>
+                <h3>Theme Result:</h3>
+                <pre class="result-text">{{ item.theme_story }}</pre>
+                <h3>Theme Original Story:</h3>
+                <pre class="result-text">{{ item.theme_original_story }}</pre>
+            {% elif category == "education" %}
+                <h3>Prompt:</h3>
+                <pre class="result-text">{{ item.education_prompt }}</pre>
+                <h3>Placeholders:</h3>
+                <pre class="result-text">{{ item.education_placeholders }}</pre>
+                <h3>Education Story:</h3>
+                <pre class="result-text">{{ item.education_story }}</pre>
+                <h3>Education Original Story:</h3>
+                <pre class="result-text">{{ item.education_original_story }}</pre>
+            {% elif category == "questions" %}
+                <h3>Questions Prompt:</h3>
+                <pre class="result-text">{{ item.questions_prompt }}</pre>
+                <h3>Questions:</h3>
+                <pre class="result-text">{{ item.questions }}</pre>
+                <h3>Questions Original Story:</h3>
+                <pre class="result-text">{{ item.questions_original_story }}</pre>
+            {% endif %}
+        </div>
+
+        <form method="post" action="/annotate" class="annotation-form">
+            <input type="hidden" name="submission_id" value="{{ item.id }}">
+            <input type="hidden" name="category" value="{{ category }}">
+
+            {% if category == "story" %}
+                <label><input type="checkbox" name="age_appropriateness" value="1"> Age Appropriateness</label><br>
+                <label><input type="checkbox" name="clarity" value="1"> Clarity & Coherence</label><br>
+                <label><input type="checkbox" name="creativity" value="1"> Creativity & Engagement</label><br>
+                <label><input type="checkbox" name="language" value="1"> Language & Style</label><br>
+                <label><input type="checkbox" name="message" value="1"> Message/Moral</label><br>
+                <label><input type="checkbox" name="literature" value="1"> Literature Quality</label><br>
+            {% elif category == "theme" %}
+                <label><input type="checkbox" name="theme_quality" value="1"> Story Quality</label><br>
+                <label><input type="checkbox" name="theme_success" value="1"> Theme Change Success</label><br>
+                <label><input type="checkbox" name="roleplaying" value="1"> Roleplaying/Character Fit</label><br>
+            {% elif category == "education" %}
+                <label><input type="checkbox" name="education_quality" value="1"> Story Quality</label><br>
+                <label><input type="checkbox" name="naturalness" value="1"> Naturalness</label><br>
+                <label><input type="checkbox" name="correctness" value="1"> Correctness</label><br>
+            {% elif category == "questions" %}
+                <label><input type="checkbox" name="difficulty" value="1"> Difficulty</label><br>
+                <label><input type="checkbox" name="completeness" value="1"> Completeness</label><br>
+                <label><input type="checkbox" name="q_correctness" value="1"> Correctness</label><br>
+            {% endif %}
+
+            <label>Notes (optional):<br>
+              <textarea name="notes" rows="2"></textarea>
+            </label>
+            <br>
+            <button type="submit" class="button">Submit Annotation</button>
+        </form>
+        {% endif %}
+    </div>
+</body>
+</html>

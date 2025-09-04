@@ -1,3 +1,4 @@
+import json
 import os
 import logging
 from typing import List, Dict
@@ -6,6 +7,7 @@ from datetime import datetime
 import pandas as pd
 import git
 
+from tasks.annotation_helpers import get_all_submissions, ANNOTATION_CSV
 from tasks.config import (
     DATA_DIR, STORY_GENERATOR_CSV, THEME_GENERATOR_CSV,
     EDUCATIVE_CONTENT_CSV, QUESTIONS_GENERATOR_CSV
@@ -272,3 +274,48 @@ def get_user_submissions(username: str) -> Dict[str, List[dict]]:
             })
 
     return submissions
+
+
+def get_user_annotation_scores(username: str):
+    """
+    Returns dict with average annotation score for each category for this user.
+    Score = sum of all fields marked 1 in this user's submissions / max possible points
+    """
+    category_fields = {
+        "story": ["age_appropriateness", "clarity", "creativity", "language", "message", "literature"],
+        "theme": ["theme_quality", "theme_success", "roleplaying"],
+        "education": ["education_quality", "naturalness", "correctness"],
+        "questions": ["difficulty", "completeness", "q_correctness"],
+    }
+    if not ANNOTATION_CSV.is_file():
+        return {k: {"score": 0, "max": len(v), "count": 0} for k, v in category_fields.items()}
+
+    df = pd.read_csv(ANNOTATION_CSV)
+    result = {}
+    for cat, fields in category_fields.items():
+        # Find all this user's submissions for this category
+        subs = get_all_submissions(cat)
+        submission_ids = set(str(s["id"]) for s in subs if s["user"] == username)
+        if not submission_ids:
+            result[cat] = {"score": 0, "max": len(fields), "count": 0}
+            continue
+        # All annotations for user's submissions
+        cat_df = df[(df["category"] == cat) & (df["submission_id"].astype(str).isin(submission_ids))]
+        total_score = 0
+        total_possible = 0
+        num_annot = 0
+        for _, row in cat_df.iterrows():
+            annot = json.loads(row["fields_json"])
+            # Only actual scoring fields, skip notes
+            s = sum(int(annot.get(f, 0)) for f in fields)
+            total_score += s
+            total_possible += len(fields)
+            num_annot += 1
+        # Return per-annotation average (or 0 if none)
+        avg = (total_score / total_possible) if total_possible else 0
+        result[cat] = {
+            "score": round(avg * 100, 1) if num_annot > 0 else 0,  # percent
+            "max": 100,
+            "count": num_annot
+        }
+    return result

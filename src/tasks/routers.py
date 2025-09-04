@@ -6,7 +6,7 @@ from pydantic import ValidationError
 
 from tasks.config import PATH
 from tasks.auth import authenticate_user, get_current_user
-from tasks.helpers import get_user_submissions, save_submission
+from tasks.task_helpers import get_user_submissions, save_submission, get_user_annotation_scores
 from tasks.models import TaskSubmission, LoginForm
 
 router = APIRouter()
@@ -56,6 +56,7 @@ async def dashboard(request: Request, username: str = Depends(get_current_user))
         "education": len(submissions["education"]),
         "questions": len(submissions["questions"])
     }
+    annotation_scores = get_user_annotation_scores(username)   # <--- add this line
     return templates.TemplateResponse(
         "dashboard.html",
         {
@@ -66,10 +67,10 @@ async def dashboard(request: Request, username: str = Depends(get_current_user))
             "theme_submissions": submissions["theme"],
             "education_submissions": submissions["education"],
             "questions_submissions": submissions["questions"],
-            "stats": stats,   # pass stats
+            "stats": stats,
+            "annotation_scores": annotation_scores,   # <--- add this line
         },
     )
-
 
 @router.get("/submit", response_class=HTMLResponse)
 async def submission_form(
