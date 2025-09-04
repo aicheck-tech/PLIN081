@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Task Submission Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <div class="top-banner">
+        {% if username %}
+            <span>Welcome, {{ username }}!</span>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/annotate">Annotate</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+        {% endif %}
+            <div class="top-banner">
+
+
+    </div>
+    <div class="container">
+        <h1>Student Task Submission Portal</h1>
+        <p>Welcome to the Student Task Submission Portal. Please log in to submit your tasks.</p>
+
+        {% if not username %}
+        <div class="call-to-action">
+            <a href="/login" class="button">Login Now</a>
+        </div>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', path='script.js') }}"></script>
+</body>
+</html>

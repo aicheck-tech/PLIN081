@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+    <div class="top-banner">
+        <span>Welcome, {{ username }}!</span>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div class="container">
+        <h1>{% if editing %}Edit{% else %}Submit New{% endif %} Task</h1>
+
+        <!-- Tutorial and guidance notes -->
+        <div class="info-message">
+            <p>
+                <strong>How to use this form:</strong><br>
+                <ol>
+                    <li><b>Technology</b> is always required.</li>
+                    <li>You must fill <b>all fields in at least one full section</b> (LLM Story, Theme, Education, or Questions).</li>
+                    <li>If you fill any field in a section, <b>all fields in that section must be filled</b> (no partial sections).</li>
+                    <li>See step-by-step guide at <a href="https://aicheck-tech.github.io/PLIN081/proposal.html" target="_blank">the official tutorial</a>.</li>
+                </ol>
+            </p>
+        </div>
+
+        {% if error %}
+        <div class="error-message">{{ error }}</div>
+        {% endif %}
+
+        <form method="post" action="/submit" class="submission-form">
+
+            <!-- TECHNOLOGY: always required, single select -->
+            <div class="form-group">
+                <label for="technology">Technology <span style="color:red">*</span></label>
+                <select id="technology" name="technology" required>
+                    <option value="">Select Technology</option>
+                    <optgroup label="Gemini">
+                        <option value="gemini-pro" {% if user_data.technology == 'gemini-pro' %}selected{% endif %}>Gemini Pro</option>
+                        <option value="gemini-ultra" {% if user_data.technology == 'gemini-ultra' %}selected{% endif %}>Gemini Ultra</option>
+                    </optgroup>
+                    <optgroup label="ChatGPT">
+                        <option value="gpt-3.5" {% if user_data.technology == 'gpt-3.5' %}selected{% endif %}>GPT-3.5</option>
+                        <option value="gpt-4" {% if user_data.technology == 'gpt-4' %}selected{% endif %}>GPT-4 (GPT-4.1)</option>
+                        <option value="gpt-5" {% if user_data.technology == 'gpt-5' %}selected{% endif %}>GPT-5</option>
+                    </optgroup>
+                    <optgroup label="Microsoft">
+                        <option value="copilot" {% if user_data.technology == 'copilot' %}selected{% endif %}>Copilot</option>
+                    </optgroup>
+                    <optgroup label="Other">
+                        <option value="other" {% if user_data.technology and user_data.technology not in ['gemini-pro', 'gemini-ultra', 'gpt-3.5-turbo', 'gpt-4', 'gpt-4-turbo'] %}selected{% endif %}>Other</option>
+                    </optgroup>
+                </select>
+                <input type="text" id="other-technology" name="other_technology" placeholder="Specify other technology"
+                    style="display: none;" value="{{ user_data.technology if user_data.technology and user_data.technology not in ['gemini-pro', 'gemini-ultra', 'gpt-3.5-turbo', 'gpt-4', 'gpt-4-turbo'] else '' }}">
+            </div>
+
+            <!-- SECTION 1: LLM Story -->
+            {% if not editing or editing_category == "story" %}
+            <fieldset>
+                <legend>Section 1: LLM Story</legend>
+                <div class="form-group">
+                    <label for="prompt">Prompt:</label>
+                    <textarea id="prompt" name="prompt" rows="3">{{ user_data.prompt }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="story">LLM Story:</label>
+                    <textarea id="story" name="story" rows="10">{{ user_data.story }}</textarea>
+                </div>
+            </fieldset>
+            {% endif %}
+
+            <!-- SECTION 2: Theme Transformation -->
+            {% if not editing or editing_category == "theme" %}
+            <fieldset>
+                <legend>Section 2: Theme Transformation</legend>
+                <div class="form-group">
+                    <label for="theme_prompt">Theme Prompt:</label>
+                    <textarea id="theme_prompt" name="theme_prompt" rows="2">{{ user_data.theme_prompt }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="theme_placeholders">Theme Placeholders:</label>
+                    <textarea id="theme_placeholders" name="theme_placeholders" rows="2">{{ user_data.theme_placeholders }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="theme_story">Theme Result:</label>
+                    <textarea id="theme_story" name="theme_story" rows="6">{{ user_data.theme_story }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="theme_original_story">Theme Original Story:</label>
+                    <textarea id="theme_original_story" name="theme_original_story" rows="6">{{ user_data.theme_original_story }}</textarea>
+                </div>
+            </fieldset>
+            {% endif %}
+
+            <!-- SECTION 3: Educational Content -->
+            {% if not editing or editing_category == "education" %}
+            <fieldset>
+                <legend>Section 3: Educational Enhancement</legend>
+                <div class="form-group">
+                    <label for="education_prompt">Education Prompt:</label>
+                    <textarea id="education_prompt" name="education_prompt" rows="2">{{ user_data.education_prompt }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="education_placeholders">Education Placeholders:</label>
+                    <textarea id="education_placeholders" name="education_placeholders" rows="2">{{ user_data.education_placeholders }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="education_story">Education Story:</label>
+                    <textarea id="education_story" name="education_story" rows="6">{{ user_data.education_story }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="education_original_story">Education Original Story:</label>
+                    <textarea id="education_original_story" name="education_original_story" rows="6">{{ user_data.education_original_story }}</textarea>
+                </div>
+            </fieldset>
+            {% endif %}
+
+            <!-- SECTION 4: Question Generation -->
+            {% if not editing or editing_category == "questions" %}
+            <fieldset>
+                <legend>Section 4: Question Generation</legend>
+                <div class="form-group">
+                    <label for="questions_prompt">Questions/Responses Prompt:</label>
+                    <textarea id="questions_prompt" name="questions_prompt" rows="2">{{ user_data.questions_prompt or '' }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="questions">Questions + Responses:</label>
+                    <textarea id="questions" name="questions" rows="6">{{ user_data.questions or '' }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="questions_original_story">Original Story for Question Generation:</label>
+                    <textarea id="questions_original_story" name="questions_original_story" rows="6">{{ user_data.questions_original_story or '' }}</textarea>
+                </div>
+            </fieldset>
+            {% endif %}
+
+            <div class="form-actions">
+                <button type="submit" class="button">{% if editing %}Update{% else %}Submit{% endif %} Task</button>
+                <a href="/dashboard" class="button secondary">Cancel</a>
+            </div>
+
+            {% if user_data.id %}
+                <input type="hidden" name="id" value="{{ user_data.id }}">
+            {% endif %}
+        </form>
+    </div>
+
+    <script>
+        // Show/hide "Other technology" field
+        document.addEventListener("DOMContentLoaded", function() {
+            var techSelect = document.getElementById('technology');
+            var otherTech = document.getElementById('other-technology');
+            function toggleOtherTech() {
+                if (techSelect.value === "other") {
+                    otherTech.style.display = "inline-block";
+                } else {
+                    otherTech.style.display = "none";
+                }
+            }
+            techSelect.addEventListener('change', toggleOtherTech);
+            toggleOtherTech();
+        });
+    </script>
+    <script src="{{ url_for('static', path='script.js') }}"></script>
+</body>
+</html>
