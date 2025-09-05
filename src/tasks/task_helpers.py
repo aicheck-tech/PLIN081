@@ -36,7 +36,6 @@ def commit_changes(username: str, operation: str) -> bool:
         return False
 
 def get_story_generator_df() -> pd.DataFrame:
-    """Load story generator dataframe from CSV or create new."""
     columns = ["id", "prompt", "story", "technology", "user", "created_at"]
     if os.path.exists(STORY_GENERATOR_CSV):
         df = pd.read_csv(STORY_GENERATOR_CSV)
@@ -47,7 +46,6 @@ def get_story_generator_df() -> pd.DataFrame:
     return pd.DataFrame(columns=columns)
 
 def get_theme_generator_df() -> pd.DataFrame:
-    """Load theme generator dataframe from CSV or create new."""
     columns = [
         "id", "prompt", "placeholders", "original_story", "new_story",
         "user", "technology", "theme_original_story", "created_at"
@@ -61,7 +59,6 @@ def get_theme_generator_df() -> pd.DataFrame:
     return pd.DataFrame(columns=columns)
 
 def get_educative_content_df() -> pd.DataFrame:
-    """Load educative content dataframe from CSV or create new."""
     columns = [
         "id", "prompt", "placeholders", "original_story", "new_story",
         "user", "technology", "education_original_story", "created_at"
@@ -75,13 +72,13 @@ def get_educative_content_df() -> pd.DataFrame:
     return pd.DataFrame(columns=columns)
 
 def get_questions_generator_df() -> pd.DataFrame:
-    """Load questions generator dataframe from CSV or create new."""
     columns = [
-        "id", "prompt", "original_story", "questions",
+        "id", "prompt", "questions_placeholders", "original_story", "questions",
         "user", "technology", "questions_original_story", "created_at"
     ]
     if os.path.exists(QUESTIONS_GENERATOR_CSV):
         df = pd.read_csv(QUESTIONS_GENERATOR_CSV)
+        # Add any missing columns
         for col in columns:
             if col not in df.columns:
                 df[col] = ""
@@ -89,10 +86,8 @@ def get_questions_generator_df() -> pd.DataFrame:
     return pd.DataFrame(columns=columns)
 
 def _next_id(df: pd.DataFrame) -> int:
-    """Get next available ID for a new submission."""
     if df.empty or "id" not in df.columns or df["id"].isnull().all():
         return 1
-    # Use max existing ID + 1
     return int(df["id"].dropna().astype(int).max()) + 1
 
 def save_submission(
@@ -183,6 +178,7 @@ def save_submission(
                 new_row = {
                     "id": int(submission_id) if submission_id else _next_id(df),
                     "prompt": data.get("questions_prompt", ""),
+                    "questions_placeholders": data.get("questions_placeholders", ""),
                     "original_story": data.get("questions_original_story", ""),
                     "questions": data.get("questions", ""),
                     "user": username,
@@ -205,8 +201,6 @@ def save_submission(
     except Exception as e:
         logger.error("Error saving submission: %s", e)
         return False
-
-
 
 def get_user_submissions(username: str) -> Dict[str, List[dict]]:
     """
@@ -267,6 +261,7 @@ def get_user_submissions(username: str) -> Dict[str, List[dict]]:
             submissions["questions"].append({
                 "id": row.get("id", ""),
                 "questions_prompt": row.get("prompt", ""),
+                "questions_placeholders": row.get("questions_placeholders", ""),
                 "questions_original_story": row.get("questions_original_story", "") or row.get("original_story", ""),
                 "questions": row.get("questions", ""),
                 "technology": row.get("technology", ""),
@@ -274,7 +269,6 @@ def get_user_submissions(username: str) -> Dict[str, List[dict]]:
             })
 
     return submissions
-
 
 def get_user_annotation_scores(username: str):
     """
@@ -285,7 +279,7 @@ def get_user_annotation_scores(username: str):
         "story": ["age_appropriateness", "clarity", "creativity", "language", "message", "literature"],
         "theme": ["theme_quality", "theme_success", "roleplaying"],
         "education": ["education_quality", "naturalness", "correctness"],
-        "questions": ["difficulty", "completeness", "q_correctness"],
+        "questions": ["difficulty", "completeness", "correctness_of_responses"],
     }
     if not ANNOTATION_CSV.is_file():
         return {k: {"score": 0, "max": len(v), "count": 0} for k, v in category_fields.items()}
@@ -297,7 +291,7 @@ def get_user_annotation_scores(username: str):
         subs = get_all_submissions(cat)
         submission_ids = set(str(s["id"]) for s in subs if s["user"] == username)
         if not submission_ids:
-            result[cat] = {"score": 0, "max": len(fields), "count": 0}
+            result[cat] = {"score": 0, "max": 100, "count": 0}
             continue
         # All annotations for user's submissions
         cat_df = df[(df["category"] == cat) & (df["submission_id"].astype(str).isin(submission_ids))]
@@ -306,12 +300,10 @@ def get_user_annotation_scores(username: str):
         num_annot = 0
         for _, row in cat_df.iterrows():
             annot = json.loads(row["fields_json"])
-            # Only actual scoring fields, skip notes
             s = sum(int(annot.get(f, 0)) for f in fields)
             total_score += s
             total_possible += len(fields)
             num_annot += 1
-        # Return per-annotation average (or 0 if none)
         avg = (total_score / total_possible) if total_possible else 0
         result[cat] = {
             "score": round(avg * 100, 1) if num_annot > 0 else 0,  # percent

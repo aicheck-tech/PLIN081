@@ -126,6 +126,7 @@ async def submit_task(
     education_story: Optional[str] = Form(""),
     education_original_story: Optional[str] = Form(""),
     questions_prompt: Optional[str] = Form(""),
+    questions_placeholders: Optional[str] = Form(""),
     questions: Optional[str] = Form(""),
     questions_original_story: Optional[str] = Form(""),
     username: str = Depends(get_current_user),
@@ -148,6 +149,7 @@ async def submit_task(
             "education_story": education_story,
             "education_original_story": education_original_story,
             "questions_prompt": questions_prompt,
+            "questions_placeholders": questions_placeholders,
             "questions": questions,
             "questions_original_story": questions_original_story,
         }
@@ -178,6 +180,7 @@ async def submit_task(
                 TaskSubmission(
                     questions_prompt=questions_prompt,
                     questions=questions,
+                    questions_placeholders=questions_placeholders,
                     questions_original_story=questions_original_story,
                     technology=technology
                 )

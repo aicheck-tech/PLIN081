@@ -10,7 +10,7 @@ from tasks.annotation_helpers import (
     get_all_submissions,
     get_annotations_for_submission,
     already_annotated_by,
-    save_annotation
+    save_annotation, get_user_annotations
 )
 
 router = APIRouter()
@@ -71,7 +71,7 @@ async def submit_annotation(
     # Questions
     difficulty: Optional[str] = Form(None),
     completeness: Optional[str] = Form(None),
-    q_correctness: Optional[str] = Form(None),
+    correctness_of_responses: Optional[str] = Form(None),
     # Notes (all)
     notes: Optional[str] = Form(""),
 ):
@@ -105,9 +105,23 @@ async def submit_annotation(
         annotation_fields = {
             "difficulty": b(difficulty),
             "completeness": b(completeness),
-            "q_correctness": b(q_correctness),
+            "correctness_of_responses": b(correctness_of_responses),
         }
     annotation_fields["notes"] = notes or ""
 
     save_annotation(submission_id, category, username, annotation_fields)
     return RedirectResponse("/annotate?category=" + category, status_code=302)
+
+
+@router.get("/my-annotations", response_class=HTMLResponse)
+async def annotate_dashboard(request: Request, username: str = Depends(get_current_user)):
+    annotation_stats, all_annotations = get_user_annotations(username)
+    return templates.TemplateResponse(
+        "annotate_dashboard.html",
+        {
+            "request": request,
+            "username": username,
+            "annotation_stats": annotation_stats,
+            "all_annotations": all_annotations,
+        }
+    )

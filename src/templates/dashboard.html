@@ -9,6 +9,7 @@
         <span>Welcome, {{ username }}!</span>
         <a href="/dashboard">Dashboard</a>
         <a href="/annotate">Annotate</a>
+        <a href="/my-annotations">My Annotations</a>
         <a href="/logout">Logout</a>
     </div>
 
@@ -177,6 +178,7 @@
                 <thead>
                     <tr>
                         <th>Prompt</th>
+                        <th>Placeholders</th>
                         <th>Original Story</th>
                         <th>Questions</th>
                         <th>Technology</th>
@@ -188,6 +190,7 @@
                     {% set empty = False %}
                     <tr>
                         <td>{{ sub.questions_prompt }}</td>
+                        <td>{{ sub.questions_placeholders }}</td>
                         <td>{{ sub.questions_original_story }}</td>
                         <td class="result-text">{{ sub.questions }}</td>
                         <td>{{ sub.technology }}</td>
@@ -201,11 +204,6 @@
         <div class="no-submissions">No question generations submitted.</div>
         {% endif %}
 
-        {% if empty %}
-        <div class="no-submissions">
-            <p>You haven't submitted any tasks yet.</p>
-        </div>
-        {% endif %}
 
         <div class="call-to-action" style="margin-top:32px;">
             <a href="/submit" class="button">Submit New Task</a>
