@@ -122,6 +122,8 @@ You will use **state-of-the-art AI chatbots** to generate, evaluate, and enhance
 
 You’ll learn both **AI prompting skills** and how to assess outputs for quality, engagement, and educational value.
 
+Feel free to use English or Czech for prompts and outputs. You are allowed to use your native language for 10% of your tasks if you prefer.
+
 ---
 
 ## Recommended Free AI Tools
@@ -182,7 +184,7 @@ Use these criteria (also used in annotation):
 
 Score each 0 (partial or no match) or 1 (perfect fit). See "Annotation" below for details.
 
-Example how to score (be strict):
+### Example how to score (be strict):
 
 ![Annotation Criteria](imgs/scoring.png)
 
@@ -193,7 +195,9 @@ Example how to score (be strict):
  - Moral is not communicated at the end.                     (0 points)
  - Writing style is too technical, not literary.        (0 points)
 
+###  Task
 Create at least 10 stories with 6 points, 10 stories with at least 4 points and 10 stories with at least 2 points.
+
 ---
 
 ## 3. Rewrite with a New Theme and custom characters
@@ -211,6 +215,7 @@ Use these criteria (also used in annotation):
  - **Theme**: Was theme change successful? Are the new elements integrated naturally?
  - **Roleplaying**: Does a story fit a character/theme?
 
+### Task
 Create at least 10 rewrites with 3 points and 10 rewrites with at least 2 points (use stories from step 2).
 
 ---
@@ -222,7 +227,7 @@ Revise the story to include simple explanations about:
  - **Science:** Simple explanations (volcanoes, rainbows, magnets).
  - **History:** Introduce a figure/event, keep it fun and light.
  - **Math:** Counting, shapes, puzzles, or logic for older kids.
- - Or others curriculum-aligned  opics.
+ - Or others curriculum-aligned topics.
 
 Prompts:
 > Add information about material properties (e.g., wood, metal) to the story and use these properties in story events and the character's decisions.
@@ -235,6 +240,7 @@ Prompts:
  - **Naturalness**: Is the fact blended into the story seamlessly?
  - **Correctness**: Are ALL facts accurate?
 
+###  Task
 Select two education topics (e.g. geography, art, biology) and for each of topics, create 10 stories (reusing your original stories from step 4 and applying a new prompt) with educational content.
 
 ---
@@ -262,7 +268,12 @@ Use [JSON Formatter](https://jsonformatter.org/) to validate your structure.
  - **Completeness:** Are questions testing knowledge from story?
  - **Correctness:** Are responses correct?
 
-For each generated education story in step 6, generate a set of at least 3 questions and answers in a format `{"question1": "answer2", "question2": "answer2"}`.
+###     Task
+For each generated education story in step 6, generate a set of at least 3 questions and answers in a format
+```json
+{"question1": "answer2", "question2": "answer2", "question3": "answer3"}}
+```
+
 ---
 
 ## 9. Annotation Instructions
