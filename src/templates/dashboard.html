@@ -21,7 +21,7 @@
           <ul>
             <li>
               <b>Total submissions:</b>
-              <span class="notdone {% if stats.total >= 120 %}done{% endif %}">{{ stats.total }}</span> / 120
+              <span class="notdone {% if stats.total >= 100 %}done{% endif %}">{{ stats.total }}</span> / 100
             </li>
             <li>
               LLM Story:
@@ -45,7 +45,7 @@
             </li>
             <li>
               Educational Content:
-              <span class="notdone {% if stats.education >= 30 %}done{% endif %}">{{ stats.education }}</span> / 30
+              <span class="notdone {% if stats.education >= 20 %}done{% endif %}">{{ stats.education }}</span> / 20
               {% if annotation_scores %}
                 <span style="margin-left:14px;font-size:0.96em;color:#555;">
                   Score: <b>{{ annotation_scores.education.score }}%</b>
@@ -55,7 +55,7 @@
             </li>
             <li>
               Questions:
-              <span class="notdone {% if stats.questions >= 30 %}done{% endif %}">{{ stats.questions }}</span> / 30
+              <span class="notdone {% if stats.questions >= 20 %}done{% endif %}">{{ stats.questions }}</span> / 20
               {% if annotation_scores %}
                 <span style="margin-left:14px;font-size:0.96em;color:#555;">
                   Score: <b>{{ annotation_scores.questions.score }}%</b>

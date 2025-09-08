@@ -138,46 +138,34 @@ You’ll learn both **AI prompting skills** and how to assess outputs for qualit
 
 ## 1. Generate an Original Children’s Story
 
-### a. Define Your Story Parameters
+### a. Build-in Your Story Parameters
 
-- **Age category:** `{age_category}` (e.g. 3–5, 6–8, 9–12)
-- **Optional Theme:** `{theme}` (e.g. pirates, space adventure, magical creatures, lost in a forest, time travel)
-- **Optional Moral:** `{Moral}` (e.g. power of friendship, honesty, courage, nobody is perfect)
+- **Age category:** preschool, early elementary, upper elementary, etc.
+- **Theme:** pirates, space adventure, magical creatures, lost in a forest, time travel, etc.
+- **Moral:** power of friendship, honesty, courage, nobody is perfect, etc.
 
 ### b. Single-Prompt Strategy
 Use a prompt like:
-> Write an original story for a {age_category}-year-old children. The story should be imaginative about {theme}, age-appropriate, and teach a gentle lesson about {moral}. The story should be engaging and easy to understand, with a clear beginning, middle, and end. Use simple language and vivid descriptions to capture the child's imagination.
+> Write an original story for a 4–5-year-old children. The story should be imaginative about pirates, age-appropriate, and teach a gentle lesson about courage. The story should be engaging and easy to understand, with a clear beginning, middle, and end. Use simple language and vivid descriptions to capture the child's imagination.
 
-*Example:*
-Write an original story for a 4–5-year-old children. The story should be imaginative about pirates, age-appropriate, and teach a gentle lesson about courage. The story should be engaging and easy to understand, with a clear beginning, middle, and end. Use simple language and vivid descriptions to capture the child's imagination.
 
 ### c. Multi-Turn (Iterative) Strategy
 Break the story generation into steps:
 
 1. **Outline**
     ```
-    Outline an original story for a {age_category}-year-old children. The story should be imaginative about {theme}.
-    ```
-    *Example:*
-    ```
     Outline an original story for a 10–13-year-old children. The story should be imaginative about talking animals.
     ```
 2. **Draft**
-    ```
-    Write the story from the outline, using simple language for a {age_category}-year-old. Make it fun and easy to follow.
-    ```
-    *Example:*
     ```
     Write the story from the outline, using simple language for a 10-13-year-old. Make it fun and easy to follow.
     ```
 3. **Refinement with moral or character style**
     ```
-    Revise the story to include a gentle lesson about {moral}.
-    ```
-    *Example:*
-    ```
     Revise the story to include a gentle lesson about courage.
     ```
+
+See example at [chatGPT snippet](https://chatgpt.com/share/68befcc5-1134-800d-83d8-6abb90896b2e).
 
 ---
 
@@ -192,17 +180,28 @@ Use these criteria (also used in annotation):
  - **Message/Moral:** If specified, is the lesson clear and gentle?
  - **Literature quality:** Is it comparable with original children’s books?
 
-Score each 0 or 1. See "Annotation" below for details.
+Score each 0 (partial or no match) or 1 (perfect fit). See "Annotation" below for details.
+
+Example how to score (be strict):
+
+![Annotation Criteria](imgs/scoring.png)
+
+ - Not suitable for children. Too adult themes.    (0 points)
+ - Story is well presented and clear.              (1 point)
+ - Unoriginal plot.                    (0 points)
+ - Language is simple and easy to read aloud.      (1 point)
+ - Moral is not communicated at the end.                     (0 points)
+ - Writing style is too technical, not literary.        (0 points)
 
 Create at least 10 stories with 6 points, 10 stories with at least 4 points and 10 stories with at least 2 points.
 ---
 
 ## 3. Rewrite with a New Theme and custom characters
 
-Use placeholders like `{age}`, `{gender}`, `{main_character}`, `{side_character}`.
+Use placeholders `{age}` and `{theme}` and optional placeholders such as `{gender}`, `{main_character}`, `{side_character}`.
 
 **Prompt Example:**
-> Reimagine the previous story from the viewpoint of a wise old {side_character} guiding a {main_character}.
+> Reimagine the previous story from the viewpoint of a wise old {side_character} guiding a {main_character} in a world of {theme}. The story should be suitable for a {age}-year-old child, maintaining the original plot but adapting the setting and characters to fit the new theme.
 
 ## 4. Evaluate rewritten story
 
@@ -212,7 +211,7 @@ Use these criteria (also used in annotation):
  - **Theme**: Was theme change successful? Are the new elements integrated naturally?
  - **Roleplaying**: Does a story fit a character/theme?
 
-Create at least 10 rewrites with 3 points, 10 rewrites with at least 2 points and 10 rewrutes with at least 1 point.
+Create at least 10 rewrites with 3 points and 10 rewrites with at least 2 points (use stories from step 2).
 
 ---
 
@@ -235,6 +234,8 @@ Prompts:
  - **Story Quality**: Is a story quality kept after change? Does the story remain clear and enjoyable?
  - **Naturalness**: Is the fact blended into the story seamlessly?
  - **Correctness**: Are ALL facts accurate?
+
+Select two education topics (e.g. geography, art, biology) and for each of topics, create 10 stories (reusing your original stories from step 4 and applying a new prompt) with educational content.
 
 ---
 
@@ -261,18 +262,19 @@ Use [JSON Formatter](https://jsonformatter.org/) to validate your structure.
  - **Completeness:** Are questions testing knowledge from story?
  - **Correctness:** Are responses correct?
 
+For each generated education story in step 6, generate a set of at least 3 questions and answers in a format `{"question1": "answer2", "question2": "answer2"}`.
 ---
 
 ## 9. Annotation Instructions
 
 You will review stories written by others and annotate them using yes/no checkboxes.
-You are requested to annotate at least 60 items per category (240 total).
+You are requested to annotate at least 60 items original stories, 40 theme rewrites, 40 education rewrites and 40 questions/responses sets.
 
-Annotations should be honest and constructive. Nobody won't be penalized for receiving low scores.
+Annotations should be honest and constructive, if you are not sure, treat score as 0 (unchecked). Nobody won't be penalized for receiving low scores.
 
 Each section has its own criteria, always marked 0 or 1:
 
-### Category 1: LLM Story
+### Category 1: LLM Story (60times)
 
 - Age Appropriateness
 - Clarity & Coherence
@@ -281,19 +283,19 @@ Each section has its own criteria, always marked 0 or 1:
 - Message/Moral
 - Literature Quality
 
-### Category 2: Theme Transformation
+### Category 2: Theme Transformation (60times)
 
 - Story Quality
 - Theme
 - Roleplaying
 
-### Category 3: Education
+### Category 3: Education (40times)
 
 - Story Quality
 - Naturalness
 - Correctness
 
-### Category 4: Questions
+### Category 4: Questions (40times)
 
 - Difficulty
 - Completeness
@@ -303,9 +305,9 @@ Each section has its own criteria, always marked 0 or 1:
 
 ## Deliverables
 
-- All prompts (with placeholders), placeholder values (as JSON), and LLM responses (with placeholders filled), 30 per section (120 total) inserted into a annotation interface.
-- Peer annotations (60 per section, 240 total) done in the annotation interface.
-- Final reflection comparing strategies (200+ words):
+- All prompts (with placeholders), placeholder values (as JSON), and LLM responses (with placeholders filled), 30 per section 1 and 2 and 20 per section 3 and 4 inserted into an [annotation interface](https://idc.aicheck.tech/dashboard).
+- Peer annotations (60, 60, 40, 40) done in the annotation interface.
+- Final reflection comparing strategies (200+ words) sent to the instructor:
     - Did the educational content enhance or disrupt the story?
     - Were all facts accurate and explanations clear?
     - Did you find single or multi-prompt strategies better?
