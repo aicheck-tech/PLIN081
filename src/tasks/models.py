@@ -22,6 +22,7 @@ class TaskSubmission(BaseModel):
         education_original_story: Original story before educational enhancement.
 
         questions_prompt: Question generation prompt.
+        questions_placeholders: Placeholders for questions/responses prompt.
         questions: Generated questions.
         questions_original_story: Original story for question generation.
     """
@@ -40,6 +41,7 @@ class TaskSubmission(BaseModel):
     education_original_story: Optional[str] = Field(None, description="Original story before educational enhancement")
 
     questions_prompt: Optional[str] = Field(None, description="Question generation prompt")
+    questions_placeholders: Optional[str] = Field(None, description="Placeholders for questions/responses prompt")
     questions: Optional[str] = Field(None, description="Generated questions")
     questions_original_story: Optional[str] = Field(None, description="Original story for question generation")
 
@@ -107,7 +109,7 @@ class TaskSubmission(BaseModel):
     @field_validator('education_placeholders')
     def validate_education_placeholders(cls, v: Optional[str]) -> str:
         if not v:
-            return ""
+            return "{}"
         v = v.strip()
         return json.dumps(json.loads(v), ensure_ascii=False, indent=2)  # Validate JSON format
 
@@ -132,6 +134,13 @@ class TaskSubmission(BaseModel):
         if len(v) > 5000:
             raise ValueError("Question generation prompts cannot exceed 5000 characters.")
         return v
+
+    @field_validator('questions_placeholders')
+    def validate_questions_placeholders(cls, v: Optional[str]) -> str:
+        if not v:
+            return "{}"
+        v = v.strip()
+        return json.dumps(json.loads(v), ensure_ascii=False, indent=2)  # Validate JSON format
 
     @field_validator('questions')
     def validate_questions(cls, v: Optional[str]) -> str:

@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Student Task Submission Portal</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <div class="top-banner">
@@ -10,13 +10,11 @@
             <span>Welcome, {{ username }}!</span>
             <a href="/dashboard">Dashboard</a>
             <a href="/annotate">Annotate</a>
+            <a href="/my-annotations">My Annotations</a>
             <a href="/logout">Logout</a>
         {% else %}
             <a href="/login">Login</a>
         {% endif %}
-            <div class="top-banner">
-
-
     </div>
     <div class="container">
         <h1>Student Task Submission Portal</h1>
@@ -28,6 +26,6 @@
         </div>
         {% endif %}
     </div>
-    <script src="{{ url_for('static', path='script.js') }}"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>

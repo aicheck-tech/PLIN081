@@ -84,10 +84,11 @@ def get_all_submissions(category: str):
         csv_file = QUESTIONS_GENERATOR_CSV
         fields = [
             "id", "user", "technology",
-            "prompt",                  # Questions prompt
-            "questions",               # Questions
-            "questions_original_story",# Questions original
-            "original_story"           # For backward compatibility
+            "prompt",                     # Questions prompt
+            "questions_placeholders",     # New field
+            "questions",                  # Questions+responses
+            "questions_original_story",   # Questions original
+            "original_story"              # For backward compatibility
         ]
     else:
         return []
@@ -111,7 +112,100 @@ def get_all_submissions(category: str):
             d["education_original_story"] = d.get("education_original_story", "") or d.get("original_story", "")
         if category == "questions":
             d["questions_prompt"] = d.get("prompt", "")
+            d["questions_placeholders"] = d.get("questions_placeholders", "")
             d["questions"] = d.get("questions", "")
             d["questions_original_story"] = d.get("questions_original_story", "") or d.get("original_story", "")
         result.append(d)
     return result
+import os
+import json
+import pandas as pd
+
+from tasks.config import (
+    DATA_DIR, STORY_GENERATOR_CSV, THEME_GENERATOR_CSV,
+    EDUCATIVE_CONTENT_CSV, QUESTIONS_GENERATOR_CSV
+)
+from tasks.annotation_helpers import get_all_submissions
+
+ANNOTATION_CSV = DATA_DIR / "annotations.csv"
+
+
+def get_user_annotations(username: str):
+    """
+    Returns annotation stats and all annotation details for a user.
+    Args:
+        username: Annotator username.
+    Returns:
+        (annotation_stats, all_annotations)
+        - annotation_stats: dict, per-category count and avg score.
+        - all_annotations: list of dicts, all annotations with checked/max_fields,
+          plus 'submission_json' for viewing the original submission.
+    """
+    category_fields = {
+        "story": ["age_appropriateness", "clarity", "creativity", "language", "message", "literature"],
+        "theme": ["theme_quality", "theme_success", "roleplaying"],
+        "education": ["education_quality", "naturalness", "correctness"],
+        "questions": ["difficulty", "completeness", "correctness_of_responses"],
+    }
+    if not os.path.exists(ANNOTATION_CSV):
+        stats = {cat: {"count": 0, "avg_score": 0} for cat in category_fields}
+        stats["total"] = 0
+        return stats, []
+
+    df = pd.read_csv(ANNOTATION_CSV)
+    user_df = df[df["user"] == username]
+    stats = {}
+    total = 0
+
+    for cat, fields in category_fields.items():
+        cat_df = user_df[user_df["category"] == cat]
+        count = len(cat_df)
+        avg = 0
+        if count > 0:
+            scores = []
+            for _, row in cat_df.iterrows():
+                try:
+                    d = json.loads(row["fields_json"])
+                    s = sum(int(d.get(f, 0)) for f in fields)
+                    scores.append(100 * s // len(fields) if fields else 0)
+                except Exception:
+                    continue
+            avg = round(sum(scores) / len(scores), 1) if scores else 0
+        stats[cat] = {"count": count, "avg_score": avg}
+        total += count
+    stats["total"] = total
+
+    # All annotations, newest first, with checked/max_fields for the table, plus submission_json
+    user_df = user_df.sort_values("created_at", ascending=False)
+    all_annotations = []
+    for _, row in user_df.iterrows():
+        fields_dict = {}
+        try:
+            fields_dict = json.loads(row["fields_json"])
+        except Exception:
+            pass
+        cat = row["category"]
+        cat_fields = category_fields.get(cat, [])
+        checked = sum(int(fields_dict.get(f, 0)) for f in cat_fields)
+        # Attach the original submission for modal viewing
+        submission = {}
+        try:
+            all_subs = get_all_submissions(cat)
+            for sub in all_subs:
+                if str(sub["id"]) == str(row["submission_id"]):
+                    submission = sub
+                    break
+        except Exception:
+            pass
+        ann = {
+            "created_at": row["created_at"],
+            "category": cat,
+            "submission_id": row["submission_id"],
+            "fields": fields_dict,
+            "checked": checked,
+            "max_fields": len(cat_fields),
+            "submission_json": submission,  # For modal
+        }
+        all_annotations.append(ann)
+    return stats, all_annotations
+

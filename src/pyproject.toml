@@ -13,7 +13,8 @@ dependencies = [
     "pandas",
     "gitpython",
     "itsdangerous",
-    "bcrypt"
+    "bcrypt",
+    "gunicorn"
 ]
 
 [tool.setuptools]

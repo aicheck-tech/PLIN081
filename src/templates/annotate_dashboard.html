@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Annotation Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/annotate.css">
+</head>
+<body>
+<div class="top-banner">
+    <span>Welcome, {{ username }}!</span>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/annotate">Annotate</a>
+    <a href="/my-annotations">My Annotations</a>
+    <a href="/logout">Logout</a>
+</div>
+<div class="container">
+    <h1>Your Annotation Activity</h1>
+
+    <div class="card" style="max-width:420px;margin:20px 0;">
+        <h3>Your Annotation Stats</h3>
+        <ul>
+            {% for cat in ['story','theme','education','questions'] %}
+            <li>
+                <span style="font-weight:600;">{{ cat|capitalize }}</span>:
+                <span class="notdone {% if annotation_stats[cat].count >= 10 %}done{% endif %}">
+                    {{ annotation_stats[cat].count }}
+                </span>
+                annotations
+                <span style="margin-left:14px;font-size:0.96em;color:#555;">
+                  Average score given:
+                  <b>{{ annotation_stats[cat].avg_score }}%</b>
+                </span>
+            </li>
+            {% endfor %}
+            <li style="margin-top:6px;">
+                <span style="font-weight:600;">Total:</span>
+                <span>{{ annotation_stats.total }}</span>
+            </li>
+        </ul>
+    </div>
+
+    <h2>Your Annotations</h2>
+    {% if all_annotations %}
+    <div class="card">
+        <table style="width:100%">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Submission ID</th>
+                <th>Score</th>
+                <th>Criteria</th>
+                <th>Notes</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ann in all_annotations %}
+            <tr>
+                <td style="white-space:nowrap;">{{ ann.created_at.split("T")[0] }}</td>
+                <td>{{ ann.category|capitalize }}</td>
+                <td>
+                    <a href="#" class="view-original"
+                       data-submission='{{ ann.submission_json | tojson }}'
+                       data-category="{{ ann.category }}">
+                        <span class="icon" aria-hidden="true">🔍</span>View {{ ann.submission_id }}
+                    </a>
+                </td>
+                <td>{{ ann.checked }}/{{ ann.max_fields }}</td>
+                <td>
+                    {% set catfields = [] %}
+                    {% if ann.category == "story" %}
+                    {% set catfields = ['age_appropriateness', 'clarity', 'creativity', 'language', 'message',
+                    'literature'] %}
+                    {% elif ann.category == "theme" %}
+                    {% set catfields = ['theme_quality', 'theme_success', 'roleplaying'] %}
+                    {% elif ann.category == "education" %}
+                    {% set catfields = ['education_quality', 'naturalness', 'correctness'] %}
+                    {% elif ann.category == "questions" %}
+                    {% set catfields = ['difficulty', 'completeness', 'correctness_of_responses'] %}
+                    {% endif %}
+                    {% set selected = [] %}
+                    {% for k in catfields %}
+                      {% if ann.fields[k]|string == '1' %}
+                        {% set parts = [] %}
+                        {% for w in k.split('_') %}
+                          {% if w != 'of' %}
+                            {% if w|length > 5 %}
+                              {% set _ = parts.append(w[:6] ~ '.') %}
+                            {% else %}
+                              {% set _ = parts.append(w) %}
+                            {% endif %}
+                          {% endif %}
+                        {% endfor %}
+                        {% set abbr = parts | join(' ') %}
+                        {% set _ = selected.append(abbr|capitalize) %}
+                      {% endif %}
+                    {% endfor %}
+                    {{ selected|join(' | ') }}
+                </td>
+                <td>{{ ann.fields.notes or "" }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="no-submissions">You have not made any annotations yet.</div>
+    {% endif %}
+</div>
+<!-- Modal for viewing original submission -->
+<div id="submissionModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="submissionDetails"></div>
+    </div>
+</div>
+<style>
+    .modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.32);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background: #fff;
+        border-radius: 1em;
+        box-shadow: 0 8px 40px #162b40cc;
+        max-width: 940px; /* wider */
+        padding: 2.5em 2.5em 2em 2.5em;
+        width: 99%;
+        position: relative;
+        animation: fadein 0.15s;
+    }
+
+    .close {
+        position: absolute;
+        top: 0.7em;
+        right: 1.1em;
+        font-size: 2.2em;
+        color: #3772ff;
+        cursor: pointer;
+        font-weight: 300;
+    }
+
+    @keyframes fadein {
+        from {
+            opacity: 0;
+            transform: scale(.96);
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    #submissionDetails table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    #submissionDetails td {
+        vertical-align: top;
+        padding: 8px 10px 6px 0;
+    }
+
+    #submissionDetails tr td:first-child {
+        min-width: 140px;
+        max-width: 210px;
+        font-weight: 600;
+        color: #2b4267;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    #submissionDetails tr td:last-child {
+        white-space: pre-wrap;
+        font-family: inherit;
+        color: #162136;
+        font-weight: 400;
+    }
+
+    #submissionDetails h3 {
+        margin-top: 0;
+        font-size: 1.4em;
+        color: #27374d;
+    }
+
+    .view-original {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.32em;
+        font-size: 1.03em;
+        text-decoration: none;
+        border: none;
+        background: none;
+        padding: 2px 10px;
+        border-radius: 7px;
+        color: #3772ff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.18s;
+        box-shadow: none;
+    }
+
+    .view-original:hover {
+        background: #e9f3ff;
+        color: #1956a8;
+        text-decoration: underline;
+    }
+
+    .view-original .icon {
+        font-size: 1.08em;
+        margin-right: 4px;
+        vertical-align: -2px;
+        filter: drop-shadow(0 1px 2px #bbb2);
+    }
+</style>
+
+<script>
+    function closeModal() {
+        document.getElementById('submissionModal').style.display = 'none';
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('.view-original').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                let data = this.getAttribute('data-submission');
+                let category = this.getAttribute('data-category');
+                let detailsDiv = document.getElementById('submissionDetails');
+                try {
+                    let obj = JSON.parse(data);
+                    let html = `<h3>Original Submission</h3><table style="width:100%;word-break:break-word;">`;
+                    if (category === "story") {
+                        html += `<tr><td><b>Prompt:</b></td><td>${obj.prompt || ""}</td></tr>`;
+                        html += `<tr><td><b>Story:</b></td><td>${obj.story || ""}</td></tr>`;
+                        html += `<tr><td><b>Technology:</b></td><td>${obj.technology || ""}</td></tr>`;
+                    } else if (category === "theme") {
+                        html += `<tr><td><b>Prompt:</b></td><td>${obj.theme_prompt || ""}</td></tr>`;
+                        html += `<tr><td><b>Placeholders:</b></td><td>${obj.theme_placeholders || ""}</td></tr>`;
+                        html += `<tr><td><b>Result:</b></td><td>${obj.theme_story || ""}</td></tr>`;
+                        html += `<tr><td><b>Original Story:</b></td><td>${obj.theme_original_story || ""}</td></tr>`;
+                        html += `<tr><td><b>Technology:</b></td><td>${obj.technology || ""}</td></tr>`;
+                    } else if (category === "education") {
+                        html += `<tr><td><b>Prompt:</b></td><td>${obj.education_prompt || ""}</td></tr>`;
+                        html += `<tr><td><b>Placeholders:</b></td><td>${obj.education_placeholders || ""}</td></tr>`;
+                        html += `<tr><td><b>Modified Story:</b></td><td>${obj.education_story || ""}</td></tr>`;
+                        html += `<tr><td><b>Original Story:</b></td><td>${obj.education_original_story || ""}</td></tr>`;
+                        html += `<tr><td><b>Technology:</b></td><td>${obj.technology || ""}</td></tr>`;
+                    } else if (category === "questions") {
+                        html += `<tr><td><b>Prompt:</b></td><td>${obj.questions_prompt || ""}</td></tr>`;
+                        html += `<tr><td><b>Placeholders:</b></td><td>${obj.questions_placeholders || ""}</td></tr>`;
+                        html += `<tr><td><b>Questions+Responses:</b></td><td>${obj.questions || ""}</td></tr>`;
+                        html += `<tr><td><b>Original Story:</b></td><td>${obj.questions_original_story || ""}</td></tr>`;
+                        html += `<tr><td><b>Technology:</b></td><td>${obj.technology || ""}</td></tr>`;
+                    } else {
+                        html += `<tr><td colspan="2"><pre>${JSON.stringify(obj, null, 2)}</pre></td></tr>`;
+                    }
+                    html += `</table>`;
+                    detailsDiv.innerHTML = html;
+                } catch (err) {
+                    detailsDiv.innerHTML = `<pre>${data}</pre>`;
+                }
+                document.getElementById('submissionModal').style.display = 'flex';
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

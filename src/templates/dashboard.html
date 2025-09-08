@@ -2,13 +2,14 @@
 <html>
 <head>
     <title>Dashboard - Task Submissions</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <div class="top-banner">
         <span>Welcome, {{ username }}!</span>
         <a href="/dashboard">Dashboard</a>
         <a href="/annotate">Annotate</a>
+        <a href="/my-annotations">My Annotations</a>
         <a href="/logout">Logout</a>
     </div>
 
@@ -20,7 +21,7 @@
           <ul>
             <li>
               <b>Total submissions:</b>
-              <span class="notdone {% if stats.total >= 120 %}done{% endif %}">{{ stats.total }}</span> / 120
+              <span class="notdone {% if stats.total >= 100 %}done{% endif %}">{{ stats.total }}</span> / 100
             </li>
             <li>
               LLM Story:
@@ -44,7 +45,7 @@
             </li>
             <li>
               Educational Content:
-              <span class="notdone {% if stats.education >= 30 %}done{% endif %}">{{ stats.education }}</span> / 30
+              <span class="notdone {% if stats.education >= 20 %}done{% endif %}">{{ stats.education }}</span> / 20
               {% if annotation_scores %}
                 <span style="margin-left:14px;font-size:0.96em;color:#555;">
                   Score: <b>{{ annotation_scores.education.score }}%</b>
@@ -54,7 +55,7 @@
             </li>
             <li>
               Questions:
-              <span class="notdone {% if stats.questions >= 30 %}done{% endif %}">{{ stats.questions }}</span> / 30
+              <span class="notdone {% if stats.questions >= 20 %}done{% endif %}">{{ stats.questions }}</span> / 20
               {% if annotation_scores %}
                 <span style="margin-left:14px;font-size:0.96em;color:#555;">
                   Score: <b>{{ annotation_scores.questions.score }}%</b>
@@ -177,6 +178,7 @@
                 <thead>
                     <tr>
                         <th>Prompt</th>
+                        <th>Placeholders</th>
                         <th>Original Story</th>
                         <th>Questions</th>
                         <th>Technology</th>
@@ -188,6 +190,7 @@
                     {% set empty = False %}
                     <tr>
                         <td>{{ sub.questions_prompt }}</td>
+                        <td>{{ sub.questions_placeholders }}</td>
                         <td>{{ sub.questions_original_story }}</td>
                         <td class="result-text">{{ sub.questions }}</td>
                         <td>{{ sub.technology }}</td>
@@ -201,17 +204,12 @@
         <div class="no-submissions">No question generations submitted.</div>
         {% endif %}
 
-        {% if empty %}
-        <div class="no-submissions">
-            <p>You haven't submitted any tasks yet.</p>
-        </div>
-        {% endif %}
 
         <div class="call-to-action" style="margin-top:32px;">
             <a href="/submit" class="button">Submit New Task</a>
         </div>
 
     </div>
-    <script src="{{ url_for('static', path='script.js') }}"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>

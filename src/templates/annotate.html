@@ -2,13 +2,15 @@
 <html>
 <head>
     <title>Annotate</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', path='annotate.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/annotate.css">
 </head>
 <body>
     <div class="top-banner">
         <span>Welcome, {{ username }}!</span>
         <a href="/dashboard">Dashboard</a>
+        <a href="/annotate">Annotate</a>
+        <a href="/my-annotations">My Annotations</a>
         <a href="/logout">Logout</a>
     </div>
     <div class="container">
@@ -91,7 +93,7 @@
             {% elif category == "questions" %}
                 <label><input type="checkbox" name="difficulty" value="1"> Difficulty</label><br>
                 <label><input type="checkbox" name="completeness" value="1"> Completeness</label><br>
-                <label><input type="checkbox" name="q_correctness" value="1"> Correctness</label><br>
+                <label><input type="checkbox" name="correctness_of_responses" value="1"> Correctness</label><br>
             {% endif %}
 
             <label>Notes (optional):<br>

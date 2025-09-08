@@ -2,12 +2,14 @@
 <html>
 <head>
     <title>Submit Task</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <div class="top-banner">
         <span>Welcome, {{ username }}!</span>
         <a href="/dashboard">Dashboard</a>
+        <a href="/annotate">Annotate</a>
+        <a href="/my-annotations">My Annotations</a>
         <a href="/logout">Logout</a>
     </div>
 
@@ -128,7 +130,11 @@
                     <textarea id="questions_prompt" name="questions_prompt" rows="2">{{ user_data.questions_prompt or '' }}</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="questions">Questions + Responses:</label>
+                    <label for="education_placeholders">Questions/Responses Placeholders:</label>
+                    <textarea id="questions_placeholders" name="questions_placeholders" rows="2">{{ user_data.questions_placeholders }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="questions">Generated Questions + Responses:</label>
                     <textarea id="questions" name="questions" rows="6">{{ user_data.questions or '' }}</textarea>
                 </div>
                 <div class="form-group">
@@ -165,6 +171,6 @@
             toggleOtherTech();
         });
     </script>
-    <script src="{{ url_for('static', path='script.js') }}"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>
