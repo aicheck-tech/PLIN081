@@ -23,105 +23,111 @@
         <div class="slides">
             <section data-markdown>
                 <textarea data-template aria-label="slides">
-                    ## <span class="tag discussion">Diskuze</span> Plán hodiny
+## <span class="tag discussion">Diskuze</span> Plán hodiny
 
-                    - Git
-                    - Code reviews
-                    - Diskuze o projektech
+- Git
+- Code reviews
 
-                    ---
+---
 
-                    ## <span class="tag discussion">Diskuze</span> Git
+## <span class="tag discussion">Diskuze</span> Git
 
-                    - Základní dovednost pro všechny členy IT týmů<br />
-                      (data analysts, data scientists, testers, AI specialists)
-                    - Pro běžného uživatele stačí minimální znalosti
-                    - I běžní uživatelé si Googlují/ptají se AI, jak se zachovat v komplikovaných situacích
+- Základní dovednost pro všechny členy IT týmů<br />
+  (data analysts, data scientists, testers, AI specialists)
+- Pro běžného uživatele stačí minimální znalosti
+- I běžní uživatelé si Googlují/ptají se AI, jak se zachovat v komplikovaných situacích
 
-                    ---
-                    ## <span class="tag discussion">Diskuze</span> Terminologie
-                    - Základní operace pomocí Gitu (jdou dělat i z prostředí PyCharmu):
-                        - `git clone <url>`: vytvoří složku u vás s celým repozitářem
-                        - `git pull`: stáhne změny z repozitáře
-                        - `git checkout -b <branch>`: vytvoří novou větev, do které se píší změny
-                        - `git add <file>`: označí, které soubory chcete sdílet s ostatními
-                        - `git commit -m "message"`: uloží změny
-                        - `git push`: nahraje změny na server
-                    - Základní operace v prostředí GitHubu:
-                        - Vytvoření pull requestu
-                        - Code review
-                        - Merge pull requestu
+---
+## <span class="tag discussion">Diskuze</span> Terminologie
+- Základní operace pomocí Gitu (jdou dělat i z prostředí PyCharmu):
+    - `git clone <url>`: vytvoří složku u vás s celým repozitářem
+    - `git pull`: stáhne změny z repozitáře
+    - `git checkout <branch`: změní aktivní větev
+    - `git checkout -b <branch>`: vytvoří novou větev, do které se píší změny
+    - `git add <file>`: označí, které soubory chcete sdílet s ostatními
+    - `git commit -m "message"`: uloží změny
+    - `git push`: nahraje změny na server
+- Základní operace v prostředí GitHubu:
+    - Vytvoření pull requestu: žádost o sloučení vaší větve do jiné větve
+    - Code review: komentáře k pull requestu
+    - Merge pull requestu: sloučení vaší větve do jiné větve podle zvolené strategie
 
-                    ---
-                    ## <span class="tag discussion">Diskuze</span> Etiketa práce s Gitem
+---
+## <span class="tag discussion">Diskuze</span> Etiketa práce s Gitem
 
-                    - Děláme srozumitelné názvy větví, které popisují, co větev má dělat
-                    - To samé pro commity, navíc by nemělo být moc souborů v commitech
-                    - Neděláme commity do hlavní větve (master/main), ale do své větve
-                    - Nikdy nedáváme hesla, klíče a jiné věci do Gitu
-                    - Pokud to není nutné, nedáváme ani velké soubory do Gitu (Git LFS, vaše úložiště)
-                    - Nedáváme commity do cizí větve bez vědomí autora
+- Děláme srozumitelné názvy větví, které popisují, co větev má dělat
+- To samé pro commity, navíc by nemělo být moc souborů v commitech
+- Neděláme commity do hlavní větve (master/main), ale do své větve
+- Nikdy nedáváme hesla, klíče a jiné věci do Gitu
+- Pokud to není nutné, nedáváme ani velké soubory do Gitu (Git LFS, vaše úložiště)
+- Nedáváme commity do cizí větve bez vědomí autora
 
-                    ---
+---
 
-                    ## <span class="tag discussion">Diskuze</span> Git a kariéra
+## <span class="tag discussion">Diskuze</span> Git a kariéra
 
-                    - Mít Git repozitáře v CV je plus
-                    - Můžete mít vlastní repozitář, nebo se podílet na open-source projektech jako kontributor
-                    - Jaké projekty si na to vybrat?
-                        - Aspoň trochu známé
-                        - Aby vás bavili
-                        - Aby správce projektu souhlasil s vaším přispíváním (issue, pull requesty)
+- Mít Git repozitáře v CV je plus
+- Můžete mít vlastní repozitář, nebo se podílet na open-source projektech jako kontributor
+- Jaké projekty si na to vybrat?
+    - Aspoň trochu známé
+    - Aby vás bavily
+    - Aby správce projektu souhlasil s vaším přispíváním (issue, pull requesty)
 
-                    ---
+---
 
-                    ## <span class="tag discussion">Diskuze</span> Ukázka v Pycharmu a v konzoli
+## <span class="tag activity">Aktivita</span> Rozjetí Gitu v PyCharmu
 
-                    ---
+---
 
-                    ## <span class="tag discussion">Diskuze</span> Výběr školního projektu
+## <span class="tag activity">Aktivita</span> Code reviews v GitHubu
 
-                    <table border="1">
-                      <tr>
-                        <td>Zajímavá data</td>
-                        <td>Užitečná data</td>
-                        <td>Dostupná data</td>
-                      </tr>
-                      <tr>
-                        <td>Lehký problém</td>
-                        <td>Těžký, ale již vyřešený problém</td>
-                        <td>Těžký problém</td>
-                      </tr>
-                      <tr>
-                        <td>Problematika zajímá nás</td>
-                        <td>Nikoho to nezajímá</td>
-                        <td>Problematika zajímá uživatele</td>
-                      </tr>
-                    </table>
+1. Rozeberte si kódová označení: lane, river, ember, ash, sage
+2. Každý udělá code review pro pull request na svůj code name
+3. Společně si projdeme code review
 
-                    ---
+---
 
-                    ## <span class="tag activity">Aktivita</span> Brainstorming datasetů
+## <span class="tag activity">Aktivita</span> Code review
 
-                    | Data set                                  | Dostupnost? | Zajímá nás? | Najdeme na něm zajímavý problém? | Je to v našich silách? |
-                    |-------------------------------------------|-------------|-------------|----------------------------------|------------------------|
-                    | [Evropské patenty](https://data.gov.cz/datov%C3%A9-sady?poskytovatel=https%3A%2F%2Frpp-opendata.egon.gov.cz%2Fodrpp%2Fzdroj%2Forg%C3%A1n-ve%C5%99ejn%C3%A9-moci%2F48135097&str%C3%A1nka=5) |             |             |                                  |                        |
-                    | [Něco z Kaggle.com](https://www.kaggle.com/) |             |             |                                  |                        |
-                    | [Lokální open data](https://data.brno.cz/)                         |             |             |                                  |                        |
-                    ---
+ - `Add simple text utils for reverse and anagram`
+ - [Code review](https://github.com/aicheck-tech/PLIN081-2025/pull/7/files)
 
-                    ## <span class="tag discussion">Diskuze</span> Úkol
+---
 
-                    Do čtvrtka 8:00 každý tým zašle návrh 2-3 datasetů, které by mohl použít pro svůj projekt.
-                    - Název datasetu + link
-                    - Nápad, co s tím
-                    - Studie, kdo by projekt mohl využít
+## <span class="tag activity">Aktivita</span> Code review
 
-                    ---
+ - `Add pluralize text util`
+ - [Code review](https://github.com/aicheck-tech/PLIN081-2025/pull/14/files)
 
+---
 
+## <span class="tag activity">Aktivita</span> Code review
 
-                </textarea>
+ - `Add REST server`
+ - [Code review](https://github.com/aicheck-tech/PLIN081-2025/pull/21/files)
+
+---
+
+## <span class="tag activity">Aktivita</span> Vlastní kód a review
+
+ - `git checkout -b feature/my-text-util`
+ - Napsat kód, nápady:
+    - Count vowels/consonants
+    - Check if a string is a palindrome
+    - Capitalize each word
+    - Remove duplicate words
+    - Convert snake_case to CamelCase
+    - Find the longest word
+ - Napsat test
+ - Spustit a otestovat
+ - `git add .`
+ - `git push origin feature/my-text-util`
+ - Vytvořit pull request
+ - Zapsat se jako code reviewer k nějakému pull requestu
+ - Udělat code review
+                    
+
+</textarea>
             </section>
         </div>
     </div>
@@ -154,4 +160,6 @@
     </script>
 </body>
 </html>
+
+
 
