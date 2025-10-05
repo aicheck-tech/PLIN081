@@ -138,7 +138,18 @@ Feel free to use English or Czech for prompts and outputs. You are allowed to us
 
 ---
 
-## 1. Generate an Original Children’s Story
+There is also really bad screencast at [https://idc.aicheck.tech/static/tutorial.mp4](https://idc.aicheck.tech/static/tutorial.mp4) showing how to do the tasks.
+
+The whole process starts with (A) steps &ndash; creating a prompt and and prompt result.
+You evaluate own work using instructions in (B) step to estimate whether the prompt is worth submitting.
+If the prompt and the response is good enough, you submit them to the annotation interface, but you do not evaluate your own work in the interface.
+
+After other students submits their work, you will be albe to do (B) steps, evaluating their work.
+
+
+---
+
+## 1A. Generate an Original Children’s Story
 
 ### a. Build-in Your Story Parameters
 
@@ -146,10 +157,16 @@ Feel free to use English or Czech for prompts and outputs. You are allowed to us
 - **Theme:** pirates, space adventure, magical creatures, lost in a forest, time travel, etc.
 - **Moral:** power of friendship, honesty, courage, nobody is perfect, etc.
 
+There is no customization at this step, you are expected to produce 30 fixed prompts and stories. Feel free to focus
+on themes and morals you like.
+
 ### b. Single-Prompt Strategy
+Try to generate the whole story using one great prompt. You can experiment with different prompt styles.
+
 Use a prompt like:
 > Write an original story for a 4–5-year-old children. The story should be imaginative about pirates, age-appropriate, and teach a gentle lesson about courage. The story should be engaging and easy to understand, with a clear beginning, middle, and end. Use simple language and vivid descriptions to capture the child's imagination.
 
+After that, switch to multi-turn strategy for comparison.
 
 ### c. Multi-Turn (Iterative) Strategy
 Break the story generation into steps:
@@ -169,9 +186,11 @@ Break the story generation into steps:
 
 See example at [chatGPT snippet](https://chatgpt.com/share/68befcc5-1134-800d-83d8-6abb90896b2e).
 
+You should try to generate stories using both single and multi-turn strategies, but exact ratio is up to you (e.g. 5 single + 25 multi-turn, or 20 single + 15 multi-turn, etc.).
+
 ---
 
-## 2. Evaluate the Generated Story
+## 1B. Evaluate the Generated Story
 
 Use these criteria (also used in annotation):
 
@@ -200,14 +219,16 @@ Create at least 10 stories with 6 points, 10 stories with at least 4 points and 
 
 ---
 
-## 3. Rewrite with a New Theme and custom characters
+## 2A. Rewrite with a New Theme and custom characters
 
-Use placeholders `{age}` and `{theme}` and optional placeholders such as `{gender}`, `{main_character}`, `{side_character}`.
+Use placeholders (prompt parameters customizing story generated) `{age}` and `{theme}` and optional placeholders such as `{gender}`, `{main_character}`, `{side_character}`.
+Placeholders enables customization of the story for different audiences. When calling LLMs, replace placeholders with actual values.
+We are using placeholders to make prompts reusable and adaptable.
 
 **Prompt Example:**
 > Reimagine the previous story from the viewpoint of a wise old {side_character} guiding a {main_character} in a world of {theme}. The story should be suitable for a {age}-year-old child, maintaining the original plot but adapting the setting and characters to fit the new theme.
 
-## 4. Evaluate rewritten story
+## 2B. Evaluate rewritten story
 
 Use these criteria (also used in annotation):
 
@@ -220,7 +241,7 @@ Create at least 10 rewrites with 3 points and 10 rewrites with at least 2 points
 
 ---
 
-## 5. Add an Educational Layer
+## 3A. Add an Educational Layer
 
 Revise the story to include simple explanations about:
  - **Geography:** Characters visit real places, mention simple facts.
@@ -234,7 +255,7 @@ Prompts:
 
 > Revise the story to include a simple explanation about how volcanoes erupt. Make sure it fits the adventure and is easy for a {age}-year-old to understand.
 
-## 6. Evaluation
+## 3B. Evaluation
 
  - **Story Quality**: Is a story quality kept after change? Does the story remain clear and enjoyable?
  - **Naturalness**: Is the fact blended into the story seamlessly?
@@ -245,7 +266,7 @@ Select two education topics (e.g. geography, art, biology) and for each of topic
 
 ---
 
-## 7. Generate Questions and Responses (JSON)
+## 4A. Generate Questions and Responses (JSON)
 
 Prompt:
 > Generate three questions and responses as a JSON dictionary that check the listener's knowledge about the material properties mentioned in the story.
@@ -262,28 +283,28 @@ Prompt:
 
 Use [JSON Formatter](https://jsonformatter.org/) to validate your structure.
 
-## 8. Evaluation
+## 4B. Evaluation of generated questions
 
  - **Difficulty:** Are questions adequate for a given child’s age?
  - **Completeness:** Are questions testing knowledge from story?
  - **Correctness:** Are responses correct?
 
 ###     Task
-For each generated education story in step 6, generate a set of at least 3 questions and answers in a format
+For each generated education story in step 3A, generate a set of at least 3 questions and answers in a format
 ```json
 {"question1": "answer2", "question2": "answer2", "question3": "answer3"}}
 ```
 
 ---
 
-## 9. Annotation Instructions
+## Annotation Instructions
 
 You will review stories written by others and annotate them using yes/no checkboxes.
 You are requested to annotate at least 60 items original stories, 40 theme rewrites, 40 education rewrites and 40 questions/responses sets.
 
 Annotations should be honest and constructive, if you are not sure, treat score as 0 (unchecked). Nobody won't be penalized for receiving low scores.
 
-Each section has its own criteria, always marked 0 or 1:
+Each category has its own criteria, always marked 0 or 1:
 
 ### Category 1: LLM Story (60times)
 
@@ -316,9 +337,13 @@ Each section has its own criteria, always marked 0 or 1:
 
 ## Deliverables
 
-- All prompts (with placeholders), placeholder values (as JSON), and LLM responses (with placeholders filled), 30 per section 1 and 2 and 20 per section 3 and 4 inserted into an [annotation interface](https://idc.aicheck.tech/dashboard).
-- Peer annotations (60, 60, 40, 40) done in the annotation interface.
-- Final reflection comparing strategies (200+ words) sent to the instructor:
+- All prompts (with placeholders/prompt parameters), placeholder values (as JSON, real values injected to prompt), and LLM responses (for prompts with placeholders filled by sensible values), 30 per Category 1 and 2 and 20 per Category 3 and 4 inserted into an [annotation interface](https://idc.aicheck.tech/dashboard) (you need to be logged in [https://idc.aicheck.tech/](https://idc.aicheck.tech/) first).
+
+  Feel free to store your outputs in .txt files as backup, but you need to submit them to online system.
+
+- Peer annotations (60, 60, 40, 40) done in the annotation interface. You annotate work of two other students.
+
+- Final reflection comparing strategies (200+ words) sent to the instructor Hana Žižková by email zizkova@phil.muni.cz:
     - Did the educational content enhance or disrupt the story?
     - Were all facts accurate and explanations clear?
     - Did you find single or multi-prompt strategies better?
