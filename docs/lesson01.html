@@ -3,11 +3,23 @@
 <head>
     <meta charset="utf-8">
     <title>PLIN081: 01</title>
-    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/white.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.5.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.5.0/dist/theme/white.css">
     <style>
         .reveal section {
             font-size: 24px; /* Adjust this value as needed */
+        }
+        /* Left-align slide content instead of reveal.js's centered default */
+        .reveal .slides,
+        .reveal .slides section,
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6,
+        .reveal p, .reveal blockquote, .reveal pre {
+            text-align: left;
+        }
+        .reveal ul, .reveal ol, .reveal dl {
+            display: block;
+            text-align: left;
+            margin-left: 1em;
         }
         .tag {
             display: inline-block;
@@ -30,29 +42,26 @@
 - Jan Rygl (https://www.linkedin.com/in/janrygl/)
 - Absolvent FI, R&D (Python, ML, AI)
 
-Výuka bude vedena z pohledu malého, specializovaného AI týmu, který pracuje
-na konkrétních poptávkách zákazníků.
+Výuka bude vedena z pohledu malého, specializovaného AI týmu nebo freelancera,
+který pracuje na malých optimalizacích, dělá chytré aplikace nebo pracuje s agenty.
 
-Naopak se nebudeme věnovat vývoji dlouhodobému produktu nebo práci v&nbsp;korporátním prostředí.
+Nebudeme se věnovat vývoji dlouhodobému produktu nebo práci v&nbsp;korporátním prostředí.
 
-Oproti loňsku zahrneme i LLM, protože se z nich stává nutnost.
+Záleží na vás, zda se kromě LLM a agentům budeme věnovat i klasickému ML a NLP.
 
 ---
 
-## <span class="tag discussion">Diskuze</span> Módy činnosti v rámci předmětu
+## Módy činnosti v rámci předmětu
 
-- <b>A)</b> Aktivity v rámci týmu
-  - Komunikujete v rámci svého týmu
-  - Se mnou můžete komunikovat kdykoliv
-
-- <b>B)</b> Práce na projektu
-  - Spolupráce jen v rámci týmu a za pomoci vyučujících a AI
+- <b>A)</b> Práce na projektu
+  - Za pomocí učitele i AI
   - Probíhá ve výuce i v čase mimo ni
   - Více při zadání projektů
 
-- <b>C)</b> Diskuze (defaultní mód)
+- <b>B)</b> Diskuze (defaultní mód)
   - Něco vám nedává smysl, máte nápad, postřeh, vlastní zkušenost, ozvěte se
-  - Např. nyní je diskuze
+  - Chcete něco probrat, nebo vám téma nedává smysl? Řekněte
+  - Např. dnes probíhá jen diskuze
 
 ---
 
@@ -61,6 +70,32 @@ Oproti loňsku zahrneme i LLM, protože se z nich stává nutnost.
 1. Zakázkový vývoj
 2. Počátek většiny technologických start-upů
 3. Interní týmy v korporátech řeší digitalizaci/zavádění AI pro různá oddělení
+
+
+<br>
+
+### Otázky:
+
+ - Co se změnilo oproti historii?
+ - Kdy malý tým nestačí?
+ - Kdy má malý tým výhodu?
+
+---
+
+## <span class="tag discussion">Diskuze</span> Uplatnění malých týmů
+
+1. Zakázkový vývoj
+2. Počátek většiny technologických start-upů
+3. Interní týmy v korporátech řeší digitalizaci/zavádění AI pro různá oddělení
+
+
+<br>
+
+### Otázky:
+
+ - Co se změnilo oproti historii? <b>I jeden člověk s agenty je tým.</b>
+ - Kdy malý tým nestačí? <b>Support mnoha zákazníků, legal, kyberbezpečnostní hrozby, riziko vyhoření.</b>
+ - Kdy má malý tým výhodu? <b>S agenty je koordinace úzké hrdlo, menší tým zvládá koordinaci lépe.</b>
 
 ---
 
@@ -80,21 +115,20 @@ až do konce?
 
 ## <span class="tag discussion">Diskuze</span> Role v malých týmech
 
-Na AI projektech běžně pracuje deset a více lidí,<br />
-klíčové jsou však následující tři role, které může zastávat 1 nebo více lidí:
+Na starých AI projektech běžně pracovalo deset a více lidí,<br />
+klíčové však byly následující tři role, které mohlo zastávat 1 nebo více lidí:
 
-- Tvář projektu 🎩:
+- Tvář projektu:
     - odpovídá za komunikaci s klientem
-    - řídí management projektu
-    - pomáhá s ručním testováním
-    - může pomoci s anotacemi
+    - řídí management projektu a budget
     - sbírá zpětnou vazbu a předává týmu
-- Programátor/ka 💻:
+    - směřuje vizi projektu a odděluje nice-to-have od klíčových features
+- Programátor/ka:
     - píše kód, dělá automatické testy
     - integruje s klientovým prostředím a navrhuje API
     - řeší bugy
     - nasazuje finální aplikaci
-- ML expert/ka 🧪:
+- ML expert/ka:
     - stará se o sběr a kvalitu dat
     - analyzuje data a čistí je
     - vybírá a implementuje metriky měřící kvalitu
@@ -104,7 +138,7 @@ klíčové jsou však následující tři role, které může zastávat 1 nebo v
 
 ## <span class="tag activity">Aktivita</span> Důležitost rolí (co se stane, když...)
 
-|                            | Tvář projektu 🎩   | Programátor/ka 💻   | ML expert 🧪       |
+|                            | Tvář projektu     | Programátor/ka     | ML expert          |
 |----------------------------|-------------------|--------------------|--------------------|
 | chybí                      |                   |                    |                    |
 | neplní svoji roli          |                   |                    |                    |
@@ -117,7 +151,7 @@ klíčové jsou však následující tři role, které může zastávat 1 nebo v
 
 ## <span class="tag activity">Aktivita</span> Důležitost rolí (co se stane, když...)
 
-|                            | Tvář projektu 🎩                                                                                                                                   | Programátor/ka 💻                                                                                          | ML expert 🧪                                                                                                              |
+|                            | Tvář projektu                                                                                                                                     | Programátor/ka                                                                                            | ML expert                                                                                                                |
 |----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
 | chybí                      | nezískáte zakázku, nesynchronizujete tým, projekt nevznikne nebo řeší něco jiného                                                                  | při první dodávce projekt selže, klient i tým jsou nespokojení                                             | cíl projekt (AI) nebude kvalitně splněn, projekt selže na konci                                                          |
 | neplní svoji roli          | klient i tým jsou špatně informováni, projekt je špatně řízený, průšvih                                                                           | projekt se zpozdí, je nestabilní, plný bugů, klient i tým jsou nespokojení                                 | cíl projekt (AI) nebude kvalitně splněn, projekt může selhat na konci                                                    |
@@ -127,13 +161,16 @@ klíčové jsou však následující tři role, které může zastávat 1 nebo v
 
 ## Jeden člen týmu většinou neutáhne celou zakázku
 
+ - Solo founder: business => selže na škálování a bezpečnosti
+ - Solo founder: engineer => nezíská placené zakázky
+
 ---
 
 
 
 ## <span class="tag activity">Aktivita</span> Naceňování rolí
 
-Ke každé roli přiřaďme ohodnocení (3 až 10), které odpovídá její kritičnosti pro projekt.
+Ke každé roli přiřaďme ohodnocení (1 až 5, 5 je nejvíce), které odpovídá její kritičnosti pro projekt.
 
 1. Tvář projektu 🎩
 2. Programátor/ka 💻
@@ -143,36 +180,35 @@ Ke každé roli přiřaďme ohodnocení (3 až 10), které odpovídá její krit
 6. Data engineer 🛠️
 7. Back office support 📎
 
-[excel](https://docs.google.com/spreadsheets/d/1W2Gub-zxVaHR-MGKQ0dAFtgFr7N4jpH9HPVrhEDvsp8/edit?usp=sharing)
 
 ---
 
 ## <span class="tag activity">Aktivita</span> (Sebe)přiřazení rolí
 
-Každý si přiřadí jednu z rolí níže, kompetence porovnáváme s běžným studentem FF.
+Každý si přiřadí jednu nebo více z rolí níže, kompetence porovnáváme s běžným studentem FF.
 | Role                           | Soft skills                | Hard skills                   |
 |---------------------------------|----------------------------|-------------------------------|
 | Tvář projektu 🎩                | komunikace, pečlivost     |                 |
-| Programátor/ka 💻               | týmová spolupráce          | Github AND Python   |
-| Junior programátor/ka 👨‍🎓       |        | Python basics  |
-| ML expert 🧪                    | analytické myšlení         | LLM API OR Pytorch OR SKlearn |
-| Data scientist 📊               | pečlivost, prezentace  | Pandas OR Excel mastery     |
+| Programátor/ka 💻               | týmová spolupráce          | Github, Python OR vibecoding   |
+| Junior programátor/ka 👨‍🎓       |        | Python basics OR vibecoding  |
+| ML expert 🧪                    | analytické myšlení         | LLM API OR Vlastní ML aplikace |
+| Data scientist 📊               | pečlivost, prezentace  | Pandas OR Excel      |
 | Data engineer 🛠️                | trpělivost, pečlivost            | SQL OR noSQL |
 | Back office support 📎          |      |    |
 
 ---
 
-## <span class="tag activity">Aktivita</span> (Sebe)přiřazení ceny
+## <span class="tag activity">Aktivita</span> Ohodnocení rolí
 
-Každý si napište svůj odhad ceny v rozmezí **1** až **13**, můžeme použít i poloviny, např. **8.5**.
+Ke každé roli přiřaďme očekávaný plat. Čistě odhady. Na čem plat mimo jiné záleží?
 
-Můžete použít odhady týmu, můžete zvolit vlastní číslo.
-
----
-
-## <span class="tag activity">Aktivita</span> Tvoření týmu
-
-Nyní, když máte nastaveny virtuální platy (vaše hodnota krát 10 000 Kč), sestavte týmy o 2 až 4 lidech.
+1. Tvář projektu 🎩
+2. Programátor/ka 💻
+3. Junior programátor/ka 👨‍🎓
+4. ML expert 🧪
+5. Data scientist 📊
+6. Data engineer 🛠️
+7. Back office support 📎
 
 ---
 
@@ -242,15 +278,11 @@ aby se snížil počet MD/zvýšila se spokojenost klienta, udělejte to.
 
 ## <span class="tag discussion">Diskuze</span> Očekávání na příští setkání
 
-1. Pojmenujete si svůj tým (business friendly)
-2. Naklonujte si repozitář z https://github.com/aicheck-tech/PLIN081-2025 (`git clone ...` nebo např. z Pycharm)
-3. V repozitáři udělejte svoji větev team-name/intro a vytvořte tam svoji složku (s názvem týmu) a README.md soubor s informacemi:
-    - informace o vaší fiktivní firmě
-    - seznam všech členů týmu ve formátu `Jméno, UČO`
-4. Každý z vás vytvoří novou větev v gitu se souborem `team-name/<uco>/lesson01.py`
+1. Naklonujte si repozitář z https://github.com/aicheck-tech/PLIN081-2025 (`git clone ...` nebo např. z Pycharm)
+2. Každý z vás vytvoří novou větev v gitu se souborem `team-name/<uco>/lesson01.py`
     - soubor musí obsahovat přesně 20řádkový Python kód, který z konzole vezme text a vrátí textový výstup
     - program může používat jen nativní Python balíčky
-6. Každý z vás udělá code review jinému členu týmu, aby se zvýšila kvalita kódu.
+3. Každý z vás udělá code review jinému členu týmu, aby se zvýšila kvalita kódu.
 
 ---
 
@@ -290,42 +322,67 @@ Tipy:
 - Jan Rygl (https://www.linkedin.com/in/janrygl/)
 - Graduate of FI, R&D (Python, ML, AI)
 
-The course will be taught from the perspective of a small, specialized AI team working on specific customer requests.
+The course will be taught from the perspective of a small, specialized AI team or a freelancer
+working on small optimizations, building smart applications, or working with agents.
 
-We will **not** focus on long-term product development or working in a corporate environment.
+We will not cover long-term product development or working in a corporate environment.
 
-Unlike last year, we will also include LLMs, as they have become essential.
-
----
-
-## <span class="tag discussion">Discussion</span> Activity Modes in the Course
-
-- <b>A)</b> Activities within the team
-  - You communicate within your team
-  - You can contact me at any time
-
-- <b>B)</b> Project work
-  - Collaboration only within your team and with help from instructors and AI
-  - Takes place both during lessons and outside of class time
-  - More details when projects are assigned
-
-- <b>C)</b> Discussion (default mode)
-  - If something doesn't make sense, you have an idea, insight, or your own experience, speak up
-  - For example, now is discussion time
+Whether, besides LLMs and agents, we also cover classic ML and NLP is up to you.
 
 ---
 
-## <span class="tag discussion">Discussion</span> Use of Small Teams
+## Activity modes in the course
+
+- <b>A)</b> Project work
+  - With the help of the teacher and of AI
+  - Takes place both during lessons and outside of them
+  - More details when the projects are assigned
+
+- <b>B)</b> Discussion (default mode)
+  - Something does not make sense to you, you have an idea, an observation, your own experience? Speak up
+  - Do you want to discuss something, or does a topic not make sense to you? Say so
+  - E.g. today there is only discussion
+
+---
+
+## <span class="tag discussion">Discussion</span> Where small teams are used
 
 1. Custom development
-2. Beginning of most tech startups
-3. Internal corporate teams solving digitalization/AI adoption for various departments
+2. The beginning of most tech start-ups
+3. Internal corporate teams handling digitalization/AI adoption for various departments
+
+
+<br>
+
+### Questions:
+
+ - What has changed compared to the past?
+ - When is a small team not enough?
+ - When does a small team have an advantage?
+
+---
+
+## <span class="tag discussion">Discussion</span> Where small teams are used
+
+1. Custom development
+2. The beginning of most tech start-ups
+3. Internal corporate teams handling digitalization/AI adoption for various departments
+
+
+<br>
+
+### Questions:
+
+ - What has changed compared to the past? <b>Even one person with agents is a team.</b>
+ - When is a small team not enough? <b>Support for many customers, legal, cybersecurity threats, risk of burnout.</b>
+ - When does a small team have an advantage? <b>With agents, coordination is the bottleneck, and a smaller team handles coordination better.</b>
 
 ---
 
 ## <span class="tag discussion">Discussion</span> What basic roles do we have in a team?
 
-What skills/specializations are needed to complete a project with a client from start to finish?
+What skills/specializations are needed for you to deliver a project with a client from start
+to finish?
 
 - ...
 - ...
@@ -336,180 +393,180 @@ What skills/specializations are needed to complete a project with a client from 
 
 ---
 
-## <span class="tag discussion">Discussion</span> Roles in Small Teams
+## <span class="tag discussion">Discussion</span> Roles in small teams
 
-AI projects typically involve ten or more people,<br />
-but the following three roles are key, and one or more people may take them on:
+Older AI projects commonly involved ten or more people,<br />
+but the following three roles were the key ones, and each could be held by one or more people:
 
-- Project Face 🎩:
-    - Responsible for communication with the client
-    - Manages project management
-    - Helps with manual testing
-    - May assist with annotations
-    - Collects feedback and passes it to the team
-- Developer 💻:
-    - Writes code, does automated tests
-    - Integrates with the client's environment and designs APIs
-    - Handles bugs
-    - Deploys the final application
-- ML Expert 🧪:
-    - Manages data collection and quality
-    - Analyzes and cleans data
-    - Chooses and implements quality metrics
-    - Creates and evaluates ML models
-
----
-
-## <span class="tag activity">Activity</span> Role Importance (what happens if...)
-
-|                            | Project Face 🎩    | Developer 💻        | ML Expert 🧪        |
-|----------------------------|-------------------|---------------------|---------------------|
-| missing                    |                   |                     |                     |
-| does not fulfill their role|                   |                     |                     |
-| can't keep up              |                   |                     |                     |
-| is excellent               |                   |                     |                     |
-
+- Project face:
+    - responsible for communication with the client
+    - runs project management and the budget
+    - collects feedback and passes it on to the team
+    - steers the project vision and separates nice-to-have from key features
+- Developer:
+    - writes code, does automated tests
+    - integrates with the client's environment and designs APIs
+    - fixes bugs
+    - deploys the final application
+- ML expert:
+    - takes care of data collection and data quality
+    - analyzes and cleans data
+    - chooses and implements metrics measuring quality
+    - builds and evaluates ML models
 
 ---
 
-## <span class="tag activity">Activity</span> Role Importance (what happens if...)
+## <span class="tag activity">Activity</span> Importance of roles (what happens when...)
 
-|                            | Project Face 🎩                                                                                                                                   | Developer 💻                                                                                           | ML Expert 🧪                                                                                                         |
-|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| missing                    | you won't get the contract, don't synchronize the team, project won't happen or will solve something else                                          | project fails on first delivery, both client and team are unhappy                                      | project (AI) goal will not be properly met, project fails at the end                                                 |
-| does not fulfill their role| both client and team are misinformed, project is mismanaged, disaster                                         | project is delayed, unstable, full of bugs, client and team are unhappy                               | project (AI) goal will not be properly met, project may fail at the end                                              |
-| is excellent               | everyone is more satisfied, but the project can still be bad                                                | project will be stable and predictable, but may still not succeed                                     | project (AI) goal will be properly met, but project can still fail at the start (pilot fails, problem unsolvable)    |
+|                            | Project face      | Developer          | ML expert          |
+|----------------------------|-------------------|--------------------|--------------------|
+| is missing                 |                   |                    |                    |
+| does not fulfill their role|                   |                    |                    |
+| cannot keep up             |                   |                    |                    |
+| is excellent               |                   |                    |                    |
+
+
 
 ---
 
-## One team member usually cannot handle the whole project alone
+## <span class="tag activity">Activity</span> Importance of roles (what happens when...)
+
+|                            | Project face                                                                                                                                      | Developer                                                                                                 | ML expert                                                                                                                |
+|----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|
+| is missing                 | you will not win the contract, you will not synchronize the team, the project will not happen or will solve something else                          | the project fails on the first delivery, both the client and the team are unhappy                          | the project goal (AI) will not be met properly, the project fails at the end                                             |
+| does not fulfill their role| both the client and the team are badly informed, the project is badly managed, disaster                                                            | the project is delayed, unstable, full of bugs, the client and the team are unhappy                        | the project goal (AI) will not be met properly, the project may fail at the end                                          |
+| is excellent               | everyone is more satisfied, but the project can still be bad                                                                                       | the project will be stable and predictable, but it may still not succeed                                    | the project goal (AI) will be met properly, but the project may fail at the start (the pilot fails and the problem turns out to be unsolvable) |
 
 ---
 
-## <span class="tag activity">Activity</span> Role Valuation
+## One team member usually cannot carry a whole contract
 
-Assign a value (3 to 10) to each role reflecting its criticality to the project.
+ - Solo founder: business => fails on scaling and security
+ - Solo founder: engineer => will not win paid contracts
 
-1. Project Face 🎩
+---
+
+
+
+## <span class="tag activity">Activity</span> Pricing the roles
+
+Let's assign each role a rating (1 to 5, 5 is the highest) reflecting how critical it is for the project.
+
+1. Project face 🎩
 2. Developer 💻
-3. Junior Developer 👨‍🎓
-4. ML Expert 🧪
-5. Data Scientist 📊
-6. Data Engineer 🛠️
-7. Back Office Support 📎
+3. Junior developer 👨‍🎓
+4. ML expert 🧪
+5. Data scientist 📊
+6. Data engineer 🛠️
+7. Back office support 📎
 
-[excel](https://docs.google.com/spreadsheets/d/1W2Gub-zxVaHR-MGKQ0dAFtgFr7N4jpH9HPVrhEDvsp8/edit?usp=sharing)
 
 ---
 
-## <span class="tag activity">Activity</span> Self-Assignment of Roles
+## <span class="tag activity">Activity</span> (Self-)assignment of roles
 
-Everyone assigns themselves one of the roles below; compare your competencies to an average humanities student.
+Everyone assigns themselves one or more of the roles below; we compare competencies against a typical Faculty of Arts student.
 | Role                           | Soft skills                | Hard skills                   |
 |---------------------------------|----------------------------|-------------------------------|
-| Project Face 🎩                 | communication, diligence   |                               |
-| Developer 💻                    | teamwork                   | Github AND Python             |
-| Junior Developer 👨‍🎓           |                            | Python basics                 |
-| ML Expert 🧪                    | analytical thinking        | LLM API OR Pytorch OR SKlearn |
-| Data Scientist 📊               | diligence, presenting      | Pandas OR Excel mastery       |
-| Data Engineer 🛠️                | patience, diligence        | SQL OR noSQL                  |
-| Back Office Support 📎          |                            |                               |
+| Project face 🎩                 | communication, diligence  |                 |
+| Developer 💻                    | teamwork                   | Github, Python OR vibecoding   |
+| Junior developer 👨‍🎓            |        | Python basics OR vibecoding  |
+| ML expert 🧪                    | analytical thinking        | LLM API OR own ML application |
+| Data scientist 📊               | diligence, presenting  | Pandas OR Excel      |
+| Data engineer 🛠️                | patience, diligence            | SQL OR noSQL |
+| Back office support 📎          |      |    |
 
 ---
 
-## <span class="tag activity">Activity</span> Self-Assignment of Value
+## <span class="tag activity">Activity</span> Valuing the roles
 
-Everyone, write your price estimate in the range **1** to **13** (halves allowed, e.g., **8.5**).
+Let's assign each role an expected salary. Pure estimates. What else does the salary depend on?
 
-You can use team estimates or your own number.
+1. Project face 🎩
+2. Developer 💻
+3. Junior developer 👨‍🎓
+4. ML expert 🧪
+5. Data scientist 📊
+6. Data engineer 🛠️
+7. Back office support 📎
 
 ---
 
-## <span class="tag activity">Activity</span> Team Formation
+## <span class="tag activity">Activity</span> The start of a team
 
-Now that you have your virtual salaries (your value x 10,000 CZK), form teams of 2–4 people.
-
----
-
-## <span class="tag activity">Activity</span> Team Formation Start
-
-Within your team, get to know each other and try to come up with a company name. You have 5 minutes.
+Get to know each other within your team and try to come up with a name for your company. You have 5 minutes.
 <br /><button class="tag" onclick="startCountdown(300);">Start</button>
 <p class="countdown" id="countdown">05:00</p>
 
 ---
 
-## <span class="tag activity">Activity</span> Assigning AI Projects
+## <span class="tag activity">Activity</span> Assigning AI projects
 
-- A simulation of a meeting between AI teams and a client awaits us. Your company’s sales rep tells you he
-has just closed a great deal with a VIP client.
+- A simulation of a meeting between AI teams and a client awaits us. Your company's sales rep comes to you
+saying he has managed to negotiate a great contract with a VIP client.
 
-- After consulting with the client, you just need to estimate the project’s difficulty (in MDs),
-tell the client a number that is three times higher, and leave the rest to negotiation.
+- All he needs from you is that, after consulting the client, you estimate the difficulty of the project (in MDs),
+tell the client a number three times higher and leave the rest to the negotiation with the sales rep.
 
-- The goal is for the client to be happy and the company to be profitable. If you need to adjust the project
-to reduce MDs or increase client satisfaction, do so.
+- The goal is for the client to be satisfied and the company to be profitable. If the project needs to be adjusted
+slightly to reduce the number of MDs/increase client satisfaction, do it.
 
-- Don’t forget, you are dealing with a client!
+- Do not forget, you are dealing with a client!
 
 ---
 
-## <span class="tag activity">Activity</span> Assigning AI Projects: List of Clients and Sales Notes
+## <span class="tag activity">Activity</span> Assigning AI projects: list of clients and the sales rep's notes
 
 1. Mr. Snider from Redrock mines Ostrava, a.s.
-    - very large contract, at least 10 million
-    - will open doors to a large corporation
+    - a super large contract, at least 10 million
+    - it will open the doors to a large corporation
 2. Roman from the nonprofit Pomocné srdce
     - everything is negotiable
-    - smaller project, but will serve as a reference
+    - a smaller project, but it will serve us as a reference
     - you have nothing better to do anyway, right?
 3. Engineer Martin from Best garden tech, s.r.o.
-    - my friend from college, great guy
+    - he is my friend from university, a nice guy
 4. Mgr. Lukáš Novotný, Director for Eastern Markets at Nová banka
-    - I’ve already arranged everything, just need to sort out how much data we need
-    - no problem paying for 150 MD
+    - I have already arranged everything, we just need to sort out how much data we need
+    - he has no problem paying for 150 MD
 5. Petr, Assistant at Legal Family Pro
-    - met me at a conference, knows as much about tech as I do
+    - he contacted me at a conference, he knows nothing about tech, same as me
 6. Novik Bigaj, Start-up Iron
-    - has already done 5 start-ups
-    - needs it fast
-    - we’ll work for a third of the pay, but get a share of the profits!
+    - he already has 5 start-ups behind him
+    - he needs it fast
+    - we will work on it for a third of the pay, but we will get a share of the profits!
 
 ---
 
-## <span class="tag discussion">Discussion</span> Code Review
+## <span class="tag discussion">Discussion</span> Code review
 - Why do we need it?
-- Who can do it?
+- Who can write it?
     - Junior
     - Senior
     - AI
-- What makes a good code review?
+- What makes a code review a good code review?
 
 ---
 
-## <span class="tag activity">Activity</span> Let’s Do a Code Review Together
+## <span class="tag activity">Activity</span> Let's do a code review together
 
 - Step by step
-- Let’s start with the most important
+- Let's start with the most important ones
 - <a href="https://github.com/aicheck-tech/PLIN081/blob/main/examples/example01.py">Example on Github</a>
 
 ---
 
-## <span class="tag discussion">Discussion</span> Expectations for Next Meeting
+## <span class="tag discussion">Discussion</span> Expectations for the next meeting
 
-1. Name your team (business friendly)
-2. Clone the repo from https://github.com/aicheck-tech/PLIN081-2025 (`git clone ...` or e.g. from Pycharm)
-3. In the repo, make your branch team-name/intro and create your folder (named after the team) and a README.md file with:
-    - info about your fictional company
-    - list of all team members in format `Name, UČO`
-4. Each of you creates a new git branch with the file `team-name/<uco>/lesson01.py`
-    - file must contain exactly 20 lines of Python code that takes text from the console and returns a text output
-    - the program can only use native Python packages
-6. Each of you will do a code review for another team member to increase code quality.
+1. Clone the repository from https://github.com/aicheck-tech/PLIN081-2025 (`git clone ...` or e.g. from Pycharm)
+2. Each of you creates a new git branch with the file `team-name/<uco>/lesson01.py`
+    - the file must contain exactly 20 lines of Python code that takes text from the console and returns a text output
+    - the program may use only native Python packages
+3. Each of you does a code review for another team member, to increase the quality of the code.
 
 ---
 
-## Example Program
+## Example program
 
 ```
 import sys
@@ -534,17 +591,16 @@ if __name__ == "__main__":
         print("Please provide some text to analyze.")
 ```
 
-
 Tips:
- - argparse package
- - PEP8 (write code e.g., in Pycharm, free community edition)
+ - the argparse package
+ - PEP8 (write code e.g. in Pycharm, the community edition is free)
 
                 </textarea>
             </section>
         </div>
     </div>
-    <script src="https://unpkg.com/reveal.js/plugin/markdown/markdown.js"></script>
-    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script src="https://unpkg.com/reveal.js@4.5.0/plugin/markdown/markdown.js"></script>
+    <script src="https://unpkg.com/reveal.js@4.5.0/dist/reveal.js"></script>
     <script src="static/lang.js"></script>
     <script>
         function formatTime(seconds) {
